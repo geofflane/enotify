@@ -1,0 +1,18 @@
+<h1>Listing enotify_mails</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for enotify_mail in @enotify_mails %>
+  <tr>
+    <td><%= link_to 'Show', enotify_mail %></td>
+    <td><%= link_to 'Edit', edit_enotify_mail_path(enotify_mail) %></td>
+    <td><%= link_to 'Destroy', enotify_mail, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New enotify_mail', new_enotify_mail_path %>

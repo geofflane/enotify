@@ -1,0 +1,51 @@
+<h1>New incident</h1>
+
+<% form_for(@incident) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :report_number %><br />
+    <%= f.text_field :report_number %>
+  </p>
+  <p>
+    <%= f.label :time %><br />
+    <%= f.datetime_select :time %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :address_street1 %><br />
+    <%= f.text_field :address_street1 %>
+  </p>
+  <p>
+    <%= f.label :address_street2 %><br />
+    <%= f.text_field :address_street2 %>
+  </p>
+  <p>
+    <%= f.label :address_city %><br />
+    <%= f.text_field :address_city %>
+  </p>
+  <p>
+    <%= f.label :address_state %><br />
+    <%= f.text_field :address_state %>
+  </p>
+  <p>
+    <%= f.label :address_zip %><br />
+    <%= f.text_field :address_zip %>
+  </p>
+  <p>
+    <%= f.label :geo_location_lat %><br />
+    <%= f.text_field :geo_location_lat %>
+  </p>
+  <p>
+    <%= f.label :geo_location_long %><br />
+    <%= f.text_field :geo_location_long %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', incidents_path %>

@@ -1,0 +1,167 @@
+= GeoX - An Easy to Use Rails Geocoding Engine =
+
+v. 0.2.0 (10/21/07)
+
+== Overview ==
+
+GeoX is a geocoding interface written for Ruby on Rails applications. 
+It will geocode locations using !MapQuest, Yahoo, Google or another 
+engine of your choice (you have to write interface shell though, 
+or ask me and maybe I'll do it!).
+
+=== Opinions on Geocoders ===
+
+Right now (9/24/07) Google seems to be offering the best geocoding services. 
+ But a year ago, Yahoo was. That's why I built this tool - it should be 
+ totally transparent to switch providers and GeoX makes it how it should be.
+Update (10/21/07) - Yahoo seems to fixed some issues like sending back 
+ inaccurate/duplicate geocodes as well as returning all their result addresses in upper case.
+
+== Getting help ==
+
+There is a GeoX mailing list you can subscribe to, to get notifications of new versions and 
+to ask questions. To subscribe send an email to:
+{{{
+geox-subscribe@misuse.org
+}}}
+
+== Installing GeoX ==
+
+ * GeoX is a very easy to use geocoder for Ruby on Rails. You can obtain the latest version with this command from the root of your Rails application:
+  * Unix/Mac:
+{{{
+./script/plugin install svn://svn.misuse.org/science/geox/trunk
+}}}
+  * Windows:
+{{{
+ruby script/plugin install svn://svn.misuse.org/science/geox/trunk
+}}}
+
+ * Usage is simple. Once installed per above instructions, read the README file in your rails app folder:
+{{{
+./vendor/plugins/geox/README
+}}}
+
+=== Installing Specific Geocoders ===
+
+Make sure to put your API keys for your preferred engines in constant value in 
+RAILS_ROOT/config/geox_api_keys.rb file. You only have to fill it out for engines you will use!
+Remember "RAILS_ROOT" is not a folder itself but a symbol indicating you fill in the folder where
+you installed your rails app!
+
+Here are examples of what your key file will look like:
+{{{
+module GeoX
+  MAPQUEST_API_KEY = 'your_key_goes_here..'
+  GOOGLE_API_KEY = 'your_key_goes_here..'
+  YAHOO_API_KEY = 'your_key_goes_here..'
+end
+}}}
+
+=== Required Libraries ===
+
+You must have the following gems or libraries installed to use this tool:
+{{{
+'rubygems' # often available by default
+'hpricot' # Google for install instructions - pretty easy if you don't compile from source code!
+'open-uri' # available by default
+'cgi' # available by default
+}}}
+The only Rails dependency is on ".blank?" which is such a handy function I couldn't resist. If you want this
+dependency removed, drop me a line: science AT misuse.org.skip.rest.site.com. Otherwise this thing can run in Ruby w/out Rails easily.
+
+== Testing ==
+
+Once you've installed the system into your Rails application, you can run tests of
+GeoX from the root of your rails application (nice, huh?):
+{{{
+  rake geox:test
+}}}
+
+== Usage ==
+
+Using the GeoX::Geocoder is quite simple. You can look in the 
+./test/geox_test.rb file for lots of examples. Here are some basic examples:
+{{{
+ require 'geox'
+ geocoder = GeoX::Geocoder.new(:geoengine => GeoX::Google) # uses the google engine
+ location = {:address => '701 Ocean St', :post_code => '95060'}
+ geocode = geocoder.geocode(location)
+ puts geocode.inspect # geocode will be a hash containing the geocode data returned from the server
+}}}
+
+=== Configuring Network Failover ===
+
+If you want network failover, so that if your primary provider fails to give a geocode, you can have a backup
+provider, then simply pass an array of Geocode Engines, like this sample code:
+{{{
+ require 'geox'
+ # uses the google engine first, but will rollover to Mapquest then Yahoo during failures
+ geocoder = GeoX::Geocoder.new(:geoengine => [GeoX::Google, GeoX::MapQuest, GeoX::Yahoo]) 
+ location = {:address => '701 Ocean St', :post_code => '95060'}
+ geocode = geocoder.geocode(location)
+ puts geocode.inspect # geocode will be a hash containing the geocode data returned from the server
+}}}
+
+=== Usage Notes ===
+
+The main "geocode" function returns an array of object instances descended 
+from "Geox::Geocode" - It can be one of:
+{{{
+  GeoX::City
+  GeoX::PostCode
+  GeoX::Block
+  GeoX::Street
+}}}
+If multiple objects are returned, it means that the backend geocoder could not
+decide which of them is right. You should have your user pick one of the choices
+or otherwise disambiguate. Picking the first item in the array is not really a
+good solution to this dilemma. If no geocode was found at all, an empty array is
+returned.
+ 
+Each returned Geocode instance returned will have several attributes:
+
+ * address
+ * city
+ * state
+ * county
+ * country
+ * latitude
+ * longitude
+
+You can access these attributes just like any Ruby object:
+{{{
+ puts geocode.city
+}}}
+What values are actually available will depend on the backend geocoding engine you
+are using.
+
+You can also evaluate your geocode instance to see how specific it is:
+{{{
+ puts "Very specific!" if geocode < GeoX::Block
+}}}
+ * "<" means that the instance being compared is MORE specific geographically (tighter range of error) than the right hand comparision
+ * ">" means that the instance is LESS specific
+
+You can also compare two instances:
+{{{
+ puts "Street wins!" if GeoX::Street.new < GeoX::Block.new
+}}}
+
+Note, it's best to use the following syntax to see if your instance is of a
+particular kind
+{{{
+ puts "City level coding" if geocode.kind_of?(GeoX::City)
+}}}
+
+=== Failures ===
+When the geocoder fails to obtain results it returns an array with instance(s) or subclassed instance(s) of GeoX::Failure
+These are GeoX::Geocode classes but they are not comparable to other Geocode classes. You can tell them apart programmatically
+because they respond differently to the Geocode.success? method as so:
+
+{{{
+GeoX::Street.new.success? # true!
+GeoX::Failure.new.success? # false!
+}}}
+
+You see, success is a state of the instance when it's created. Geoengines don't return a Street level instance unless they found street level results.

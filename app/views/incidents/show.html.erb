@@ -1,0 +1,53 @@
+<p>
+  <b>Report number:</b>
+  <%=h @incident.report_number %>
+</p>
+
+<p>
+  <b>Time:</b>
+  <%=h @incident.time %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @incident.description %>
+</p>
+
+<p>
+  <b>Address street1:</b>
+  <%=h @incident.address_street1 %>
+</p>
+
+<p>
+  <b>Address street2:</b>
+  <%=h @incident.address_street2 %>
+</p>
+
+<p>
+  <b>Address city:</b>
+  <%=h @incident.address_city %>
+</p>
+
+<p>
+  <b>Address state:</b>
+  <%=h @incident.address_state %>
+</p>
+
+<p>
+  <b>Address zip:</b>
+  <%=h @incident.address_zip %>
+</p>
+
+<p>
+  <b>Geo location lat:</b>
+  <%=h @incident.geo_location_lat %>
+</p>
+
+<p>
+  <b>Geo location long:</b>
+  <%=h @incident.geo_location_long %>
+</p>
+
+
+<%= link_to 'Edit', edit_incident_path(@incident) %> |
+<%= link_to 'Back', incidents_path %>

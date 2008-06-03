@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value
+
+
+theft:
+  enotify_mail_id: 1
+  report_number: #1234567
+  time: April 11, 2008 05:49 PM
+  description: Theft
+  resolution: Pending
+  address_street1: 2924 N Pierce St
+  address_city: Milwaukee
+  address_state: WI
+  address_zip: 53212
+  geo_location_long: -80.4506
+  geo_location_lat: 42.4567

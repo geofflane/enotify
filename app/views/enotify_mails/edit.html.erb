@@ -1,0 +1,12 @@
+<h1>Editing enotify_mail</h1>
+
+<% form_for(@enotify_mail) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @enotify_mail %> |
+<%= link_to 'Back', enotify_mails_path %>
