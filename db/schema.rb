@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080601184601) do
+ActiveRecord::Schema.define(:version => 20080604022544) do
 
   create_table "enotify_mails", :force => true do |t|
     t.string   "title"
@@ -32,6 +32,38 @@ ActiveRecord::Schema.define(:version => 20080601184601) do
     t.string   "address_zip",       :limit => 10
     t.string   "geo_location_long"
     t.string   "geo_location_lat"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "permit_records", :force => true do |t|
+    t.integer  "enotify_mail_id"
+    t.string   "tax_key"
+    t.string   "record_number"
+    t.string   "description"
+    t.datetime "time"
+    t.string   "address_street"
+    t.string   "address_city"
+    t.string   "address_state",     :limit => 2
+    t.string   "address_zip",       :limit => 10
+    t.string   "geo_location_long"
+    t.string   "geo_location_lat"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "service_requests", :force => true do |t|
+    t.integer  "enotify_mail_id"
+    t.string   "tax_key"
+    t.string   "record_number"
+    t.string   "complaint"
+    t.datetime "time"
+    t.string   "address_street"
+    t.string   "address_city"
+    t.string   "address_state",     :limit => 2
+    t.string   "address_zip",       :limit => 10
+    t.string   "geo_location_lat"
+    t.string   "geo_location_long"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -6,7 +6,7 @@ class EnotifyMailTest < ActiveSupport::TestCase
     
     reports = CityReports.new(IncidentParser.new, GeoLocationLookup.new, 'Milwaukee', 'WI')
     
-    raw_mail = read_enotify_fixture('receive').join
+    raw_mail = read_enotify_fixture('incident').join
     mail = EnotifyMail.create_from_raw_mail(reports, raw_mail)
 
     assert_not_nil mail

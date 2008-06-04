@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  enotify_mail_id: 
+  tax_key: MyString
+  record_number: MyString
+  description: MyString
+  time: 2008-06-03 21:23:38
+  address_street: MyString
+  address_city: MyString
+  address_state: MyString
+  address_zip: MyString
+
+two:
+  enotify_mail_id: 
+  tax_key: MyString
+  record_number: MyString
+  description: MyString
+  time: 2008-06-03 21:23:38
+  address_street: MyString
+  address_city: MyString
+  address_state: MyString
+  address_zip: MyString
