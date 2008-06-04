@@ -1,27 +1,15 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  enotify_mail_id: 
-  tax_key: MyString
-  record_number: MyString
-  complaint: MyString
-  time: 2008-06-03 21:25:44
-  address_street: MyString
-  address_city: MyString
-  address_state: MyString
-  address_zip: MyString
-  geo_location_lat: MyString
-  geo_location_long: MyString
+  enotify_mail: service_request
+  tax_key: 300-456-000
+  record_number: 123456
+  complaint: Something Bad
+  time: 2008-06-03 21:23:38
+  address_street: 2345 N Richards St
+  address_city: Milwaukee
+  address_state: WI
+  address_zip: 53212
+  geo_location_long: -80.4506
+  geo_location_lat: 42.4567
 
-two:
-  enotify_mail_id: 
-  tax_key: MyString
-  record_number: MyString
-  complaint: MyString
-  time: 2008-06-03 21:25:44
-  address_street: MyString
-  address_city: MyString
-  address_state: MyString
-  address_zip: MyString
-  geo_location_lat: MyString
-  geo_location_long: MyString

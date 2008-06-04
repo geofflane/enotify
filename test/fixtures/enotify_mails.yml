@@ -28,3 +28,38 @@ Please use the link to add or to remove categories from your account or delete y
 http://itmdapps.ci.mil.wi.us/login/citizenlogin
 "
  
+permit_record:
+    title: Neighborhood Services new permit record #789636
+    success: true
+    full_text: "You have a Milwaukee.Gov E-Notification for Neighborhood Services Activity by Address category.
+
+    At 2551 N DOUSMAN ST (taxkey # 320-0211-000), there is a new permit record #789636 in the City of Milwaukee Neighborhood Services System.
+
+    Permit type: Electrical-Alteration Please click link below for record detail.
+
+    http://isdweb1.ci.mil.wi.us/cgi-bin/bicola?colaid=biadmin&formid=bisearch&Taxkey=3200211000&btnDetail=Submit
+
+    Please do not respond to this email. It is not set up to receive emails.
+
+    You have received this notification because you subscribed to be notified for Neighborhood Services Activity by Address category from the City of Milwaukee.
+
+    Please use the link to add or to remove categories from your account or delete your account
+    http://itmdapps.ci.mil.wi.us/login/citizenlogin."
+
+service_request:
+    title: Neighborhood Services new service request record #475198
+    success: true
+    full_text: "You have a Milwaukee.Gov E-Notification for Neighborhood Services Activity by Address category.
+
+    At 2942 N 2ND ST (taxkey # 313-0528-000), there is a new service request record #475198 in the City of Milwaukee Neighborhood Services System.
+
+    Complaint description: CITATION #NS06583201 WAS LITIGATED AND NOT COMPLIED WITH. FINED $545.00, WARRANT. Please click link below for record detail.
+
+    http://isdweb1.ci.mil.wi.us/cgi-bin/bicola?colaid=biadmin&formid=bisearch&Taxkey=3130528000&btnDetail=Submit
+
+    Please do not respond to this email. It is not set up to receive emails.
+
+    You have received this notification because you subscribed to be notified for Neighborhood Services Activity by Address category from the City of Milwaukee.
+
+    Please use the link to add or to remove categories from your account or delete your account
+    http://itmdapps.ci.mil.wi.us/login/citizenlogin."
