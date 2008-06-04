@@ -1,4 +1,4 @@
-<h1>Editing incident</h1>
+<h1>Editing Incident</h1>
 
 <% form_for(@incident) do |f| %>
   <%= f.error_messages %>
@@ -16,12 +16,8 @@
     <%= f.text_field :description %>
   </p>
   <p>
-    <%= f.label :address_street1 %><br />
-    <%= f.text_field :address_street1 %>
-  </p>
-  <p>
-    <%= f.label :address_street2 %><br />
-    <%= f.text_field :address_street2 %>
+    <%= f.label :address_street %><br />
+    <%= f.text_field :address_street %>
   </p>
   <p>
     <%= f.label :address_city %><br />

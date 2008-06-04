@@ -1,4 +1,6 @@
 class EnotifyMailsController < ApplicationController
+   @@reports = CityReports.new(IncidentParser.new, GeoLocationLookup.new, 'Milwaukee', 'WI')
+   
   # GET /enotify_mails
   # GET /enotify_mails.xml
   def index
@@ -32,15 +34,10 @@ class EnotifyMailsController < ApplicationController
     end
   end
 
-  # GET /enotify_mails/1/edit
-  def edit
-    @enotify_mail = EnotifyMail.find(params[:id])
-  end
-
   # POST /enotify_mails
   # POST /enotify_mails.xml
-  def create
-    @enotify_mail = EnotifyMail.new(params[:enotify_mail])
+  def create    
+    @enotify_mail = EnotifyMail.create_from_raw_mail(@@reports, params[:enotify_mail][:full_text])
 
     respond_to do |format|
       if @enotify_mail.save
@@ -49,23 +46,6 @@ class EnotifyMailsController < ApplicationController
         format.xml  { render :xml => @enotify_mail, :status => :created, :location => @enotify_mail }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @enotify_mail.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /enotify_mails/1
-  # PUT /enotify_mails/1.xml
-  def update
-    @enotify_mail = EnotifyMail.find(params[:id])
-
-    respond_to do |format|
-      if @enotify_mail.update_attributes(params[:enotify_mail])
-        flash[:notice] = 'EnotifyMail was successfully updated.'
-        format.html { redirect_to(@enotify_mail) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
         format.xml  { render :xml => @enotify_mail.errors, :status => :unprocessable_entity }
       end
     end

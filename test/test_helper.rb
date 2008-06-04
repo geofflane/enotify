@@ -36,11 +36,15 @@ class Test::Unit::TestCase
 
   # Add more helper methods to be used by all tests here...
 
+  FIXTURES_PATH = File.dirname(__FILE__) + '/fixtures'
+  def read_enotify_fixture(name)
+    IO.readlines("#{FIXTURES_PATH}/enotify/#{name}")
+  end
+  
   INCIDENT_TEST1 = <<EOS
 You have a Milwaukee.Gov E-Notification for the Police Verified Offense Notification category.
  
-An incident (#081020141) of Burglary was recorded at 310 E BROWN ST on April 11, 2008 @ 05:49 PM. The final outcome or disposition of this incident was recorded as Filed (Other).
-If you have any information regarding this crime you can call the District #1 station at 935-7213.
+An incident (#081020141) of Burglary was recorded at 310 E BROWN ST on April 11, 2008 @ 05:49 PM. The final outcome or disposition of this incident was recorded as Filed (Other). If you have any information regarding this crime you can call the District #1 station at 935-7213.
 
 Please click the link below for information regarding obtaining a Police Report.
 http://www.city.milwaukee.gov/display/router.asp?docid=427

@@ -26,8 +26,7 @@ ActiveRecord::Schema.define(:version => 20080601184601) do
     t.datetime "time"
     t.string   "description"
     t.string   "resolution"
-    t.string   "address_street1"
-    t.string   "address_street2"
+    t.string   "address_street"
     t.string   "address_city"
     t.string   "address_state",     :limit => 2
     t.string   "address_zip",       :limit => 10

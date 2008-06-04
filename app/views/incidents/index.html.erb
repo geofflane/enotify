@@ -1,17 +1,13 @@
-<h1>Listing incidents</h1>
+<h1>Listing Incidents</h1>
 
 <table>
   <tr>
     <th>Report number</th>
     <th>Time</th>
     <th>Description</th>
-    <th>Address street1</th>
-    <th>Address street2</th>
-    <th>Address city</th>
-    <th>Address state</th>
-    <th>Address zip</th>
-    <th>Geo location lat</th>
-    <th>Geo location long</th>
+	<th>Resolution</th>
+    <th>Address</th>
+    <th>Geo Location</th>
   </tr>
 
 <% for incident in @incidents %>
@@ -19,13 +15,9 @@
     <td><%=h incident.report_number %></td>
     <td><%=h incident.time %></td>
     <td><%=h incident.description %></td>
-    <td><%=h incident.address_street1 %></td>
-    <td><%=h incident.address_street2 %></td>
-    <td><%=h incident.address_city %></td>
-    <td><%=h incident.address_state %></td>
-    <td><%=h incident.address_zip %></td>
-    <td><%=h incident.geo_location_lat %></td>
-    <td><%=h incident.geo_location_long %></td>
+	<td><%=h incident.resolution %></td>
+    <td><%=h incident.address.to_s %></td>
+    <td><%=h incident.geo_location.to_s %></td>
     <td><%= link_to 'Show', incident %></td>
     <td><%= link_to 'Edit', edit_incident_path(incident) %></td>
     <td><%= link_to 'Destroy', incident, :confirm => 'Are you sure?', :method => :delete %></td>
