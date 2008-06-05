@@ -7,12 +7,13 @@ class GeoLocationLookup
   end
 
   def lookup(report)
-    orig_add = report.address
-    location = {:address => orig_add.street, :city => orig_add.city, :state => orig_add.state }
+    location = {:address => report.address.street, :city => report.address.city, :state => report.address.state }
     geocode = @geocoder.geocode(location)
     
-    report.address = Address.new(orig_add.street, orig_add.city, orig_add.state, geocode[0].post_code)
-    report.geo_location = GeoLocation.new(geocode[0].longitude, geocode[0].latitude)
+    geo_location = GeoLocation.new(:long => geocode[0].longitude, :lat => geocode[0].latitude)
+    report.address.zip = geocode[0].post_code
+    report.address.geo_location = geo_location
+    report.geo_location = geo_location
     report
   end
 

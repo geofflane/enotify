@@ -2,14 +2,12 @@
 
 one:
   enotify_mail: service_request
+  geo_location: one
+  address: one
   tax_key: 300-456-000
   record_number: 123456
   complaint: Something Bad
   time: 2008-06-03 21:23:38
-  address_street: 2345 N Richards St
-  address_city: Milwaukee
-  address_state: WI
-  address_zip: 53212
-  geo_location_long: -80.4506
-  geo_location_lat: 42.4567
+
+
 

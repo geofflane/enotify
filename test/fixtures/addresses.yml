@@ -1,0 +1,6 @@
+one:
+    geo_location: one
+    street: 2345 N Richards St
+    city: Milwaukee
+    state: WI
+    zip: 53212

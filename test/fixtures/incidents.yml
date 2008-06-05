@@ -2,13 +2,9 @@
 
 theft:
   enotify_mail: crime_incident
+  geo_location: one
+  address: one
   report_number: #1234567
   time: April 11, 2008 05:49 PM
   description: Theft
   resolution: Pending
-  address_street: 2924 N Pierce St
-  address_city: Milwaukee
-  address_state: WI
-  address_zip: 53212
-  geo_location_long: -80.4506
-  geo_location_lat: 42.4567

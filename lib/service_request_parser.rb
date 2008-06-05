@@ -4,12 +4,9 @@ class ServiceRequestParser
   
   def parse(text, city, state) 
     service_request = ServiceRequest.new
-    address = Address.new
-    address.city = city
-    address.state = state
+    service_request.address = Address.new(:city => city, :state => state)
     
-    address.street, service_request.tax_key, service_request.record_number = SERVICE_REGEX.match(text).captures
-    service_request.address = address   # frozen once it's assigned - weird composed_of behavior, not sure if I like it
+    service_request.address.street, service_request.tax_key, service_request.record_number = SERVICE_REGEX.match(text).captures
     service_request.complaint = COMPLAINT_REGEX.match(text).captures[0]
     service_request.time = Time.new
 

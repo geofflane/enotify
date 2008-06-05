@@ -2,14 +2,9 @@
 
 one:
   enotify_mail: permit_record
+  geo_location: one
+  address: one
   tax_key: 301-345-000
   record_number: 475195
   description: Something
   time: 2008-06-03 21:23:38
-  address_street: 2345 N Richards St
-  address_city: Milwaukee
-  address_state: WI
-  address_zip: 53212
-  geo_location_long: -80.4506
-  geo_location_lat: 42.4567
-

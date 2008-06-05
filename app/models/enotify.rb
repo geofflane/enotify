@@ -1,5 +1,5 @@
 class Enotify < ActionMailer::Base
-  
+
   @@reports = CityReports.new(IncidentParser.new, GeoLocationLookup.new, 'Milwaukee', 'WI')
   
   def receive(email)

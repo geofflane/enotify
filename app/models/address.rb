@@ -1,12 +1,9 @@
-class Address
-  attr_accessor :street, :city, :state, :zip
-
-  def initialize(street=nil, city=nil, state=nil, zip=nil)
-    @street = street
-    @city = city
-    @state = state
-    @zip = zip
-  end
+class Address  < ActiveRecord::Base  
+  has_many :incidents
+  has_many :service_requests
+  has_many :permit_records
+  
+  belongs_to :geo_location
 
   def to_s
     addr = street

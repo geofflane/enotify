@@ -1,7 +1,7 @@
 class GeoLocationLookupTest < ActiveSupport::TestCase
   def test_geo_lookup_finds_address
     incident = Incident.new
-    incident.address = Address.new('2924 N Pierce St', 'Milwaukee', 'WI')
+    incident.address = Address.new(:street => '2924 N Pierce St', :city => 'Milwaukee', :state => 'WI')
 
     geo_lookup = GeoLocationLookup.new
     incident = geo_lookup.lookup(incident)

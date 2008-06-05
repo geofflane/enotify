@@ -1,5 +1,7 @@
 class EnotifyMailsController < ApplicationController
-   @@reports = CityReports.new(IncidentParser.new, GeoLocationLookup.new, 'Milwaukee', 'WI')
+   @@incident_reports = CityReports.new(IncidentParser.new, GeoLocationLookup.new, 'Milwaukee', 'WI')
+   @@service_reports = CityReports.new(ServiceRequestParser.new, GeoLocationLookup.new, 'Milwaukee', 'WI')
+   @@permit_reports = CityReports.new(PermitRecordParser.new, GeoLocationLookup.new, 'Milwaukee', 'WI')
    
   # GET /enotify_mails
   # GET /enotify_mails.xml
@@ -37,7 +39,7 @@ class EnotifyMailsController < ApplicationController
   # POST /enotify_mails
   # POST /enotify_mails.xml
   def create    
-    @enotify_mail = EnotifyMail.create_from_raw_mail(@@reports, params[:enotify_mail][:full_text])
+    @enotify_mail = EnotifyMail.create_from_raw_mail(@@incident_reports, params[:enotify_mail][:full_text])
 
     respond_to do |format|
       if @enotify_mail.save
