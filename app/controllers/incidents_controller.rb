@@ -1,4 +1,5 @@
 class IncidentsController < ApplicationController
+  
   # GET /incidents
   # GET /incidents.xml
   def index

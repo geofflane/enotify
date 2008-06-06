@@ -1,4 +1,5 @@
 class CityReports
+  attr_accessor :parser, :city, :state
 
   def initialize(parser, geo_lookup, city, state)
     @parser = parser

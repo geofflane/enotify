@@ -1,0 +1,12 @@
+<h1>Editing permit_record</h1>
+
+<% form_for(@permit_record) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @permit_record %> |
+<%= link_to 'Back', permit_records_path %>

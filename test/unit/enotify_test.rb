@@ -15,7 +15,6 @@ class EnotifyTest < ActionMailer::TestCase
     
     assert_not_nil mail
     assert mail.success
-    assert_not_nil mail.incident
   end
 
 end

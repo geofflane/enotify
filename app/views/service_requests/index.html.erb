@@ -1,0 +1,18 @@
+<h1>Listing service_requests</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for service_request in @service_requests %>
+  <tr>
+    <td><%= link_to 'Show', service_request %></td>
+    <td><%= link_to 'Edit', edit_service_request_path(service_request) %></td>
+    <td><%= link_to 'Destroy', service_request, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New service_request', new_service_request_path %>

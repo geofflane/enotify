@@ -1,7 +1,6 @@
 class EnotifyMailsController < ApplicationController
-   @@incident_reports = CityReports.new(IncidentParser.new, GeoLocationLookup.new, 'Milwaukee', 'WI')
-   @@service_reports = CityReports.new(ServiceRequestParser.new, GeoLocationLookup.new, 'Milwaukee', 'WI')
-   @@permit_reports = CityReports.new(PermitRecordParser.new, GeoLocationLookup.new, 'Milwaukee', 'WI')
+
+  @@router = EnotifyRouter.new('Milwaukee', 'WI')
    
   # GET /enotify_mails
   # GET /enotify_mails.xml
@@ -39,8 +38,9 @@ class EnotifyMailsController < ApplicationController
   # POST /enotify_mails
   # POST /enotify_mails.xml
   def create    
-    @enotify_mail = EnotifyMail.create_from_raw_mail(@@incident_reports, params[:enotify_mail][:full_text])
-
+    @report = @@router.create_from_raw_mail(params[:enotify_mail][:full_text])
+    @enotify_mail = @report.enotify_mail
+    
     respond_to do |format|
       if @enotify_mail.save
         flash[:notice] = 'EnotifyMail was successfully created.'

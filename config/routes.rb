@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :service_requests
+
+  map.resources :service_records
+
+  map.resources :permit_records
+
 
   map.resources :incidents
 
