@@ -1,5 +1,5 @@
 class IncidentsController < ApplicationController
-  layout 'default'
+  layout 'default', :except => :atom
   
   # GET /incidents
   # GET /incidents.xml
@@ -8,6 +8,7 @@ class IncidentsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.atom
       format.xml  { render :xml => @incidents }
     end
   end
