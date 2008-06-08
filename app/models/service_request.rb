@@ -3,5 +3,5 @@ class ServiceRequest < ActiveRecord::Base
   belongs_to :address
   belongs_to :geo_location
 
-  # tax_key, record_number, description, time
+  # tax_key, record_number, complaint, time
 end

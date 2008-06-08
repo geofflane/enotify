@@ -1,3 +1,28 @@
 
+<p>
+  <b>Report number:</b>
+  <%=h @permit_record.record_number %>
+</p>
+<p>
+  <b>Time:</b>
+  <%=h @permit_record.time %>
+</p>
+<p>
+  <b>Description:</b>
+  <%=h @permit_record.description %>
+</p>
+<p>
+  <b>Tax Key:</b>
+  <%=h @permit_record.tax_key %>
+</p>
+<p>
+  <b>Address:</b>
+  <%=h @permit_record.address.to_s %>
+</p>
+<p>
+  <b>Geo Location:</b>
+  <%=h @permit_record.geo_location.to_s %>
+</p>
+
 <%= link_to 'Edit', edit_permit_record_path(@permit_record) %> |
 <%= link_to 'Back', permit_records_path %>

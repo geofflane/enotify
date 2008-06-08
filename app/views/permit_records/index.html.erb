@@ -2,13 +2,25 @@
 
 <table>
   <tr>
+  	<th>Record number</th>
+	<th>Tax Key</th>
+  	<th>Time</th>
+  	<th>Description</th>
+  	<th>Address</th>
+  	<th>Geo Location</th>
   </tr>
 
 <% for permit_record in @permit_records %>
   <tr>
-    <td><%= link_to 'Show', permit_record %></td>
-    <td><%= link_to 'Edit', edit_permit_record_path(permit_record) %></td>
-    <td><%= link_to 'Destroy', permit_record, :confirm => 'Are you sure?', :method => :delete %></td>
+  	<td><%=h permit_record.record_number %></td>
+  	<td><%=h permit_record.tax_key %></td>
+  	<td><%=h permit_record.time %></td>
+  	<td><%=h permit_record.description %></td>
+ 	<td><%=h permit_record.address.to_s %></td>
+	<td><%=h permit_record.geo_location.to_s %></td>
+	<td><%= link_to 'Show', permit_record %></td>
+	<td><%= link_to 'Edit', edit_permit_record_path(permit_record) %></td>
+	<td><%= link_to 'Destroy', permit_record, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

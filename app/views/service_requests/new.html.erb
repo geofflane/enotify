@@ -4,6 +4,22 @@
   <%= f.error_messages %>
 
   <p>
+    <%= f.label :tax_key %><br />
+    <%= f.text_field :tax_key %>
+  </p>
+  <p>
+    <%= f.label :record_number %><br />
+    <%= f.text_field :record_number %>
+  </p>
+  <p>
+    <%= f.label :time %><br />
+    <%= f.datetime_select :time %>
+  </p>
+  <p>
+    <%= f.label :complaint %><br />
+    <%= f.text_field :complaint %>
+  </p>
+  <p>
     <%= f.submit "Create" %>
   </p>
 <% end %>

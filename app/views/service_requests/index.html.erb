@@ -2,13 +2,25 @@
 
 <table>
   <tr>
+	<th>Record Number</th>
+	<th>Tax Key</th>
+	<th>Time</th>
+	<th>Complaint</th>
+	<th>Address</th>
+	<th>Geo Location</th>
   </tr>
 
 <% for service_request in @service_requests %>
   <tr>
-    <td><%= link_to 'Show', service_request %></td>
-    <td><%= link_to 'Edit', edit_service_request_path(service_request) %></td>
-    <td><%= link_to 'Destroy', service_request, :confirm => 'Are you sure?', :method => :delete %></td>
+  	<td><%=h service_request.record_number %></td>
+  	<td><%=h service_request.tax_key %></td>
+  	<td><%=h service_request.time %></td>
+  	<td><%=h service_request.complaint %></td>
+ 	<td><%=h service_request.address.to_s %></td>
+	<td><%=h service_request.geo_location.to_s %></td>
+	<td><%= link_to 'Show', service_request %></td>
+	<td><%= link_to 'Edit', edit_service_request_path(service_request) %></td>
+	<td><%= link_to 'Destroy', service_request, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

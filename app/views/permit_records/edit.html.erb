@@ -4,6 +4,23 @@
   <%= f.error_messages %>
 
   <p>
+    <%= f.label :tax_key %><br />
+    <%= f.text_field :tax_key %>
+  </p>
+  <p>
+    <%= f.label :record_number %><br />
+    <%= f.text_field :record_number %>
+  </p>
+  <p>
+    <%= f.label :time %><br />
+    <%= f.datetime_select :time %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+
+  <p>
     <%= f.submit "Update" %>
   </p>
 <% end %>
