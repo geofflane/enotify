@@ -1,3 +1,4 @@
+<%= render :partial => "maps/google_script", :object => @permit_record %>
 
 <p>
   <b>Report number:</b>
@@ -24,5 +25,8 @@
   <%=h @permit_record.geo_location.to_s %>
 </p>
 
+<div id="map" style="width: 500px; height: 300px"></div>
+
+<%= link_to 'Full ENotify', enotify_mail_path(@permit_record.enotify_mail) %> |
 <%= link_to 'Edit', edit_permit_record_path(@permit_record) %> |
 <%= link_to 'Back', permit_records_path %>

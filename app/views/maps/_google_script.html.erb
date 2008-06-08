@@ -4,7 +4,7 @@
 function load() {
   if (GBrowserIsCompatible()) {
     var map = new GMap2(document.getElementById("map"));
-	var latLong = new GLatLng(<%=h @incident.geo_location.to_s %>);
+	var latLong = new GLatLng(<%=h google_script.geo_location.to_s %>);
     map.setCenter(latLong, 13);
 	map.addOverlay(new GMarker(latLong));
 	map.addControl(new GSmallMapControl());

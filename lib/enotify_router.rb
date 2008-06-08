@@ -18,9 +18,8 @@ class EnotifyRouter
     enotify_mail = EnotifyMail.new(:full_text => email.body, :title => email.subject)
         
     # remove any HTML tags and random sets of blank spaces
-    cleaned_body = email.body.gsub(/<[^>]*(>+|\s*\z)/m,'').gsub("&nbsp;", '').split(" ").join(" ")
-    
-    # puts cleaned_body
+    cleaned_body = email.body.gsub(/<[^>]*(>+|\s*\z)/m,'').gsub("&nbsp;", ' ').split(" ").join(" ")
+
     begin
       report = report_builder.build_report(cleaned_body)
       enotify_mail.success = true
