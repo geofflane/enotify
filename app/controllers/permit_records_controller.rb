@@ -1,4 +1,5 @@
 class PermitRecordsController < ApplicationController
+  layout 'default'
   
   # GET /permit_records
   # GET /permit_records.xml

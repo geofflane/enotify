@@ -2,10 +2,14 @@
 
 <table>
   <tr>
+	<th>Subject</th>
+	<th>Success</th>
   </tr>
 
 <% for enotify_mail in @enotify_mails %>
   <tr>
+	<td><%= enotify_mail.title %></td>
+	<td><%= enotify_mail.success %></td>
     <td><%= link_to 'Show', enotify_mail %></td>
     <td><%= link_to 'Destroy', enotify_mail, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

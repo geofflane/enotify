@@ -14,7 +14,7 @@
   <tr>
   	<td><%=h permit_record.record_number %></td>
   	<td><%=h permit_record.tax_key %></td>
-  	<td><%=h permit_record.time %></td>
+  	<td><%=h permit_record.time.to_formatted_s(:short) %></td>
   	<td><%=h permit_record.description %></td>
  	<td><%=h permit_record.address.to_s %></td>
 	<td><%=h permit_record.geo_location.to_s %></td>

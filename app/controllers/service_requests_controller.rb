@@ -1,4 +1,5 @@
 class ServiceRequestsController < ApplicationController
+  layout 'default'
   
   # GET /service_requests
   # GET /service_requests.xml

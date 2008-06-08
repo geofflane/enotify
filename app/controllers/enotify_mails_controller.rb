@@ -42,7 +42,7 @@ class EnotifyMailsController < ApplicationController
     @enotify_mail = @report.enotify_mail
     
     respond_to do |format|
-      if @enotify_mail.save
+      if @report.save
         flash[:notice] = 'EnotifyMail was successfully created.'
         format.html { redirect_to(@enotify_mail) }
         format.xml  { render :xml => @enotify_mail, :status => :created, :location => @enotify_mail }

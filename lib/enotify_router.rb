@@ -20,12 +20,14 @@ class EnotifyRouter
     # remove any HTML tags and random sets of blank spaces
     cleaned_body = email.body.gsub(/<[^>]*(>+|\s*\z)/m,'').gsub("&nbsp;", '').split(" ").join(" ")
     
+    # puts cleaned_body
     begin
       report = report_builder.build_report(cleaned_body)
       enotify_mail.success = true
     rescue Exception => ex
       enotify_mail.success = false
       enotify_mail.parse_error = ex
+      puts ex.backtrace
     end
     report.enotify_mail = enotify_mail
     report

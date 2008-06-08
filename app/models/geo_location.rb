@@ -4,6 +4,6 @@ class GeoLocation < ActiveRecord::Base
   has_many :permit_records
 
   def to_s
-    "#{@long}, #{@lat}"
+    "#{lat}, #{long}"
   end
 end

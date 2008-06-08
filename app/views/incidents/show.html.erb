@@ -1,10 +1,12 @@
+<%= render :partial => "maps/google_script" %>
+
 <p>
   <b>Report number:</b>
   <%=h @incident.report_number %>
 </p>
 <p>
   <b>Time:</b>
-  <%=h @incident.time %>
+  <%=h @incident.time.to_formatted_s(:short) %>
 </p>
 <p>
   <b>Description:</b>
@@ -23,6 +25,8 @@
   <%=h @incident.geo_location.to_s %>
 </p>
 
+<div id="map" style="width: 500px; height: 300px"></div>
 
+<%= link_to 'Full ENotify', enotify_mail_path(@incident.enotify_mail) %> |
 <%= link_to 'Edit', edit_incident_path(@incident) %> |
 <%= link_to 'Back', incidents_path %>

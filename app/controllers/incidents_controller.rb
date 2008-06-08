@@ -1,4 +1,5 @@
 class IncidentsController < ApplicationController
+  layout 'default'
   
   # GET /incidents
   # GET /incidents.xml

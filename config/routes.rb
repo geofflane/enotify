@@ -1,10 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :service_requests
 
-  map.resources :service_records
-
   map.resources :permit_records
-
 
   map.resources :incidents
 
@@ -42,7 +39,7 @@ ActionController::Routing::Routes.draw do |map|
   #   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  # map.root :controller => "welcome"
+  map.root :controller => "welcome"
 
   # See how all your routes lay out with "rake routes"
 
