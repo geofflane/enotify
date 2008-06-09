@@ -4,9 +4,10 @@ class IncidentParser
   
   def parse(text, city, state) 
     incident = Incident.new
-    incident.address = Address.new(:city => city, :state => state)
+        
+    incident.report_number, incident.description, street, date, t = INCIDENT_REGEX.match(text).captures
+    incident.address = Address.existing_or_new(street, city, state)
     
-    incident.report_number, incident.description, incident.address.street, date, t = INCIDENT_REGEX.match(text).captures
     incident.resolution = RESOLUTION_REGEX.match(text).captures[0]
     incident.time = Time.parse(date + ' ' + t)
 

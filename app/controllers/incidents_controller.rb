@@ -1,5 +1,5 @@
 class IncidentsController < ApplicationController
-  layout 'default', :except => :atom
+  layout 'default'
   
   # GET /incidents
   # GET /incidents.xml

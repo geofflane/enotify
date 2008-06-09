@@ -4,6 +4,13 @@ class Address  < ActiveRecord::Base
   has_many :permit_records
   
   belongs_to :geo_location
+  
+  def self.existing_or_new(street, city, state)
+    a = Address.find(:first, :conditions => ["street=:street AND city=:city AND state=:state", 
+        { :street => street, :city => city, :state => state }])
+    a = Address.new(:street => street, :city => city, :state => state) if ! a
+    a
+  end
 
   def to_s
     addr = street
