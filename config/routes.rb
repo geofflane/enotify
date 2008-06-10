@@ -6,6 +6,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :incidents
 
   map.resources :enotify_mails
+  
+  map.connect ':controller/month/:year/', :action => 'list'
 
   # The priority is based upon order of creation: first created -> highest priority.
 

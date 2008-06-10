@@ -5,7 +5,7 @@ class EnotifyTest < ActionMailer::TestCase
   def test_receive
   
     raw_mail = read_fixture('incident').join
-    assert Enotify.receive(raw_mail)
+    assert EnotifyHandler.receive(raw_mail)
 
     incident = Incident.find(:first, :joins => :address, :conditions => "addresses.street='2776 N BOOTH ST'")
 

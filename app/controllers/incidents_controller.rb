@@ -4,8 +4,12 @@ class IncidentsController < ApplicationController
   # GET /incidents
   # GET /incidents.xml
   def index
-    @incidents = Incident.find(:all)
-
+    if (params[:month] && params[:year])
+      @incidents = Incident.find(:all, :conditions => ['month(time)=:month AND year(time)=:year', params])
+    else
+      @incidents = Incident.find(:all)
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.atom

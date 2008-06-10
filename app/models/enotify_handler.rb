@@ -1,4 +1,4 @@
-class Enotify < ActionMailer::Base
+class EnotifyHandler < ActionMailer::Base
 
   @@router = EnotifyRouter.new('Milwaukee', 'WI')
   

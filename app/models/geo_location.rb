@@ -4,13 +4,13 @@ class GeoLocation < ActiveRecord::Base
   has_many :permit_records
 
   def self.existing_or_new(lat, long)
-    gl = GeoLocation.find(:first, :conditions => ["lat=:lat AND long=:long", 
-        { :lat => lat, :long => long }])
-    gl = GeoLocation.new(:lat => lat, :long => long) if ! gl
+    gl = GeoLocation.find(:first, :conditions => ["latitude=:latitude AND longitude=:longitude", 
+        { :latitude => lat, :longitude => long }])
+    gl = GeoLocation.new(:latitude => lat, :longitude => long) if ! gl
     gl
   end
   
   def to_s
-    "#{lat}, #{long}"
+    "#{latitude}, #{longitude}"
   end
 end
