@@ -1,10 +1,28 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 theft:
-  enotify_mail: crime_incident
-  geo_location: one
-  address: one
-  report_number: #1234567
-  time: April 11, 2008 05:49 PM
-  description: Theft
-  resolution: Pending
+    enotify_mail: crime_incident
+    geo_location: one
+    address: one
+    report_number: "#1234567"
+    time: 2008-04-11 05:49:00
+    description: Theft
+    resolution: Pending
+    
+assault:
+    enotify_mail: crime_incident
+    geo_location: one
+    address: two
+    report_number: "#1237892"
+    time: 2008-04-30 04:34:00
+    description: Assault
+    resolution: None
+    
+bande:
+    enotify_mail: crime_incident
+    geo_location: one
+    address: two
+    report_number: "#123789"
+    time: 2008-05-01 11:34:00
+    description: Burgarlry
+    resolution: None

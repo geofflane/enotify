@@ -13,8 +13,8 @@ module Enotify
       
       module SingletonMethods
         def find_by_month_and_year(month, year)
-          start = Date.parse("#{month}/1/#{year}")
-          find(:all, :conditions => ["time between ? and ?", start, start.end_of_month])
+          start = Date.parse("#{month}/1/#{year}").beginning_of_month
+          find(:all, :conditions => ["\"time\" between ? and ?", start.yesterday.end_of_day, start.end_of_month.end_of_day])
         end
       end
     end

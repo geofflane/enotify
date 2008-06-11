@@ -16,8 +16,8 @@ module Enotify
           find(:all, :joins => [:address], :conditions => ["addresses.zip=?", zip])
         end
         
-        def find_by_address(street, zip)
-          find(:all, :joins => [:address], :conditions => ["addresses.street=? AND addresses.zip=?", street, zip])
+        def find_by_street(street, zip)
+          find(:all, :joins => [:address], :conditions => ["addresses.street_name=? AND addresses.zip=?", street, zip])
         end
         
         def find_by_address(start_number, end_number, street, zip)

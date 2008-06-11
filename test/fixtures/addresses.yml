@@ -3,4 +3,18 @@ one:
     street: 2345 N Richards St
     city: Milwaukee
     state: WI
+    full_zip: 53212-3456
     zip: 53212
+    street_number: 2345
+    street_name: N Richards St
+    
+two:
+    geo_location: one
+    street: 2924 N Pierce St
+    city: Milwaukee
+    state: WI
+    full_zip: 53212-2789
+    zip: 53212
+    street_number: 2924
+    street_name: N Pierce St
+    
