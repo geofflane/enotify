@@ -21,23 +21,23 @@ class ServiceRequestsControllerTest < ActionController::TestCase
   end
 
   def test_should_show_service_request
-    get :show, :id => service_requests(:one).id
+    get :show, :id => incidents(:service).id
     assert_response :success
   end
 
   def test_should_get_edit
-    get :edit, :id => service_requests(:one).id
+    get :edit, :id => incidents(:service).id
     assert_response :success
   end
 
   def test_should_update_service_request
-    put :update, :id => service_requests(:one).id, :service_request => { }
+    put :update, :id => incidents(:service).id, :service_request => { }
     assert_redirected_to service_request_path(assigns(:service_request))
   end
 
   def test_should_destroy_service_request
     assert_difference('ServiceRequest.count', -1) do
-      delete :destroy, :id => service_requests(:one).id
+      delete :destroy, :id => incidents(:service).id
     end
 
     assert_redirected_to service_requests_path

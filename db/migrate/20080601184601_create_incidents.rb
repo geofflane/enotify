@@ -4,10 +4,12 @@ class CreateIncidents < ActiveRecord::Migration
       t.integer  :enotify_mail_id
       t.integer  :address_id
       t.integer  :geo_location_id
-      t.string   :report_number
+      t.string   :record_number
       t.datetime :time
       t.string   :description
       t.string   :resolution
+      t.string   :tax_key
+      t.string   :type
 
       t.timestamps
     end

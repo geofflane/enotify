@@ -1,0 +1,30 @@
+<h1>Listing Crimes</h1>
+
+<table>
+  <tr>
+  	<th>Record number</th>
+  	<th>Time</th>
+  	<th>Description</th>
+  	<th>Resolution</th>
+  	<th>Address</th>
+  	<th>Geo Location</th>
+  </tr>
+
+<% for crime in @crimes %>
+  <tr>
+  	<td><%=h crime.record_number %></td>
+  	<td><%=h crime.time.to_formatted_s(:short) %></td>
+  	<td><%=h crime.description %></td>
+  	<td><%=h crime.resolution %></td>
+ 	<td><%=h crime.address.to_s %></td>
+	<td><%=h crime.geo_location.to_s %></td>
+	<td><%= link_to 'Show', crime %></td>
+	<td><%= link_to 'Edit', edit_crime_path(crime) %></td>
+	<td><%= link_to 'Destroy', crime, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Crime', new_crime_path %>

@@ -21,23 +21,23 @@ class PermitRecordsControllerTest < ActionController::TestCase
   end
 
   def test_should_show_permit_record
-    get :show, :id => permit_records(:one).id
+    get :show, :id => incidents(:permit).id
     assert_response :success
   end
 
   def test_should_get_edit
-    get :edit, :id => permit_records(:one).id
+    get :edit, :id => incidents(:permit).id
     assert_response :success
   end
 
   def test_should_update_permit_record
-    put :update, :id => permit_records(:one).id, :permit_record => { }
+    put :update, :id => incidents(:permit).id, :permit_record => { }
     assert_redirected_to permit_record_path(assigns(:permit_record))
   end
 
   def test_should_destroy_permit_record
     assert_difference('PermitRecord.count', -1) do
-      delete :destroy, :id => permit_records(:one).id
+      delete :destroy, :id => incidents(:permit).id
     end
 
     assert_redirected_to permit_records_path

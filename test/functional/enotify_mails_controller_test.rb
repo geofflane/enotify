@@ -15,8 +15,8 @@ class EnotifyMailsControllerTest < ActionController::TestCase
 
   def test_should_create_enotify_mail
     assert_difference('EnotifyMail.count') do
-      mail = read_enotify_fixture('incident').join
-      post :create, :enotify_mail => { :full_text => mail }
+      mail = read_enotify_fixture('crime').join
+      post :create, :enotify_mail => { :original_text => mail }
     end
 
     assert_redirected_to enotify_mail_path(assigns(:enotify_mail))

@@ -7,7 +7,7 @@ class ServiceRequestParserTest < ActiveSupport::TestCase
     assert_equal 'WI', service_req.address.state
     assert_equal '2942 N 2ND ST', service_req.address.street
     assert_equal '#475198', service_req.record_number
-    assert_equal 'CITATION #NS06583201 WAS LITIGATED AND NOT COMPLIED WITH. FINED $545.00, WARRANT.', service_req.complaint
+    assert_equal 'CITATION #NS06583201 WAS LITIGATED AND NOT COMPLIED WITH. FINED $545.00, WARRANT.', service_req.description
     assert_equal '313-0528-000', service_req.tax_key
   end
 

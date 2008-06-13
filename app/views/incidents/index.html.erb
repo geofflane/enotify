@@ -12,7 +12,7 @@
 
 <% for incident in @incidents %>
   <tr>
-    <td><%=h incident.report_number %></td>
+    <td><%=h incident.record_number %></td>
     <td><%=h incident.time.to_formatted_s(:short) %></td>
     <td><%=h incident.description %></td>
 	<td><%=h incident.resolution %></td>

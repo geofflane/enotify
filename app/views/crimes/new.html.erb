@@ -1,6 +1,6 @@
-<h1>Editing Incident</h1>
+<h1>New Crime</h1>
 
-<% form_for(@incident) do |f| %>
+<% form_for(@crime) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -15,11 +15,13 @@
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </p>
-
   <p>
-    <%= f.submit "Update" %>
+    <%= f.label :resolution %><br />
+    <%= f.text_field :resolution %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @incident %> |
-<%= link_to 'Back', incidents_path %>
+<%= link_to 'Back', crimes_path %>

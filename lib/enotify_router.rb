@@ -1,12 +1,13 @@
 class EnotifyRouter
   
   def initialize(city, state)
-    @incident_reports = CityReports.new(IncidentParser.new, GeoLocationLookup.new, city, state)
+    @crime_reports = CityReports.new(CrimeParser.new, GeoLocationLookup.new, city, state)
     @permit_reports = CityReports.new(PermitRecordParser.new, GeoLocationLookup.new, city, state)
     @service_reports = CityReports.new(ServiceRequestParser.new, GeoLocationLookup.new, city, state)
   end
   
-  # full_text, title, success
+  # original_text, clean_text, title, success
+  
   def create_from_raw_mail(raw_mail)
     email = TMail::Mail.parse(raw_mail)
     create_from_mail(email)
@@ -14,11 +15,10 @@ class EnotifyRouter
   
   def create_from_mail(email)
     report_builder = report_builder_for_mail(email)
-        
-    enotify_mail = EnotifyMail.new(:full_text => email.body, :title => email.subject)
-        
     # remove any HTML tags and random sets of blank spaces
     cleaned_body = email.body.gsub(/<[^>]*(>+|\s*\z)/m,'').gsub("&nbsp;", ' ').split(" ").join(" ")
+            
+    enotify_mail = EnotifyMail.new(:original_text => email.body, :clean_text => cleaned_body, :title => email.subject)
 
     begin
       report = report_builder.build_report(cleaned_body)
@@ -38,7 +38,7 @@ class EnotifyRouter
     elsif email.subject =~ /new permit record/
       return @permit_reports
     elsif email.subject =~ /Crime Incident/
-      return @incident_reports
+      return @crime_reports
     else
       raise Exception.new, "Unknown enotify"
     end

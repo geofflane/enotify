@@ -38,7 +38,7 @@ class EnotifyMailsController < ApplicationController
   # POST /enotify_mails
   # POST /enotify_mails.xml
   def create    
-    @report = @@router.create_from_raw_mail(params[:enotify_mail][:full_text])
+    @report = @@router.create_from_raw_mail(params[:enotify_mail][:original_text])
     @enotify_mail = @report.enotify_mail
     
     respond_to do |format|

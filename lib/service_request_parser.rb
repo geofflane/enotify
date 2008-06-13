@@ -8,7 +8,7 @@ class ServiceRequestParser
     street, service_request.tax_key, service_request.record_number = SERVICE_REGEX.match(text).captures
     service_request.address = Address.existing_or_new(street, city, state)
     
-    service_request.complaint = COMPLAINT_REGEX.match(text).captures[0]
+    service_request.description = COMPLAINT_REGEX.match(text).captures[0]
     service_request.time = Time.new
 
     service_request

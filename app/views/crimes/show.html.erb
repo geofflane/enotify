@@ -1,0 +1,32 @@
+<%= render :partial => "maps/google_script", :object => @crime %>
+
+<p>
+  <b>Report number:</b>
+  <%=h @crime.record_number %>
+</p>
+<p>
+  <b>Time:</b>
+  <%=h @crime.time %>
+</p>
+<p>
+  <b>Description:</b>
+  <%=h @crime.description %>
+</p>
+<p>
+  <b>Resolution:</b>
+  <%=h @crime.resolution %>
+</p>
+<p>
+  <b>Address:</b>
+  <%=h @crime.address.to_s %>
+</p>
+<p>
+  <b>Geo Location:</b>
+  <%=h @crime.geo_location.to_s %>
+</p>
+
+<div id="map" style="width: 500px; height: 300px"></div>
+
+<%= link_to 'Full ENotify', enotify_mail_path(@crime.enotify_mail) %> |
+<%= link_to 'Edit', edit_crime_path(@crime) %> |
+<%= link_to 'Back', crimes_path %>

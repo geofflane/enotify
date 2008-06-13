@@ -3,7 +3,7 @@ require 'test_helper'
 class EnotifyRouterTest < ActiveSupport::TestCase
 
   def test_routes_to_incident
-    route_test('incident', IncidentParser)
+    route_test('crime', CrimeParser)
   end
   
   def test_routes_to_service_request
@@ -15,7 +15,7 @@ class EnotifyRouterTest < ActiveSupport::TestCase
   end
   
   def test_router_parses_incident
-    parse_test('incident')
+    parse_test('crime')
   end
   
   def test_router_parses_service_request

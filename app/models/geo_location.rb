@@ -1,4 +1,6 @@
 class GeoLocation < ActiveRecord::Base  
+  validates_uniqueness_of :latitude, :scope => [:longitude]
+  
   has_many :incidents
   has_many :service_requests
   has_many :permit_records

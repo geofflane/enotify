@@ -3,7 +3,7 @@
 crime_incident:
   title: New Crime Incident - Please do not reply to this email
   success: false
-  full_text: "You have a Milwaukee.Gov E-Notification for the Police Verified Offense Notification category.
+  clean_text: "You have a Milwaukee.Gov E-Notification for the Police Verified Offense Notification category.
 
 An incident (#081020141) of Burglary was recorded at 310 E BROWN ST on April 11, 2008 @ 05:49 PM. The final outcome or disposition of this incident was recorded as Filed (Other).
 If you have any information regarding this crime you can call the District #1 station at 935-7213.
@@ -31,7 +31,7 @@ http://itmdapps.ci.mil.wi.us/login/citizenlogin
 permit_record:
     title: Neighborhood Services new permit record #789636
     success: true
-    full_text: "You have a Milwaukee.Gov E-Notification for Neighborhood Services Activity by Address category.
+    clean_text: "You have a Milwaukee.Gov E-Notification for Neighborhood Services Activity by Address category.
 
     At 2551 N DOUSMAN ST (taxkey # 320-0211-000), there is a new permit record #789636 in the City of Milwaukee Neighborhood Services System.
 
@@ -49,7 +49,7 @@ permit_record:
 service_request:
     title: Neighborhood Services new service request record #475198
     success: true
-    full_text: "You have a Milwaukee.Gov E-Notification for Neighborhood Services Activity by Address category.
+    clean_text: "You have a Milwaukee.Gov E-Notification for Neighborhood Services Activity by Address category.
 
     At 2942 N 2ND ST (taxkey # 313-0528-000), there is a new service request record #475198 in the City of Milwaukee Neighborhood Services System.
 

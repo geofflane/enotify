@@ -1,4 +1,6 @@
 class Incident < ActiveRecord::Base
+  validates_uniqueness_of :record_number
+  
   acts_as_temporal
   acts_as_locatable
   
@@ -6,5 +8,5 @@ class Incident < ActiveRecord::Base
   belongs_to :address
   belongs_to :geo_location
   
-  # report_number, description, time
+  # record_number, description, tax_key, time
 end

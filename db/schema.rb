@@ -16,17 +16,18 @@ ActiveRecord::Schema.define(:version => 20080605004403) do
     t.string   "street"
     t.string   "city"
     t.string   "state",           :limit => 2
-    t.string   "zip",             :limit => 10
+    t.string   "zip",             :limit => 5
     t.integer  "street_number"
     t.string   "street_name"
-    t.string   "full_zip"
+    t.string   "full_zip",        :limit => 10
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "enotify_mails", :force => true do |t|
     t.string   "title"
-    t.text     "full_text"
+    t.text     "original_text"
+    t.text     "clean_text"
     t.boolean  "success"
     t.text     "parse_error"
     t.datetime "created_at"
@@ -44,34 +45,12 @@ ActiveRecord::Schema.define(:version => 20080605004403) do
     t.integer  "enotify_mail_id"
     t.integer  "address_id"
     t.integer  "geo_location_id"
-    t.string   "report_number"
+    t.string   "record_number"
     t.datetime "time"
     t.string   "description"
     t.string   "resolution"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "permit_records", :force => true do |t|
-    t.integer  "enotify_mail_id"
-    t.integer  "address_id"
-    t.integer  "geo_location_id"
     t.string   "tax_key"
-    t.string   "record_number"
-    t.string   "description"
-    t.datetime "time"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "service_requests", :force => true do |t|
-    t.integer  "enotify_mail_id"
-    t.integer  "address_id"
-    t.integer  "geo_location_id"
-    t.string   "tax_key"
-    t.string   "record_number"
-    t.string   "complaint"
-    t.datetime "time"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

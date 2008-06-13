@@ -4,7 +4,11 @@ class ServiceRequestsController < ApplicationController
   # GET /service_requests
   # GET /service_requests.xml
   def index
-    @service_requests = ServiceRequest.find(:all)
+    if (params[:month] && params[:year])
+      @service_requests = ServiceRequest.find_by_month_and_year(params[:month], params[:year])
+    else
+      @service_requests = ServiceRequest.find(:all)
+    end
 
     respond_to do |format|
       format.html # index.html.erb

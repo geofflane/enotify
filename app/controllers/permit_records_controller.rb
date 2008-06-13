@@ -4,7 +4,11 @@ class PermitRecordsController < ApplicationController
   # GET /permit_records
   # GET /permit_records.xml
   def index
-    @permit_records = PermitRecord.find(:all)
+    if (params[:month] && params[:year])
+      @permit_records = PermitRecord.find_by_month_and_year(params[:month], params[:year])
+    else
+      @permit_records = PermitRecord.find(:all)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
