@@ -6,7 +6,8 @@ class GeoLocationLookupTest < ActiveSupport::TestCase
     geo_lookup = GeoLocationLookup.new
     incident = geo_lookup.lookup(incident)
 
-    assert_equal '53212-2550', incident.address.zip
+    assert_equal '53212-2550', incident.address.full_zip
+    assert_equal '53212', incident.address.zip
     assert_not_nil incident.geo_location.longitude
     assert_not_nil incident.geo_location.latitude
   end
