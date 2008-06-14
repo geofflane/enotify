@@ -8,7 +8,7 @@ set :deploy_to, "/var/www/enotify"
 # If you aren't using Subversion to manage your source code, specify
 # your SCM below:
 set :scm, :git
-set :repository, "geoff@zorched.net:/home/geoff/enotify"
+set :repository, "geoff@zorched.net:enotify.git"
 
 role :app, "enotify.zorched.net"
 role :web, "enotify.zorched.net"
