@@ -1,5 +1,5 @@
 <div>
-    <h3><%= incident.description (incident.record_number) %></h3>
+    <h3><%= incident.description %> (<%= link_to incident.record_number, incident %>)</h3>
 	<% if incident.resolution %>
 	<p><%= incident.resolution %></p>
 	<% end %>

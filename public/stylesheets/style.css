@@ -102,7 +102,7 @@ body
 #right li a:hover
 {
 	border-bottom: 1px dashed #88AA77;
-	color: #000000;
+	color: #FFF;
 }
 
 #right li a.on

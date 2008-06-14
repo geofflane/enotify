@@ -4,4 +4,4 @@
 <h4>Body</h4>
 <p><%= @enotify_mail.original_text %></p>
 
-<%= link_to 'Back', enotify_mails_path %>
+<%= link_to 'Back', polymorphic_path(@enotify_mail.incident) %>
