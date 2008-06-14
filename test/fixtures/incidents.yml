@@ -5,7 +5,7 @@ theft:
     geo_location: one
     address: one
     record_number: "#1234567"
-    time: 2008-04-11 05:49:00
+    incident_time: 2008-04-11 05:49:00
     description: Theft
     resolution: Pending
     type: Crime
@@ -15,7 +15,7 @@ assault:
     geo_location: one
     address: two
     record_number: "#1237892"
-    time: 2008-04-30 04:34:00
+    incident_time: 2008-04-30 04:34:00
     description: Assault
     resolution: None
     type: Crime
@@ -25,7 +25,7 @@ bande:
     geo_location: one
     address: two
     record_number: "#123789"
-    time: 2008-05-01 11:34:00
+    incident_time: 2008-05-01 11:34:00
     description: Burgarlry
     resolution: None
     type: Crime
@@ -37,7 +37,7 @@ permit:
     tax_key: 301-345-000
     record_number: 475195
     description: Something
-    time: 2008-06-03 21:23:38
+    incident_time: 2008-06-03 21:23:38
     type: PermitRecord
     
 service:
@@ -47,6 +47,6 @@ service:
     tax_key: 300-456-000
     record_number: 123456
     description: Something Bad
-    time: 2008-06-03 21:23:38
+    incident_time: 2008-06-03 21:23:38
     type: ServiceRequest
     

@@ -9,7 +9,7 @@ class ServiceRequestParser
     service_request.address = Address.existing_or_new(street, city, state)
     
     service_request.description = COMPLAINT_REGEX.match(text).captures[0]
-    service_request.time = Time.new
+    service_request.incident_time = Time.new
 
     service_request
   end

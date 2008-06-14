@@ -6,7 +6,7 @@
 </p>
 <p>
   <b>Time:</b>
-  <%=h @service_request.time %>
+  <%=h @service_request.incident_time.to_formatted_s(:short) %>
 </p>
 <p>
   <b>Description:</b>

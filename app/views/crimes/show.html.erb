@@ -6,7 +6,7 @@
 </p>
 <p>
   <b>Time:</b>
-  <%=h @crime.time %>
+  <%=h @crime.incident_time.to_formatted_s(:short) %>
 </p>
 <p>
   <b>Description:</b>

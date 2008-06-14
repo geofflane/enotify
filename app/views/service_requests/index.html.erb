@@ -14,7 +14,7 @@
   <tr>
   	<td><%=h service_request.record_number %></td>
   	<td><%=h service_request.tax_key %></td>
-  	<td><%=h service_request.time.to_formatted_s(:short) %></td>
+  	<td><%=h service_request.incident_time.to_formatted_s(:short) %></td>
   	<td><%=h service_request.description %></td>
  	<td><%=h service_request.address.to_s %></td>
 	<td><%=h service_request.geo_location.to_s %></td>

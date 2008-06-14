@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080613231442) do
+ActiveRecord::Schema.define(:version => 20080614170448) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "geo_location_id"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20080613231442) do
     t.integer  "address_id"
     t.integer  "geo_location_id"
     t.string   "record_number"
-    t.datetime "time"
+    t.datetime "incident_time"
     t.string   "description"
     t.string   "resolution"
     t.string   "tax_key"

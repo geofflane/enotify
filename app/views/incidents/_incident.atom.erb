@@ -3,7 +3,7 @@
 	<% if incident.resolution %>
 	<p><%= incident.resolution %></p>
 	<% end %>
-    <p><%= incident.time.to_formatted_s(:short) %></p>
+    <p><%= incident.incident_time.to_formatted_s(:short) %></p>
     <p><%= incident.address.to_s %></p>
     <p><%= incident.geo_location.to_s %></p>
 </div>

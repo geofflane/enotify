@@ -13,7 +13,7 @@
 <% for crime in @crimes %>
   <tr>
   	<td><%=h crime.record_number %></td>
-  	<td><%=h crime.time.to_formatted_s(:short) %></td>
+  	<td><%=h crime.incident_time.to_formatted_s(:short) %></td>
   	<td><%=h crime.description %></td>
   	<td><%=h crime.resolution %></td>
  	<td><%=h crime.address.to_s %></td>

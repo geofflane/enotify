@@ -9,7 +9,7 @@ class PermitRecordParser
     permit_record.address = Address.existing_or_new(street, city, state)
     
     permit_record.description = TYPE_REGEX.match(text).captures[0]
-    permit_record.time = Time.new
+    permit_record.incident_time = Time.new
 
     permit_record
   end

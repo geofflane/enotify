@@ -12,9 +12,4 @@ class IncidentsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:incidents)
   end
 
-  def test_should_show_incident
-    get :show, :id => incidents(:theft).id
-    assert_response :success
-  end
-
 end
