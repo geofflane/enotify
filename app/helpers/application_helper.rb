@@ -1,6 +1,16 @@
 # Methods added to this helper will be available to all templates in the application.
+config_api_keys_path = File.expand_path(File.dirname(__FILE__) + "/../../config/geox_api_keys.rb")
+
+if File::exists?(config_api_keys_path)
+  require config_api_keys_path
+end
+  
 module ApplicationHelper
-    
+
+  def google_api_key() 
+    GeoX::GOOGLE_API_KEY
+  end
+  
   def center_geo_locations(incidents)
     return unless incidents && incidents.size > 0
     

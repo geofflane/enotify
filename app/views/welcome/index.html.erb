@@ -1,4 +1,4 @@
-<script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAZfX35qIl0YxrtyCKDm4rkBTX2XchcwgyHzp4Xo0DHRAzt2aLjhQx_UR-FMe2iLKJFvtgEsyiPbvcVQ" type="text/javascript"></script>
+<script src="http://maps.google.com/maps?file=api&v=2&key=<%= google_api_key() %>" type="text/javascript"></script>
 <script type="text/javascript">
 //<![CDATA[
 function load() {
@@ -21,7 +21,6 @@ function load() {
 Welcome
 
 <h2>Recent Activity</h2>
-<%= render :partial => "incidents/incident", :collection => @incidents %>
-
-
 <div id="map" style="width: 500px; height: 300px"></div>
+
+<%= render :partial => "incidents/incident", :collection => @incidents %>
