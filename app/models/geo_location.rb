@@ -8,7 +8,11 @@ class GeoLocation < ActiveRecord::Base
   def self.existing_or_new(lat, long)
     gl = GeoLocation.find(:first, :conditions => ["latitude=:latitude AND longitude=:longitude", 
         { :latitude => lat, :longitude => long }])
-    gl = GeoLocation.new(:latitude => lat, :longitude => long) if ! gl
+
+    if ! gl
+      gl = GeoLocation.new(:latitude => lat, :longitude => long)
+      gl.save()
+    end
     gl
   end
   
