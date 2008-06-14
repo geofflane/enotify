@@ -18,5 +18,4 @@ production:
   database: enotify_production
   username: enotify
   password: abc123
-  host: localhost
-  socket: /tmp/mysql.sock
+  socket: /var/run/mysqld/mysqld.sock
