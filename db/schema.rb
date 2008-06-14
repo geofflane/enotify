@@ -12,12 +12,12 @@
 ActiveRecord::Schema.define(:version => 20080614170448) do
 
   create_table "addresses", :force => true do |t|
-    t.integer  "geo_location_id"
+    t.integer  "geo_location_id", :limit => 11
     t.string   "street"
     t.string   "city"
     t.string   "state",           :limit => 2
     t.string   "zip",             :limit => 5
-    t.integer  "street_number"
+    t.integer  "street_number",   :limit => 11
     t.string   "street_name"
     t.string   "full_zip",        :limit => 10
     t.datetime "created_at"
@@ -35,16 +35,16 @@ ActiveRecord::Schema.define(:version => 20080614170448) do
   end
 
   create_table "geo_locations", :force => true do |t|
-    t.decimal  "latitude"
-    t.decimal  "longitude"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "incidents", :force => true do |t|
-    t.integer  "enotify_mail_id"
-    t.integer  "address_id"
-    t.integer  "geo_location_id"
+    t.integer  "enotify_mail_id", :limit => 11
+    t.integer  "address_id",      :limit => 11
+    t.integer  "geo_location_id", :limit => 11
     t.string   "record_number"
     t.datetime "incident_time"
     t.string   "description"

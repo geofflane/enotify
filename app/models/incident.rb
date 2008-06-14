@@ -1,5 +1,6 @@
 class Incident < ActiveRecord::Base
   validates_uniqueness_of :record_number
+  validates_presence_of :record_number
   
   acts_as_temporal
   acts_as_locatable

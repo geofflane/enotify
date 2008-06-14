@@ -1,8 +1,8 @@
 class CreateGeoLocation < ActiveRecord::Migration
   def self.up
     create_table :geo_locations do |t|
-      t.decimal  :latitude
-      t.decimal  :longitude
+      t.float  :latitude
+      t.float  :longitude
       
       t.timestamps
     end

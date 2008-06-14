@@ -2,6 +2,11 @@ class Address  < ActiveRecord::Base
   
   STREET_REGEX = /([\d]+) (.*)/
   
+  validates_numericality_of :street_number
+  validates_length_of :zip, :maximum => 7
+  validates_length_of :full_zip, :maximum => 10
+  validates_length_of :state, :is => 2
+  
   # street, city, state, zip, street_number, full_zip, street_name
   
   has_many :incidents
@@ -20,13 +25,6 @@ class Address  < ActiveRecord::Base
   def full_zip=(fz)
     write_attribute('full_zip', fz)
     write_attribute('zip', fz.split('-')[0])
-  end
-  
-  def self.existing_or_new(street, city, state)
-    a = Address.find(:first, :conditions => ["street=:street AND city=:city AND state=:state", 
-        { :street => street, :city => city, :state => state }])
-    a = Address.new(:street => street, :city => city, :state => state) if ! a
-    a
   end
 
   def to_s

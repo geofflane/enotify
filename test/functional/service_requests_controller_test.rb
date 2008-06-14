@@ -19,7 +19,7 @@ class ServiceRequestsControllerTest < ActionController::TestCase
 
   def test_should_create_service_request
     assert_difference('ServiceRequest.count') do
-      post :create, :service_request => { }
+      post :create, :service_request => { :record_number => 'service123' }
     end
 
     assert_redirected_to service_request_path(assigns(:service_request))

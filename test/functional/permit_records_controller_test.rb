@@ -19,7 +19,7 @@ class PermitRecordsControllerTest < ActionController::TestCase
 
   def test_should_create_permit_record
     assert_difference('PermitRecord.count') do
-      post :create, :permit_record => { }
+      post :create, :permit_record => { :record_number => 'permit123' }
     end
 
     assert_redirected_to permit_record_path(assigns(:permit_record))

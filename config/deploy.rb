@@ -18,13 +18,14 @@ role :app, "zorched.net"
 role :web, "zorched.net"
 role :db,  "zorched.net", :primary => true
 
-
-# Mod rails
-namespace :passenger do
-  desc "Restart Application"
-  task :restart do
+namespace :deploy do
+  desc "Restarting mod_rails with restart.txt"
+  task :restart, :roles => :app, :except => { :no_release => true } do
     run "touch #{current_path}/tmp/restart.txt"
   end
-end
 
-after :deploy, "passenger:restart"
+  [:start, :stop].each do |t|
+    desc "#{t} task is a no-op with mod_rails"
+    task t, :roles => :app do ; end
+  end
+end

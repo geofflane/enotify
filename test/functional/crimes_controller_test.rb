@@ -19,7 +19,7 @@ class CrimesControllerTest < ActionController::TestCase
 
   def test_should_create_crime
     assert_difference('Crime.count') do
-      post :create, :crime => { }
+      post :create, :crime => { :record_number => 'crime123' }
     end
 
     assert_redirected_to crime_path(assigns(:crime))

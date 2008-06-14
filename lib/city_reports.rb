@@ -11,8 +11,11 @@ class CityReports
   def build_report(text)
     report = @parser.parse(text, @city, @state)
     if report.address 
-      report = @geo_lookup.lookup(report) if ! report.address.geo_location
-      report.geo_location = report.address.geo_location if report.address.geo_location
+      if report.address.geo_location
+        report.geo_location = report.address.geo_location if report.address.geo_location
+      else
+        report = @geo_lookup.lookup(report) 
+      end
     end
     report
   end
