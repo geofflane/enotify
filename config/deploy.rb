@@ -18,3 +18,13 @@ role :app, "zorched.net"
 role :web, "zorched.net"
 role :db,  "zorched.net", :primary => true
 
+
+# Mod rails
+namespace :passenger do
+  desc "Restart Application"
+  task :restart do
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+end
+
+after :deploy, "passenger:restart"
