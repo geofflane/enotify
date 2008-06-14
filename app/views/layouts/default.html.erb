@@ -11,8 +11,13 @@
 <body onload="load()" onunload="GUnload()">
 	<div id="header">
 		Milwaukee ENotify Deconstructed
+		
 	</div>
-
+	<div id="logout">
+		<%- if logged_in? %>
+			<%= link_to('Logout', session_path, :method => :delete ) %>
+		<%- end %>
+	</div>
 	<div id="wrapper">
 
 		<div id="right">

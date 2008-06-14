@@ -1,4 +1,5 @@
 class IncidentsController < ApplicationController
+  before_filter :login_required
   layout 'default'
   
   # GET /incidents

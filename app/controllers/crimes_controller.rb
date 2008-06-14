@@ -1,4 +1,5 @@
 class CrimesController < ApplicationController
+  before_filter :login_required
   layout 'default'
   
   # GET /crimes

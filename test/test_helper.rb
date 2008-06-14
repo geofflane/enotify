@@ -36,6 +36,8 @@ class Test::Unit::TestCase
 
   # Add more helper methods to be used by all tests here...
 
+  include AuthenticatedTestHelper
+  
   FIXTURES_PATH = File.dirname(__FILE__) + '/fixtures'
   def read_enotify_fixture(name)
     IO.readlines("#{FIXTURES_PATH}/enotify/#{name}")

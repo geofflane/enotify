@@ -1,5 +1,6 @@
 class EnotifyMailsController < ApplicationController
-
+  before_filter :login_required
+  
   @@router = EnotifyRouter.new('Milwaukee', 'WI')
    
   # GET /enotify_mails

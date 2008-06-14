@@ -1,4 +1,5 @@
 class PermitRecordsController < ApplicationController
+  before_filter :login_required
   layout 'default'
   
   # GET /permit_records

@@ -1,4 +1,5 @@
 class ServiceRequestsController < ApplicationController
+  before_filter :login_required
   layout 'default'
   
   # GET /service_requests

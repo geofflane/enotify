@@ -1,8 +1,14 @@
 require 'test_helper'
 
 class WelcomeControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  def test_truth
-    assert true
+  def setup
+    @request    = ActionController::TestRequest.new
+    login_as('quentin')
+  end
+  
+  def test_should_get_index
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:incidents)
   end
 end
