@@ -25,8 +25,12 @@
   <%=h @service_request.geo_location.to_s %>
 </p>
 
+<div id="enotify_popup" class="popup">
+</div>
+<%= javascript_tag "new Popup('enotify_popup', null, {modal:true})" %>
 <div id="map" style="width: 500px; height: 300px"></div>
 
-<%= link_to 'Full ENotify', enotify_mail_path(@service_request.enotify_mail) %> |
+<%= link_to_remote "Original ENotify Email", :method => :get, :url => enotify_mail_path(@service_request.enotify_mail_id) %>
+<br/>
 <%= link_to 'Edit', edit_service_request_path(@service_request) %> |
 <%= link_to 'Back', service_requests_path %>

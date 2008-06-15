@@ -22,6 +22,12 @@ class EnotifyMailsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @enotify_mail }
+      format.js do
+        render :update do |page|
+          page.replace_html 'enotify_popup', :partial => 'enotify_body', :object => @enotify_mail
+          page << "$('enotify_popup').popup.show();"
+        end
+      end
     end
   end
 

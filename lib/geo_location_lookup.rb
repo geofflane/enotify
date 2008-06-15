@@ -12,7 +12,7 @@ class GeoLocationLookup
 
     if (geocode)
       geocode.each do |g|
-        RAILS_DEFAULT_LOGGER.error("GGGG: #{g.latitude}, #{g.longitude}, #{g.post_code}")
+        Rails.logger.error("GGGG: #{g.latitude}, #{g.longitude}, #{g.post_code}")
       end
     end
         
