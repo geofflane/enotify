@@ -1,7 +1,10 @@
 <div>
     <h3><%= incident.description %> (<%= link_to incident.record_number, incident %>)</h3>
 	<% if incident.resolution %>
-	<p><%= incident.resolution %></p>
+	<p>Resolution: <%= incident.resolution %></p>
+	<% end %>
+	<% if incident.tax_key %>
+	<p>Tax Key: <%= incident.tak_key %></p>
 	<% end %>
     <p><%= incident.incident_time.to_formatted_s(:short) %></p>
     <p><%= incident.address.to_s %></p>

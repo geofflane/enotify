@@ -13,6 +13,7 @@ class PermitRecordsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.atom
       format.xml  { render :xml => @permit_records }
     end
   end
