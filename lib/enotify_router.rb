@@ -1,3 +1,5 @@
+require 'hpricot'
+
 class EnotifyRouter
   
   def initialize(city, state)
@@ -16,19 +18,19 @@ class EnotifyRouter
   def create_from_mail(email)
     report_builder = report_builder_for_mail(email)
     # remove any HTML tags and random sets of blank spaces
+    Hpricot()
     cleaned_body = email.body.gsub(/<[^>]*(>+|\s*\z)/m,'').gsub("&nbsp;", ' ').split(" ").join(" ")
-    
-    Rails.logger.error(cleaned_body)
-    
+        
     enotify_mail = EnotifyMail.new(:original_text => email.body, :clean_text => cleaned_body, :title => email.subject)
 
     begin
       report = report_builder.build_report(cleaned_body)
       enotify_mail.success = true
     rescue Exception => ex
+      Rails.logger.error(cleaned_body)
       enotify_mail.success = false
       enotify_mail.parse_error = ex
-      puts ex.backtrace
+      Rails.logger.error(ex)
     end
     report.enotify_mail = enotify_mail if report
     report
