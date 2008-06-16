@@ -12,6 +12,8 @@ set :scm, :git
 set :repository, "geoff@zorched.net:enotify.git"
 set :branch, "master"
 set :deploy_via, :remote_cache
+
+set :user, 'geoff'
 set :ssh_options, { :forward_agent => true }
 
 role :app, "zorched.net"
