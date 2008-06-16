@@ -18,8 +18,8 @@ class EnotifyRouter
   def create_from_mail(email)
     report_builder = report_builder_for_mail(email)
     # remove any HTML tags and random sets of blank spaces
-    Hpricot()
-    cleaned_body = email.body.gsub(/<[^>]*(>+|\s*\z)/m,'').gsub("&nbsp;", ' ').split(" ").join(" ")
+
+    cleaned_body = email.body.gsub(/<[^>]*(>+|\s*\z)/m,' ').gsub("&nbsp;", ' ').split(" ").join(" ")
         
     enotify_mail = EnotifyMail.new(:original_text => email.body, :clean_text => cleaned_body, :title => email.subject)
 
