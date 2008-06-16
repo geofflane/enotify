@@ -1,5 +1,7 @@
 <h1>Listing Violation Records</h1>
 
+<%= render :partial => "maps/map_incidents", :object => @violation_records %>
+
 <table>
   <tr>
 	<th>Record Number</th>
@@ -29,4 +31,4 @@
 
 <br />
 
-<%= link_to 'New violation_record', new_violation_record_path %>
+<%= link_to 'New Violation Record', new_violation_record_path %>

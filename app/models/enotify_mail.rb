@@ -3,6 +3,8 @@ class EnotifyMail < ActiveRecord::Base
   
   def inner_html
     doc = Hpricot(original_text)
-    doc.at('body').inner_html
+    body = doc.at('body')
+    body = doc if ! body
+    body.inner_html
   end
 end

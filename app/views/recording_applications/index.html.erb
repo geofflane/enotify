@@ -1,5 +1,7 @@
 <h1>Listing Recording Application</h1>
 
+<%= render :partial => "maps/map_incidents", :object => @recording_applications %>
+
 <table>
   <tr>
 	<th>Record Number</th>
@@ -29,4 +31,4 @@
 
 <br />
 
-<%= link_to 'New recording_application', new_recording_application_path %>
+<%= link_to 'New Recording Application', new_recording_application_path %>

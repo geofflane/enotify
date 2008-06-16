@@ -1,28 +1,5 @@
-<%- if @incidents && @incidents.size > 0 %>
-<script src="http://maps.google.com/maps?file=api&v=2&key=<%= google_api_key() %>" type="text/javascript"></script>
-<script type="text/javascript">
-//<![CDATA[
-function load() {
-  if (GBrowserIsCompatible()) {
-    var map = new GMap2(document.getElementById("map"));
-	var center = new GLatLng(<%= center_geo_locations(@incidents) %>);
-	map.setCenter(center, 13);
-	<%- @incidents.each do |inc| %>
-	var marker<%=inc.id%> = new GMarker(new GLatLng(<%=h inc.geo_location.to_s %>))
-	marker<%=inc.id%>.bindInfoWindowHtml("<strong><%= inc.description %></strong>")
-	map.addOverlay(marker<%=inc.id%>);
-	<%- end %>
-	map.addControl(new GSmallMapControl());
-    map.addControl(new GMapTypeControl());
-  }
-}
-//]]>
-</script>
-<%- end %>
-
-Welcome
 
 <h2>Recent Activity</h2>
-<div id="map" style="width: 500px; height: 300px"></div>
+<%= render :partial => "maps/map_incidents", :object => @incidents %>
 
 <%= render :partial => "incidents/incident", :collection => @incidents %>

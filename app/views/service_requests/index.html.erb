@@ -1,5 +1,7 @@
 <h1>Listing Service_Requests</h1>
 
+<%= render :partial => "maps/map_incidents", :object => @service_requests %>
+
 <table>
   <tr>
 	<th>Record Number</th>
@@ -29,4 +31,4 @@
 
 <br />
 
-<%= link_to 'New service_request', new_service_request_path %>
+<%= link_to 'New Service Request', new_service_request_path %>
