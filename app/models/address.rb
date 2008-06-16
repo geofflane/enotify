@@ -28,7 +28,7 @@ class Address  < ActiveRecord::Base
   end
 
   def to_s
-    addr = street
+    addr = street + "\n"
     addr << " #{city}" if city
     addr << ',' if city && state
     addr << " #{state}" if state

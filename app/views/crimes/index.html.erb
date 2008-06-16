@@ -7,7 +7,6 @@
   	<th>Description</th>
   	<th>Resolution</th>
   	<th>Address</th>
-  	<th>Geo Location</th>
   </tr>
 
 <% for crime in @crimes %>
@@ -16,11 +15,14 @@
   	<td><%=h crime.incident_time.to_formatted_s(:short) %></td>
   	<td><%=h crime.description %></td>
   	<td><%=h crime.resolution %></td>
- 	<td><%=h crime.address.to_s %></td>
-	<td><%=h crime.geo_location.to_s %></td>
-	<td><%= link_to 'Show', crime %></td>
-	<td><%= link_to 'Edit', edit_crime_path(crime) %></td>
-	<td><%= link_to 'Destroy', crime, :confirm => 'Are you sure?', :method => :delete %></td>
+ 	<td><%=simple_format crime.address.to_s %></td>
+  </tr>
+  <tr>
+    <td colspan="5">
+    <%= link_to 'Show', crime %>
+	<%= link_to 'Edit', edit_crime_path(crime) %>
+	<%= link_to 'Destroy', crime, :confirm => 'Are you sure?', :method => :delete %>
+	</td>
   </tr>
 <% end %>
 </table>

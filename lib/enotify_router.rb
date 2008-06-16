@@ -28,7 +28,7 @@ class EnotifyRouter
       enotify_mail.parse_error = ex
       puts ex.backtrace
     end
-    report.enotify_mail = enotify_mail
+    report.enotify_mail = enotify_mail if report
     report
   end
   

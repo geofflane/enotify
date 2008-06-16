@@ -6,7 +6,9 @@ class EnotifyHandler < ActionMailer::Base
   
   def receive(email)
     enotify_mail = @@router.create_from_mail(email)
-    enotify_mail.save()
+    if enotify_mail
+      enotify_mail.save()
+    end
   end
   
   def self.check_mail
