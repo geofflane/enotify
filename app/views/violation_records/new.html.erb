@@ -1,6 +1,6 @@
-<h1>Editing Service Request</h1>
+<h1>New Violation Record</h1>
 
-<% form_for(@service_request) do |f| %>
+<% form_for(@violation_record) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -20,9 +20,8 @@
     <%= f.text_field :description %>
   </p>
   <p>
-    <%= f.submit "Update" %>
+    <%= f.submit "Create" %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @service_request %> |
-<%= link_to 'Back', service_requests_path %>
+<%= link_to 'Back', violation_records_path %>

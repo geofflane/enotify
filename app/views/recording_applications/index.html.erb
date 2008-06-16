@@ -1,0 +1,32 @@
+<h1>Listing Recording Application</h1>
+
+<table>
+  <tr>
+	<th>Record Number</th>
+	<th>Tax Key</th>
+	<th>Time</th>
+	<th>Description</th>
+	<th>Address</th>
+  </tr>
+
+<% for recording_application in @recording_applications %>
+  <tr>
+    <td><%=h recording_application.record_number %></td>
+  	<td><%=h recording_application.tax_key %></td>
+  	<td><%=h recording_application.incident_time.to_formatted_s(:short) %></td>
+  	<td><%=h recording_application.description %></td>
+ 	<td><%=simple_format recording_application.address.to_s %></td>
+  </tr>
+  <tr>
+    <td colspan="5">
+	<%= link_to 'Show', recording_application %>
+	<%= link_to 'Edit', edit_recording_application_path(recording_application) %>
+	<%= link_to 'Destroy', recording_application, :confirm => 'Are you sure?', :method => :delete %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New recording_application', new_recording_application_path %>

@@ -9,6 +9,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :permit_records
 
+  map.resources :violation_records
+
+  map.resources :recording_applications
+
   map.resources :incidents
 
   map.resources :enotify_mails

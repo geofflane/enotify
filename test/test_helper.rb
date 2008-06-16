@@ -102,4 +102,40 @@ EOS
   Please use the link to add or to remove categories from your account or delete your account
   http://itmdapps.ci.mil.wi.us/login/citizenlogin.
 EOS
+
+  RECORDING_APP_TEST1 = <<EOS
+You have a Milwaukee.Gov E-Notification for Neighborhood Services Activity by Address category.
+
+At 2828 N FRATNEY ST (taxkey # 314-0135-000), there is a new recording application #135371 in the City of Milwaukee Neighborhood Services System.
+
+Please click link below for record detail.
+
+http://isdweb1.ci.mil.wi.us/cgi-bin/bicola?colaid=biadmin&formid=bisearch&Taxkey=3140135000&btnDetail=Submit
+
+Please do not respond to this email. It is not set up to receive emails.
+
+You have received this notification because you subscribed to be notified for Neighborhood Services Activity by Address category from the City of Milwaukee.
+
+Please use the link to add or to remove categories from your account or delete your account
+http://itmdapps.ci.mil.wi.us/login/citizenlogin.
+EOS
+
+  VIOLATION_RECORD_TEST1 = <<EOS
+You have a Milwaukee.Gov E-Notification for Neighborhood Services Activity by Address category.
+
+
+At 507 E CHAMBERS ST (taxkey # 314-0945-000), there is a new violation record #685806 in the City of Milwaukee Neighborhood Services System.
+
+Serial number 6858061 Remove and dispose of all debris, junk, etc. Please click link below for record detail.
+
+http://isdweb1.ci.mil.wi.us/cgi-bin/bicola?colaid=biadmin&formid=bisearch&Taxkey=3140945000&btnDetail=Submit
+
+Please do not respond to this email. It is not set up to receive emails.
+
+You have received this notification because you subscribed to be notified for Neighborhood Services Activity by Address category from the City of Milwaukee.
+
+Please use the link to add or to remove categories from your account or delete your account
+http://itmdapps.ci.mil.wi.us/login/citizenlogin.
+EOS
+
 end

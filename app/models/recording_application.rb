@@ -1,0 +1,2 @@
+class RecordingApplication < Incident
+end

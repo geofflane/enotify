@@ -2,7 +2,7 @@ require 'test_helper'
 
 class EnotifyRouterTest < ActiveSupport::TestCase
 
-  def test_routes_to_incident
+  def test_routes_to_crime
     route_test('crime', CrimeParser)
   end
   
@@ -14,7 +14,15 @@ class EnotifyRouterTest < ActiveSupport::TestCase
     route_test('permit', PermitRecordParser)
   end
   
-  def test_router_parses_incident
+  def test_routes_to_violation_record
+    route_test('violation', ViolationRecordParser)
+  end
+  
+  def test_routes_to_recording_application
+    route_test('recording', RecordingAppParser)
+  end
+  
+  def test_router_parses_crime
     parse_test('crime')
   end
   
@@ -24,6 +32,14 @@ class EnotifyRouterTest < ActiveSupport::TestCase
   
   def test_router_parses_permit_record
     parse_test('permit')
+  end
+
+  def test_router_parses_violation_record
+    parse_test('violation')
+  end
+
+  def test_router_parses_recording_application
+    parse_test('recording')
   end
     
   private

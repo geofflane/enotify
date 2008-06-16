@@ -49,4 +49,22 @@ service:
     description: Something Bad
     incident_time: 2008-06-03 21:23:38
     type: ServiceRequest
-    
+
+violation:
+    enotify_mail: violation_record
+    geo_location: one
+    address: one
+    tax_key: 300-456-000
+    record_number: 25243
+    description: Something Bad
+    incident_time: 2008-06-03 21:23:38
+    type: ViolationRecord
+
+recording:
+    enotify_mail: recording_application
+    geo_location: one
+    address: one
+    tax_key: 300-456-000
+    record_number: 7635345
+    incident_time: 2008-06-03 21:23:38
+    type: RecordingApplication

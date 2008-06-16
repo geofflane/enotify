@@ -1,8 +1,8 @@
-atom_feed(:url => formatted_permit_records_url(:atom)) do |feed|
-  feed.title("ENotify Permit Records")
-  feed.updated(@permit_records.first ? @permit_records.first.created_at : Time.now.utc)
+atom_feed(:url => formatted_recording_applications_url(:atom)) do |feed|
+  feed.title("ENotify Service Requests")
+  feed.updated(@recording_applications.first ? @recording_applications.first.created_at : Time.now.utc)
 
-  for incident in @permit_records
+  for incident in @recording_applications
     feed.entry(incident) do |entry|
       entry.title(incident.description)
       entry.content(render(:partial => "incidents/incident", :object => incident), :type => 'html')

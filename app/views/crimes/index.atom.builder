@@ -1,4 +1,4 @@
-atom_feed(:url => formatted_incidents_url(:atom)) do |feed|
+atom_feed(:url => formatted_crimes_url(:atom)) do |feed|
   feed.title("ENotify Crime Incidents")
   feed.updated(@crimes.first ? @crimes.first.created_at : Time.now.utc)
 

@@ -1,0 +1,32 @@
+<h1>Listing Violation Records</h1>
+
+<table>
+  <tr>
+	<th>Record Number</th>
+	<th>Tax Key</th>
+	<th>Time</th>
+	<th>Description</th>
+	<th>Address</th>
+  </tr>
+
+<% for violation_record in @violation_records %>
+  <tr>
+  	<td><%=h violation_record.record_number %></td>
+  	<td><%=h violation_record.tax_key %></td>
+  	<td><%=h violation_record.incident_time.to_formatted_s(:short) %></td>
+  	<td><%=h violation_record.description %></td>
+ 	<td><%=simple_format violation_record.address.to_s %></td>
+  </tr>
+  <tr>
+    <td colspan="5">
+	<%= link_to 'Show', violation_record %>
+	<%= link_to 'Edit', edit_violation_record_path(violation_record) %>
+	<%= link_to 'Destroy', violation_record, :confirm => 'Are you sure?', :method => :delete %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New violation_record', new_violation_record_path %>

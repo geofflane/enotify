@@ -1,0 +1,36 @@
+<%= render :partial => "maps/google_script",:object => @violation_record %>
+
+<p>
+  <b>Report number:</b>
+  <%=h @violation_record.record_number %>
+</p>
+<p>
+  <b>Time:</b>
+  <%=h @violation_record.incident_time.to_formatted_s(:short) %>
+</p>
+<p>
+  <b>Description:</b>
+  <%=h @violation_record.description %>
+</p>
+<p>
+  <b>Tax Key:</b>
+  <%=h @violation_record.tax_key %>
+</p>
+<p>
+  <b>Address:</b>
+  <%=simple_format @violation_record.address.to_s %>
+</p>
+<p>
+  <b>Geo Location:</b>
+  <%=h @violation_record.geo_location.to_s %>
+</p>
+
+<div id="enotify_popup" class="popup">
+</div>
+<%= javascript_tag "new Popup('enotify_popup', null, {modal:true})" %>
+<div id="map" style="width: 500px; height: 300px"></div>
+
+<%= link_to_remote "Original ENotify Email", :method => :get, :url => enotify_mail_path(@violation_record.enotify_mail_id) %>
+<br/>
+<%= link_to 'Edit', edit_violation_record_path(@violation_record) %> |
+<%= link_to 'Back', violation_records_path %>
