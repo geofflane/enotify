@@ -8,6 +8,14 @@ class GeoLocation < ActiveRecord::Base
   has_many :permit_records
   
   def to_s
-    "#{latitude}, #{longitude}"
+    to_formatted_s()
+  end
+
+  def to_formatted_s(format = :default)
+    if format == :ical
+      "#{latitude};#{longitude}"
+    else
+      "#{latitude}, #{longitude}"
+    end
   end
 end

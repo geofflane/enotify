@@ -16,11 +16,11 @@ class Incident < ActiveRecord::Base
 
     event.dtend        incident_time.strftime("%Y%m%dT%H%M%S")
     event.dtstart      incident_time.strftime("%Y%m%dT%H%M%S")
-    event.summary      record_number
+    event.summary      description
     event.categories   [self.class.name.humanize]
     event.location     address.to_s.split("\n").join(' ')
-    event.geo_location geo_location.to_s
-    event.description """#{description}
+    event.geo_location geo_location.to_formatted_s(:ical)
+    event.description """Record Number: #{record_number}
 Address: #{address.to_s}
 Tax Key: #{tax_key}
 """
