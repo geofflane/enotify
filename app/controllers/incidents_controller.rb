@@ -15,6 +15,7 @@ class IncidentsController < ApplicationController
       format.html # index.html.erb
       format.atom
       format.xml  { render :xml => objects }
+      format.ics { render :text => build_calendar(objects).to_ical }
     end
   end
 
@@ -98,5 +99,12 @@ class IncidentsController < ApplicationController
   def params_hash
     params[controller_name.singularize.to_sym]
   end
-  
+
+  def build_calendar(incidents)
+    cal = Icalendar::Calendar.new
+    cal.custom_property("METHOD","PUBLISH")    # Outlook hack?
+    incidents.each { |i| cal.add_event(i.to_ical) }
+    cal 
+  end
+
 end
