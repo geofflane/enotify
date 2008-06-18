@@ -27,8 +27,9 @@ after "deploy:stop" do
   run "#{current_path}/script/ferret_server -e production stop"
 end 
 before "deploy:restart" do
-  run "#{current_path}/script/ferret_server -e production stop"
-  run "#{current_path}/script/ferret_server -e production start"
+  run 
+"""#{current_path}/script/ferret_server -e production stop &&
+#{current_path}/script/ferret_server -e production start"""
 end
 
 namespace :deploy do
