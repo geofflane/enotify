@@ -20,6 +20,17 @@ role :app, "zorched.net"
 role :web, "zorched.net"
 role :db,  "zorched.net", :primary => true
 
+before "deploy:start" do 
+  run "#{current_path}/script/ferret_server -e production start"
+end 
+after "deploy:stop" do 
+  run "#{current_path}/script/ferret_server -e production stop"
+end 
+before "deploy:restart" do
+  run "#{current_path}/script/ferret_server -e production stop"
+  run "#{current_path}/script/ferret_server -e production start"
+end
+
 namespace :deploy do
   desc "Restarting mod_rails with restart.txt"
   task :restart, :roles => :app, :except => { :no_release => true } do
