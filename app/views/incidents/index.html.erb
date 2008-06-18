@@ -1,5 +1,11 @@
 <h1>Listing Incidents</h1>
 
+<%= link_to 'Atom', url_for({:format => :atom}.merge(params) ) %> | 
+<%= link_to 'iCal', url_for({:format => :ics}.merge(params)) %>
+<br/>
+
+<%= render :partial => "maps/map_incidents", :object => @incidents %>
+
 <table>
   <tr>
     <th>Record number</th>
@@ -21,12 +27,9 @@
   </tr>
   <tr>
     <td colspan="6"><%= link_to 'Show', incident %>
-    <%= link_to 'Edit', edit_incident_path(incident) %>
+    <%= link_to 'Edit', edit_polymorphic_path(incident) %>
     <%= link_to 'Destroy', incident, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New incident', new_incident_path %>
