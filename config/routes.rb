@@ -26,6 +26,12 @@ ActionController::Routing::Routes.draw do |map|
     
   map.connect ':controller/search/*terms',
     :action => 'search'
+    
+  map.by_address ':controller/by_address/:address_id', :action => 'by_address'
+  map.by_address ':controller/by_address/:address_id.:format', :action => 'by_address'
+  
+  map.by_record_number ':controller/by_record_number/:record_number', :action => 'by_record'
+  map.by_record_number ':controller/by_record_number/:record_number.:format', :action => 'by_record'
   
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'

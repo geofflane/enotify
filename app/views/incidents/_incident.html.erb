@@ -1,5 +1,6 @@
 <div>
     <h3><%= incident.description %> (<%= link_to incident.record_number, incident %>)</h3>
+	(<%= link_to 'Same Record', :controller=>:incidents, :action=>:by_record, :record_number=>incident.record_number %>)
 	<% if incident.resolution %>
 	<p>Resolution: <%= incident.resolution %></p>
 	<% end %>
@@ -7,6 +8,9 @@
 	<p>Tax Key: <%= incident.tax_key %></p>
 	<% end %>
     <p><%= incident.incident_time.to_formatted_s(:short) %></p>
-    <p><%=simple_format incident.address.to_s %></p>
+    <p>
+		<%=simple_format incident.address.to_s %>
+		(<%= link_to 'Same Address', :controller=>:incidents, :action=>:by_address, :address_id=>incident.address %>)
+	</p>
     <p><%= incident.geo_location.to_s %></p>
 </div>

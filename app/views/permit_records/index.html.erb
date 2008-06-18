@@ -17,15 +17,12 @@
 
 <% for permit_record in @permit_records %>
   <tr>
-  	<td><%=h permit_record.record_number %></td>
+  	<td><%=link_to permit_record.record_number, permit_record %></td>
   	<td><%=h permit_record.tax_key %></td>
   	<td><%=h permit_record.incident_time.to_formatted_s(:short) %></td>
   	<td><%=h permit_record.description %></td>
  	<td><%=simple_format permit_record.address.to_s %></td>
-  </tr>
-  <tr>
-    <td colspan="5">
-	<%= link_to 'Show', permit_record %>
+	<td>
 	<%= link_to 'Edit', edit_permit_record_path(permit_record) %>
 	<%= link_to 'Destroy', permit_record, :confirm => 'Are you sure?', :method => :delete %>
     </td>

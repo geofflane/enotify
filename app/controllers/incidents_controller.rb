@@ -44,6 +44,30 @@ class IncidentsController < ApplicationController
       format.xml  { render :xml => objects }
     end
   end
+  
+  # GET /incidents/by_address/1
+  # GET /incidents/by_address/1.xml
+  def by_address
+    objects = instance_variable_set("@#{controller_name}", current_model.by_address_id(params[:address_id]))
+
+    respond_to do |format|
+      format.html { render :action => "index" }
+      format.atom { render :action => "index" }
+      format.xml  { render :xml => objects }
+    end
+  end
+  
+  # GET /incidents/by_address/1
+  # GET /incidents/by_address/1.xml
+  def by_record
+    objects = instance_variable_set("@#{controller_name}", current_model.by_record_number(params[:record_number]))
+
+    respond_to do |format|
+      format.html { render :action => "index" }
+      format.atom { render :action => "index" }
+      format.xml  { render :xml => objects }
+    end
+  end
 
   # GET /incidents/1
   # GET /incidents/1.xml

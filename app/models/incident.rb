@@ -18,7 +18,10 @@ class Incident < ActiveRecord::Base
     address.to_s
   end
 
+  named_scope :by_record_number,  lambda { |record_number| { :conditions => ["record_number=?", record_number] } }
+
   # Location based limits
+  named_scope :by_address_id,  lambda { |address_id| { :conditions => ["address_id=?", address_id] } }
   named_scope :in_zip,  lambda { |zip| { :joins => :address, :conditions => ["addresses.zip=?", zip] } }
   named_scope :on_street, lambda { |street, zip| { :joins => :address, :conditions => ["addresses.street_name=? AND addresses.zip=?", street, zip] } }
   named_scope :between_addresses, lambda { |start_number, end_number, street, zip| 

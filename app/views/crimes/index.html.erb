@@ -17,15 +17,12 @@
 
 <% for crime in @crimes %>
   <tr>
-  	<td><%=h crime.record_number %></td>
+  	<td><%=link_to crime.record_number, crime %></td>
   	<td><%=h crime.incident_time.to_formatted_s(:short) %></td>
   	<td><%=h crime.description %></td>
   	<td><%=h crime.resolution %></td>
  	<td><%=simple_format crime.address.to_s %></td>
-  </tr>
-  <tr>
-    <td colspan="5">
-    <%= link_to 'Show', crime %>
+  	<td>
 	<%= link_to 'Edit', edit_crime_path(crime) %>
 	<%= link_to 'Destroy', crime, :confirm => 'Are you sure?', :method => :delete %>
 	</td>

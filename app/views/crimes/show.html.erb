@@ -1,6 +1,11 @@
 <%= render :partial => "maps/google_script", :object => @crime %>
 
 <p>
+<%= link_to 'Same Record', :action=>:by_record, :record_number=>@crime.record_number %> |
+<%= link_to 'Same Address', :controller=>:incidents, :action=>:by_address, :address_id=>@crime.address %>
+</p>
+
+<p>
   <b>Report number:</b>
   <%=h @crime.record_number %>
 </p>
