@@ -6,7 +6,7 @@ class IncidentsController < ApplicationController
   # GET /incidents.xml
   def index
     if (params[:month] && params[:year])
-      objects = instance_variable_set("@#{controller_name}", current_model.find_by_month_and_year(params[:month], params[:year]))
+      objects = instance_variable_set("@#{controller_name}", current_model.in_month(params[:month], params[:year]))
     else
       objects = instance_variable_set("@#{controller_name}", current_model.find(:all))
     end
