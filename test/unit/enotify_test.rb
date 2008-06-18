@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class EnotifyTest < ActionMailer::TestCase
-  tests Enotify
+  tests EnotifyHandler
   def test_receive
   
     raw_mail = read_fixture('crime').join

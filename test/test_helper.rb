@@ -40,7 +40,7 @@ class Test::Unit::TestCase
   
   FIXTURES_PATH = File.dirname(__FILE__) + '/fixtures'
   def read_enotify_fixture(name)
-    IO.readlines("#{FIXTURES_PATH}/enotify/#{name}")
+    IO.readlines("#{FIXTURES_PATH}/enotify_handler/#{name}")
   end
   
   CRIME_TEST1 = <<EOS
