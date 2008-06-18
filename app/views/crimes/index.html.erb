@@ -1,5 +1,9 @@
 <h1>Listing Crimes</h1>
 
+<%= link_to 'Atom', url_for({:format => :atom}.merge(params) ) %> | 
+<%= link_to 'iCal', url_for({:format => :ics}.merge(params)) %>
+<br/>
+
 <%= render :partial => "maps/map_incidents", :object => @crimes %>
 
 <table>
