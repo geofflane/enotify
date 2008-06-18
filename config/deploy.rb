@@ -23,13 +23,14 @@ role :db,  "zorched.net", :primary => true
 before "deploy:start" do 
   run "#{current_path}/script/ferret_server -e production start"
 end 
+
 after "deploy:stop" do 
   run "#{current_path}/script/ferret_server -e production stop"
-end 
-before "deploy:restart" do
-  run 
-"""#{current_path}/script/ferret_server -e production stop &&
-#{current_path}/script/ferret_server -e production start"""
+end
+
+after 'deploy:restart' do
+  run "ruby #{current_path}/script/ferret_server -e production stop"
+  run "ruby #{current_path}/script/ferret_server -e production start"
 end
 
 namespace :deploy do
