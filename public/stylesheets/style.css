@@ -76,6 +76,15 @@ body
 	padding: 2px;
 }
 
+#right .search
+{
+    float:right;
+}
+
+#right .search * input[type="text"]
+{
+    width: 110px;
+}
 
 #right h3
 {
@@ -108,22 +117,6 @@ body
 #right li a.on
 {
 	border-bottom: 1px dashed #88AA77;
-}
-
-
-#sidenote
-{
-	float:right;
-	width: 200px; 
-	padding: 2px;
-}
-
-#sidenote h3
-{
-	border-bottom: 1px solid #BCE27F;
-	font-size: 14px;
-	color:  #88AA77;
-	font-family:  Helvetica, Georgia;
 }
 
 input

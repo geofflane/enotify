@@ -19,6 +19,32 @@ class IncidentsController < ApplicationController
     end
   end
 
+  # GET /incidents/recent
+  # GET /incidents/recent.xml
+  def recent
+    objects = instance_variable_set("@#{controller_name}", current_model.recent)
+
+    respond_to do |format|
+      format.html { render :action => "index" }
+      format.atom { render :action => "index" }
+      format.xml  { render :xml => objects }
+      format.ics { render :text => build_calendar(objects).to_ical }
+    end
+  end
+  
+  # GET /incidents/search/theft
+  # GET /incidents/search/theft.xml
+  def search
+    terms = params[:terms].join(" ")
+    objects = instance_variable_set("@#{controller_name}", current_model.find_by_contents(terms))
+
+    respond_to do |format|
+      format.html { render :action => "index" }
+      format.atom { render :action => "index" }
+      format.xml  { render :xml => objects }
+    end
+  end
+
   # GET /incidents/1
   # GET /incidents/1.xml
   def show

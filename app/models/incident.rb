@@ -1,4 +1,6 @@
 class Incident < ActiveRecord::Base
+  # record_number, description, tax_key, time
+    
   validates_uniqueness_of :record_number
   validates_presence_of :record_number
   
@@ -6,7 +8,16 @@ class Incident < ActiveRecord::Base
   belongs_to :address
   belongs_to :geo_location
   
-  # record_number, description, tax_key, time
+  acts_as_ferret :fields => [:record_number, :description, :tax_key, :enotify_mail_clean_text, :address_text]
+
+  # really for AAF
+  def enotify_mail_clean_text
+    enotify_mail.clean_text
+  end
+  
+  def address_text
+    address.to_s
+  end
 
   # Location based limits
   named_scope :in_zip,  lambda { |zip| { :joins => :address, :conditions => ["addresses.zip=?", zip] } }

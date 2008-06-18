@@ -3,20 +3,33 @@ ActionController::Routing::Routes.draw do |map|
     
   map.resources :users
 
-  map.resources :crimes
+  map.resources :crimes, :collection => {:recent => :get}
   
-  map.resources :service_requests
+  map.resources :service_requests, :collection => {:recent => :get}
 
-  map.resources :permit_records
+  map.resources :permit_records, :collection => {:recent => :get}
 
-  map.resources :violation_records
+  map.resources :violation_records, :collection => {:recent => :get}
 
-  map.resources :recording_applications
+  map.resources :recording_applications, :collection => {:recent => :get}
 
-  map.resources :incidents
+  map.resources :incidents, :collection => {:recent => :get}
 
   map.resources :enotify_mails
 
+  map.connect ':controller/:year/:month', 
+    :action => 'index',
+    :requirements => {:month => /\d{1,2}/, :year => /\d{4}/}
+  map.connect ':controller/:year/:month.:format', 
+    :action => 'index',
+    :requirements => {:month => /\d{1,2}/, :year => /\d{4}/}
+    
+  map.connect ':controller/search/*terms',
+    :action => 'search'
+  
+  map.login '/login', :controller => 'sessions', :action => 'new'
+  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
+  
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -50,9 +63,6 @@ ActionController::Routing::Routes.draw do |map|
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => "welcome"
-  
-  map.login '/login', :controller => 'sessions', :action => 'new'
-  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
 
   # See how all your routes lay out with "rake routes"
 
