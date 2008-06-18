@@ -29,8 +29,8 @@ after "deploy:stop" do
 end
 
 after 'deploy:restart' do
-  run "ruby #{current_path}/script/ferret_server -e production stop"
-  run "ruby #{current_path}/script/ferret_server -e production start"
+  run "cd #{current_path} && ./script/ferret_server -e production stop"
+  run "cd #{current_path} && ./script/ferret_server -e production start"
 end
 
 namespace :deploy do
