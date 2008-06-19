@@ -1,7 +1,8 @@
 <h1>Listing Recording Application</h1>
 
 <%= link_to 'Atom', url_for({:format => :atom}.merge(params) ) %> | 
-<%= link_to 'iCal', url_for({:format => :ics}.merge(params)) %>
+<%= link_to 'iCal', url_for({:format => :ics}.merge(params)) %> |
+<%= link_to 'KML Data', url_for({:format => :kml}.merge(params)) %>
 <br/>
 
 <%= render :partial => "maps/map_incidents", :object => @recording_applications %>

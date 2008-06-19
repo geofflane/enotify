@@ -37,5 +37,8 @@
 
 <%= link_to_remote "Original ENotify Email", :method => :get, :url => enotify_mail_path(@service_request.enotify_mail_id) %>
 <br/>
+<%= link_to 'KML Data (Google Maps)', url_for({:format => :kml}) %>
+<br/>
+
 <%= link_to 'Edit', edit_service_request_path(@service_request) %> |
 <%= link_to 'Back', service_requests_path %>

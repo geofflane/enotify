@@ -31,6 +31,28 @@ class Incident < ActiveRecord::Base
   named_scope :recent, :conditions => ["incident_time > ?", 4.weeks.ago]
   named_scope :in_month, lambda { |month, year| { :conditions => ["incident_time between ? and ?", *Date.parse("#{month}/1/#{year}").beginning_and_end_of_month] } }
 
+  def to_kml
+    xm = Builder::XmlMarkup.new
+    xm.instruct!
+    xm.kml("xmlns"=>"http://earth.google.com/kml/2.2") {
+      xm.Document {
+        build_kml_body(xm)
+      }
+    }
+  end
+  
+  def build_kml_body(xm)
+    xm.Placemark {
+      xm.name(record_number)
+      xm.description { xm.cdata!("#{address.to_s}\n#{description}") }
+      xm.Location {
+        xm.latitude(geo_location.latitude)
+        xm.longitude(geo_location.longitude)
+      }
+      xm.Point { xm.coordinates(geo_location.to_formatted_s(:kml)) }
+    }
+  end
+
   def to_ical
     event = Icalendar::Event.new
 

@@ -1,6 +1,11 @@
 <%= render :partial => "maps/google_script",:object => @recording_application %>
 
 <p>
+<%= link_to 'Same Record', :action=>:by_record, :record_number=>@recording_application.record_number %> |
+<%= link_to 'Same Address', :controller=>:incidents, :action=>:by_address, :address_id=>@recording_application.address %>
+</p>
+
+<p>
   <b>Report number:</b>
   <%=h @recording_application.record_number %>
 </p>
@@ -32,5 +37,8 @@
 
 <%= link_to_remote "Original ENotify Email", :method => :get, :url => enotify_mail_path(@recording_application.enotify_mail_id) %>
 <br/>
+<%= link_to 'KML Data (Google Maps)', url_for({:format => :kml}) %>
+<br/>
+
 <%= link_to 'Edit', edit_recording_application_path(@recording_application) %> |
 <%= link_to 'Back', recording_applications_path %>

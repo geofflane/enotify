@@ -6,6 +6,8 @@ atom_feed(:url => formatted_recording_applications_url(:atom)) do |feed|
     feed.entry(incident) do |entry|
       entry.title(incident.description)
       entry.content(render(:partial => "incidents/incident", :object => incident), :type => 'html')
+	  entry.content(incident.to_ical.to_ical, :type => 'text/calendar')
+	  entry.content(incident.to_kml, :type => 'application/vnd.google-earth.kml+xml')
 
       entry.author do |author|
         author.name('Milwaukee ENotify')

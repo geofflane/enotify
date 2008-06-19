@@ -37,5 +37,8 @@
 
 <%= link_to_remote "Original ENotify Email", :method => :get, :url => enotify_mail_path(@permit_record.enotify_mail_id) %>
 <br/>
+<%= link_to 'KML Data (Google Maps)', url_for({:format => :kml}) %>
+<br/>
+
 <%= link_to 'Edit', edit_permit_record_path(@permit_record) %> |
 <%= link_to 'Back', permit_records_path %>

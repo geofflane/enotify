@@ -16,6 +16,7 @@ class IncidentsController < ApplicationController
       format.atom
       format.xml  { render :xml => objects }
       format.ics { render :text => build_calendar(objects).to_ical }
+      format.kml { render :text => build_kml(objects) }
     end
   end
 
@@ -29,6 +30,7 @@ class IncidentsController < ApplicationController
       format.atom { render :action => "index" }
       format.xml  { render :xml => objects }
       format.ics { render :text => build_calendar(objects).to_ical }
+      format.kml { render :text => build_kml(objects) }
     end
   end
   
@@ -42,6 +44,7 @@ class IncidentsController < ApplicationController
       format.html { render :action => "index" }
       format.atom { render :action => "index" }
       format.xml  { render :xml => objects }
+      format.kml { render :text => build_kml(objects) }
     end
   end
   
@@ -54,6 +57,7 @@ class IncidentsController < ApplicationController
       format.html { render :action => "index" }
       format.atom { render :action => "index" }
       format.xml  { render :xml => objects }
+      format.kml { render :text => build_kml(objects) }
     end
   end
   
@@ -66,6 +70,7 @@ class IncidentsController < ApplicationController
       format.html { render :action => "index" }
       format.atom { render :action => "index" }
       format.xml  { render :xml => objects }
+      format.kml { render :text => build_kml(objects) }
     end
   end
 
@@ -76,7 +81,8 @@ class IncidentsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => object }
+      format.xml { render :xml => object }
+      format.kml { render :text => object.to_kml}
     end
   end
 
@@ -148,6 +154,16 @@ class IncidentsController < ApplicationController
  
   def params_hash
     params[controller_name.singularize.to_sym]
+  end
+  
+  def build_kml(incidents)
+    xm = Builder::XmlMarkup.new
+    xm.instruct!
+    xm.kml("xmlns"=>"http://earth.google.com/kml/2.2") {
+      xm.Document {
+        incidents.each { |i| i.build_kml_body(xm) }
+      }
+    }
   end
 
   def build_calendar(incidents)

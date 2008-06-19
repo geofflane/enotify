@@ -7,14 +7,7 @@ class EnotifyHandler < ActionMailer::Base
   def receive(email)
     enotify_mail = @@router.create_from_mail(email)
     if enotify_mail
-      if ! enotify_mail.save()
-        Rails.logger.error("Failed to save item")
-          if (enotify_mail.errors)
-          enotify_mail.errors.each do |e|
-            Rails.logger.error(e)
-          end
-        end
-      end
+      enotify_mail.save()
     end
   end
   

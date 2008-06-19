@@ -6,7 +6,7 @@ class GeoLocation < ActiveRecord::Base
   has_many :incidents
   has_many :service_requests
   has_many :permit_records
-  
+    
   def to_s
     to_formatted_s()
   end
@@ -14,6 +14,8 @@ class GeoLocation < ActiveRecord::Base
   def to_formatted_s(format = :default)
     if format == :ical
       "#{latitude};#{longitude}"
+    elsif format == :kml
+      "#{longitude},#{latitude},0"
     else
       "#{latitude}, #{longitude}"
     end
