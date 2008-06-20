@@ -1,0 +1,18 @@
+- Add proximate addresses search
+  (list all crimes, violations, whatever on every hundred block in all 
+  four directions...?? What would be most useful to people...??)
+
+- Start at a lower zoom level.
+- Add the "terrain" and/or "street view" option to the Google Maps?
+
+- Why are the marker peg backgrounds not transparent, like they usually are in google maps?
+
+- Add border line around riverwest and adjoining neighborhoods. 
+  (a lot of people don’t know where they are, or aren’t sure exactly which street is a border.) 
+  City has downloadable neighborhoood boundary files (ESRI format, can convert to KML)
+- It's easy to get icons in the bubbles, right? I did that once but don’t remember how
+- Can you put left arrow/right arrow (next/previous) icons in the bubbles so you can move 
+  from one to the next rapidly? (like with feeds with maps in Yahoo Pipes)
+- Will it be possible to feed geocoded XML to Pipes and used Pipes to mash in geocoded news, craiglist, whatever else?
+- Also obvious but the text in the bubbles doesn’t do line breaks or wrap the
+  text at sensible points, so the bubble expands beyond the width of the map.

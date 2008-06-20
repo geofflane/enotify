@@ -14,4 +14,10 @@ class AddressTest < ActiveSupport::TestCase
     assert_equal 2924, a.street_number
     assert_equal 'N PIERCE ST', a.street_name
   end
+  
+  def test_block_properly_calculated
+    a = Address.new(:street => '2924 N PIERCE ST')
+    assert_equal 2900, a.block_start
+    assert_equal 2999, a.block_end
+  end
 end

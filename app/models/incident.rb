@@ -18,6 +18,8 @@ class Incident < ActiveRecord::Base
     address.to_s
   end
 
+  named_scope :same_block, lambda { |address| { :joins => :address, :conditions => ["addresses.street_number between ? and ? AND addresses.street_name=? AND addresses.zip=?", address.block_start, address.block_end, address.street_name, address.zip] } }
+  # :joins => :address, :conditions => ["addresses.street_number between ? and ? AND addresses.street_name=? AND addresses.zip=?", address.block_start, address.block_end, address.street_name, address.zip]
   named_scope :by_record_number,  lambda { |record_number| { :conditions => ["record_number=?", record_number] } }
 
   # Location based limits
@@ -30,6 +32,10 @@ class Incident < ActiveRecord::Base
   # Time based limits
   named_scope :recent, :conditions => ["incident_time > ?", 4.weeks.ago]
   named_scope :in_month, lambda { |month, year| { :conditions => ["incident_time between ? and ?", *Date.parse("#{month}/1/#{year}").beginning_and_end_of_month] } }
+
+  def same_block
+    self.class.same_block(address)
+  end
 
   def to_kml
     xm = Builder::XmlMarkup.new

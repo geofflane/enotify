@@ -15,6 +15,14 @@ class Address  < ActiveRecord::Base
   
   belongs_to :geo_location
   
+  def block_start
+    street_number / 100 * 100   # / 100 keeps it as a whole number, so we lose the remainder
+  end
+  
+  def block_end
+    block_start + 99
+  end
+  
   def street=(st)
     write_attribute('street', st)
     num, name = STREET_REGEX.match(st).captures

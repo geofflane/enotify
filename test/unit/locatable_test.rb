@@ -58,4 +58,18 @@ class LocatableTest < ActiveSupport::TestCase
     crimes = Crime.between_addresses(0, 0, 'N Richards St', '53212')
     assert_equal 0, crimes.size
   end
+  
+  def test_same_block_found_from_class
+    i = incidents(:theft)
+    crimes = Crime.same_block(i.address)
+    assert_not_nil crimes
+    assert_equal 1, crimes.size
+  end
+  
+  def test_same_block_found_from_instance
+    crimes = incidents(:theft).same_block
+    assert_not_nil crimes
+    assert_equal 1, crimes.size
+  end
+  
 end

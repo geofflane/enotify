@@ -26,7 +26,10 @@ ActionController::Routing::Routes.draw do |map|
     
   map.connect ':controller/search/*terms',
     :action => 'search'
-    
+
+  map.same_block ':controller/same_block/:address_id', :action => 'same_block'
+  map.same_block ':controller/same_block/:address_id.:format', :action => 'same_block'
+  
   map.by_address ':controller/by_address/:address_id', :action => 'by_address'
   map.by_address ':controller/by_address/:address_id.:format', :action => 'by_address'
   

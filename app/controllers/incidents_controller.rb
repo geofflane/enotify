@@ -61,6 +61,20 @@ class IncidentsController < ApplicationController
     end
   end
   
+  # GET /incidents/same_block/1
+  # GET /incidents/same_block/1.xml
+  def same_block
+    address = Address.find(params[:address_id])
+    objects = instance_variable_set("@#{controller_name}", current_model.same_block(address))
+
+    respond_to do |format|
+      format.html { render :action => "index" }
+      format.atom { render :action => "index" }
+      format.xml  { render :xml => objects }
+      format.kml { render :text => build_kml(objects) }
+    end
+  end
+  
   # GET /incidents/by_address/1
   # GET /incidents/by_address/1.xml
   def by_record

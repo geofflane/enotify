@@ -2,7 +2,8 @@
 
 <p>
 <%= link_to 'Same Record', :action=>:by_record, :record_number=>@service_request.record_number %> |
-<%= link_to 'Same Address', :controller=>:incidents, :action=>:by_address, :address_id=>@service_request.address %>
+<%= link_to 'Same Address', :controller=>:incidents, :action=>:by_address, :address_id=>@service_request.address %> |
+<%= link_to 'Same Block', :controller=>:incidents, :action=>:same_block, :address_id=>@service_request.address %>
 </p>
 
 <p>
