@@ -6,17 +6,18 @@ function load() {
   if (GBrowserIsCompatible()) {
     var map = new GMap2(document.getElementById("map"));
 	var center = new GLatLng(<%= center_geo_locations(map_incidents) %>);
-	map.setCenter(center, 13);
+	map.setCenter(center, 14);
 	<%- map_incidents.each do |inc| %>
 	var marker<%=inc.id%> = new GMarker(new GLatLng(<%=h inc.geo_location.to_s %>))
 	marker<%=inc.id%>.bindInfoWindowHtml("<strong><%= inc.description %></strong>")
 	map.addOverlay(marker<%=inc.id%>);
 	<%- end %>
-	map.addControl(new GSmallMapControl());
+	map.addMapType(G_PHYSICAL_MAP);
+	map.addControl(new GLargeMapControl());
     map.addControl(new GMapTypeControl());
   }
 }
 //]]>
 </script>
-<div id="map" style="width: 500px; height: 300px"></div>
+<div id="map" style="width: 600px; height: 300px"></div>
 <%- end %>

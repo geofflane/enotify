@@ -5,9 +5,10 @@ function load() {
   if (GBrowserIsCompatible()) {
     var map = new GMap2(document.getElementById("map"));
 	var latLong = new GLatLng(<%=h google_script.geo_location.to_s %>);
-    map.setCenter(latLong, 13);
+    map.setCenter(latLong, 14);
+	map.addMapType(G_PHYSICAL_MAP);
 	map.addOverlay(new GMarker(latLong));
-	map.addControl(new GSmallMapControl());
+	map.addControl(new GLargeMapControl());
     map.addControl(new GMapTypeControl());
   }
 }
