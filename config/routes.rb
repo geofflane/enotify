@@ -24,9 +24,9 @@ ActionController::Routing::Routes.draw do |map|
     :action => 'index',
     :requirements => {:month => /\d{1,2}/, :year => /\d{4}/}
     
-  map.connect ':controller/search/*terms',
-    :action => 'search'
-
+  map.connect ':controller/search/*terms', :action => 'search'
+  map.connect ':controller/search/*terms.:format', :action => 'search'
+  
   map.same_block ':controller/same_block/:address_id', :action => 'same_block'
   map.same_block ':controller/same_block/:address_id.:format', :action => 'same_block'
   

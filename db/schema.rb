@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080614170448) do
+ActiveRecord::Schema.define(:version => 20080621231255) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "geo_location_id", :limit => 11
@@ -45,11 +45,11 @@ ActiveRecord::Schema.define(:version => 20080614170448) do
     t.integer  "enotify_mail_id", :limit => 11
     t.integer  "address_id",      :limit => 11
     t.integer  "geo_location_id", :limit => 11
-    t.string   "record_number"
+    t.string   "record_number",   :limit => 25
     t.datetime "incident_time"
-    t.string   "description"
+    t.string   "description",     :limit => 500
     t.string   "resolution"
-    t.string   "tax_key"
+    t.string   "tax_key",         :limit => 50
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"

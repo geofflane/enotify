@@ -1,14 +1,15 @@
 class IncidentsController < ApplicationController
   before_filter :login_required
   layout 'default'
+
   
   # GET /incidents
   # GET /incidents.xml
   def index
     if (params[:month] && params[:year])
-      objects = instance_variable_set("@#{controller_name}", current_model.in_month(params[:month], params[:year]))
+      objects = instance_variable_set("@#{controller_name}", current_model.in_month(params[:month], params[:year]).paginate(:page => params[:page], :order => 'incident_time DESC'))
     else
-      objects = instance_variable_set("@#{controller_name}", current_model.find(:all))
+      objects = instance_variable_set("@#{controller_name}", current_model.paginate(:page => params[:page], :order => 'incident_time DESC'))
     end
     
     respond_to do |format|
@@ -23,7 +24,7 @@ class IncidentsController < ApplicationController
   # GET /incidents/recent
   # GET /incidents/recent.xml
   def recent
-    objects = instance_variable_set("@#{controller_name}", current_model.recent)
+    objects = instance_variable_set("@#{controller_name}", current_model.recent.paginate(:page => params[:page], :order => 'incident_time DESC'))
 
     respond_to do |format|
       format.html { render :action => "index" }
@@ -38,7 +39,7 @@ class IncidentsController < ApplicationController
   # GET /incidents/search/theft.xml
   def search
     terms = params[:terms].join(" ")
-    objects = instance_variable_set("@#{controller_name}", current_model.find_by_contents(terms))
+    objects = instance_variable_set("@#{controller_name}", current_model.find_by_contents(terms).paginate(:page => params[:page], :order => 'incident_time DESC'))
 
     respond_to do |format|
       format.html { render :action => "index" }
@@ -51,7 +52,7 @@ class IncidentsController < ApplicationController
   # GET /incidents/by_address/1
   # GET /incidents/by_address/1.xml
   def by_address
-    objects = instance_variable_set("@#{controller_name}", current_model.by_address_id(params[:address_id]))
+    objects = instance_variable_set("@#{controller_name}", current_model.by_address_id(params[:address_id]).paginate(:page => params[:page], :order => 'incident_time DESC'))
 
     respond_to do |format|
       format.html { render :action => "index" }
@@ -65,7 +66,7 @@ class IncidentsController < ApplicationController
   # GET /incidents/same_block/1.xml
   def same_block
     address = Address.find(params[:address_id])
-    objects = instance_variable_set("@#{controller_name}", current_model.same_block(address))
+    objects = instance_variable_set("@#{controller_name}", current_model.same_block(address).paginate(:page => params[:page], :order => 'incident_time DESC'))
 
     respond_to do |format|
       format.html { render :action => "index" }
@@ -78,7 +79,7 @@ class IncidentsController < ApplicationController
   # GET /incidents/by_address/1
   # GET /incidents/by_address/1.xml
   def by_record
-    objects = instance_variable_set("@#{controller_name}", current_model.by_record_number(params[:record_number]))
+    objects = instance_variable_set("@#{controller_name}", current_model.by_record_number(params[:record_number]).paginate(:page => params[:page], :order => 'incident_time DESC'))
 
     respond_to do |format|
       format.html { render :action => "index" }

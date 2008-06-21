@@ -7,6 +7,8 @@
 
 <%= render :partial => "maps/map_incidents", :object => @violation_records %>
 
+<%= will_paginate @violation_records %>
+<br/>
 <table>
   <tr>
 	<th>Record Number</th>
@@ -30,6 +32,8 @@
   </tr>
 <% end %>
 </table>
+<br/>
+<%= will_paginate @violation_record %>
 
 <br />
 

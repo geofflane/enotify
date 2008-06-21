@@ -17,6 +17,9 @@ class Incident < ActiveRecord::Base
   def address_text
     address.to_s
   end
+  
+  cattr_reader :per_page
+  @@per_page = 25
 
   named_scope :same_block, lambda { |address| { :joins => :address, :conditions => ["addresses.street_number between ? and ? AND addresses.street_name=? AND addresses.zip=?", address.block_start, address.block_end, address.street_name, address.zip] } }
   # :joins => :address, :conditions => ["addresses.street_number between ? and ? AND addresses.street_name=? AND addresses.zip=?", address.block_start, address.block_end, address.street_name, address.zip]

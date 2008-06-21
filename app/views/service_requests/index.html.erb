@@ -7,6 +7,8 @@
 
 <%= render :partial => "maps/map_incidents", :object => @service_requests %>
 
+<%= will_paginate @service_requests %>
+<br/>
 <table>
   <tr>
 	<th>Record Number</th>
@@ -30,7 +32,8 @@
   </tr>
 <% end %>
 </table>
-
+<br/>
+<%= will_paginate @service_request %>
 <br />
 
 <%= link_to 'New Service Request', new_service_request_path %>
