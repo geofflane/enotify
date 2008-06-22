@@ -25,10 +25,12 @@
   	<td><%=h violation_record.incident_time.to_formatted_s(:short) %></td>
   	<td><%=h violation_record.description %></td>
  	<td><%=simple_format violation_record.address.to_s %></td>
+	<% user_has_role('admin') do -%>
 	<td>
 	<%= link_to 'Edit', edit_violation_record_path(violation_record) %>
 	<%= link_to 'Destroy', violation_record, :confirm => 'Are you sure?', :method => :delete %>
 	</td>
+	<% end -%>
   </tr>
 <% end %>
 </table>

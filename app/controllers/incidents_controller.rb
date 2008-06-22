@@ -2,6 +2,7 @@ class IncidentsController < ApplicationController
   before_filter :login_required
   layout 'default'
 
+  permit "admin", :except => [:index, :recent, :search, :by_address, :same_block, :by_record, :show]
   
   # GET /incidents
   # GET /incidents.xml

@@ -25,10 +25,12 @@
   	<td><%=h service_request.incident_time.to_formatted_s(:short) %></td>
   	<td><%=h service_request.description %></td>
  	<td><%=simple_format service_request.address.to_s %></td>
+	<% user_has_role('admin') do -%>
 	<td>
 	<%= link_to 'Edit', edit_service_request_path(service_request) %>
 	<%= link_to 'Destroy', service_request, :confirm => 'Are you sure?', :method => :delete %>
 	</td>
+	<% end -%>
   </tr>
 <% end %>
 </table>

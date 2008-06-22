@@ -21,7 +21,7 @@ ActionMailer::Base.smtp_settings = {
   :address => "mail.zorched.net",
   :port => 25,
   :domain => "mail.zorched.net",
-  :user_name => "carmelyne@yourrailsapp.com",
-  :password => "yourrailsapp",
+  :user_name => "enotify",
+  :password => "nor456",
   :authentication => :login
 }

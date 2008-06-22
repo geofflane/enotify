@@ -40,5 +40,7 @@
 <br/>
 <%= link_to 'KML Data (Google Maps)', url_for({:format => :kml}) %>
 <br/>
+<% user_has_role('admin') do -%>
 <%= link_to 'Edit', edit_violation_record_path(@violation_record) %> |
+<% end -%>
 <%= link_to 'Back', violation_records_path %>

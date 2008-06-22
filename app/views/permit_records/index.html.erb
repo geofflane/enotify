@@ -25,10 +25,12 @@
   	<td><%=h permit_record.incident_time.to_formatted_s(:short) %></td>
   	<td><%=h permit_record.description %></td>
  	<td><%=simple_format permit_record.address.to_s %></td>
+	<% user_has_role('admin') do -%>
 	<td>
 	<%= link_to 'Edit', edit_permit_record_path(permit_record) %>
 	<%= link_to 'Destroy', permit_record, :confirm => 'Are you sure?', :method => :delete %>
     </td>
+	<% end -%>
   </tr>
 <% end %>
 </table>

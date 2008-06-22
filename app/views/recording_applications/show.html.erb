@@ -41,5 +41,7 @@
 <%= link_to 'KML Data (Google Maps)', url_for({:format => :kml}) %>
 <br/>
 
+<% user_has_role('admin') do -%>
 <%= link_to 'Edit', edit_recording_application_path(@recording_application) %> |
+<% end -%>
 <%= link_to 'Back', recording_applications_path %>

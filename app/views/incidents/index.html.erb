@@ -28,8 +28,10 @@
 	<td><%=h incident.resolution %></td>
     <td><%=simple_format incident.address.to_s %></td>
     <td><%=h incident.geo_location.to_s %></td>
+	<% user_has_role('admin') do -%>
 	<td><%= link_to 'Edit', edit_polymorphic_path(incident) %>
     <%= link_to 'Destroy', incident, :confirm => 'Are you sure?', :method => :delete %></td>
+	<% end -%>
   </tr>
 <% end %>
 </table>

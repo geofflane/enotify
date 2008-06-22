@@ -21,4 +21,16 @@ module ApplicationHelper
     avg_long = total_long / incidents.size
     "#{avg_lat}, #{avg_long}"
   end
+  
+  def user_has_role(role, &block)
+    if logged_in? && current_user.has_role?(role) 
+      if block_given?
+        yield
+      else
+        return true
+      end
+    end
+    false
+  end
+  
 end
