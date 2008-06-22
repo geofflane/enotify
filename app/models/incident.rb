@@ -1,6 +1,6 @@
 class Incident < ActiveRecord::Base
   # record_number, description, tax_key, time
-
+  
   validates_presence_of :record_number
   
   belongs_to :enotify_mail

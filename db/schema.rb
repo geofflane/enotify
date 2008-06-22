@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080621231255) do
+ActiveRecord::Schema.define(:version => 20080622011156) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "geo_location_id", :limit => 11
@@ -55,6 +55,21 @@ ActiveRecord::Schema.define(:version => 20080621231255) do
     t.datetime "updated_at"
   end
 
+  create_table "roles", :force => true do |t|
+    t.string   "name",              :limit => 40
+    t.string   "authorizable_type", :limit => 40
+    t.integer  "authorizable_id",   :limit => 11
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer  "user_id",    :limit => 11
+    t.integer  "role_id",    :limit => 11
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "login"
     t.string   "email"
@@ -64,6 +79,10 @@ ActiveRecord::Schema.define(:version => 20080621231255) do
     t.datetime "updated_at"
     t.string   "remember_token"
     t.datetime "remember_token_expires_at"
+    t.string   "activation_code",           :limit => 40
+    t.datetime "activated_at"
+    t.string   "state",                                   :default => "passive"
+    t.datetime "deleted_at"
   end
 
 end

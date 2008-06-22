@@ -11,3 +11,17 @@ class Date
     [beginning_of_month.yesterday.end_of_day, end_of_month.end_of_day]
   end
 end
+
+# First, specify the Host that we will be using later for user_notifier.rb
+HOST = 'http://enotify.zorched.net'
+
+# Third, add your SMTP settings
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.smtp_settings = {
+  :address => "mail.zorched.net",
+  :port => 25,
+  :domain => "mail.zorched.net",
+  :user_name => "carmelyne@yourrailsapp.com",
+  :password => "yourrailsapp",
+  :authentication => :login
+}

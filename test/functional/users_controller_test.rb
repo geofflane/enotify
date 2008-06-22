@@ -5,13 +5,16 @@ require 'users_controller'
 class UsersController; def rescue_action(e) raise e end; end
 
 class UsersControllerTest < Test::Unit::TestCase
-  fixtures :users
+  # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead
+  # Then, you can remove it from this and the units test.
+  include AuthenticatedTestHelper
+
+  fixtures :users, :roles
 
   def setup
     @controller = UsersController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
-    login_as('quentin')
   end
 
   def test_should_allow_signup
@@ -53,8 +56,40 @@ class UsersControllerTest < Test::Unit::TestCase
     end
   end
   
+  def test_should_sign_up_user_in_pending_state
+    create_user
+    assigns(:user).reload
+    assert assigns(:user).pending?
+  end
 
   
+  def test_should_sign_up_user_with_activation_code
+    create_user
+    assigns(:user).reload
+    assert_not_nil assigns(:user).activation_code
+  end
+
+  def test_should_activate_user
+    assert_nil User.authenticate('aaron', 'test')
+    get :activate, :activation_code => users(:aaron).activation_code
+    assert_redirected_to '/'
+    assert_not_nil flash[:notice]
+    assert_equal users(:aaron), User.authenticate('aaron', 'test')
+  end
+  
+  def test_should_not_activate_user_without_key
+    get :activate
+    assert_nil flash[:notice]
+  rescue ActionController::RoutingError
+    # in the event your routes deny this, we'll just bow out gracefully.
+  end
+
+  def test_should_not_activate_user_with_blank_key
+    get :activate, :activation_code => ''
+    assert_nil flash[:notice]
+  rescue ActionController::RoutingError
+    # well played, sir
+  end
 
   protected
     def create_user(options = {})

@@ -16,7 +16,8 @@
 	</div>
 	<div id="logout">
 		<%- if logged_in? %>
-			<%= link_to('Logout', session_path, :method => :delete ) %>
+			Hello: <%= current_user.login %> 
+			(<%= link_to('Logout', session_path, :method => :delete ) %>)
 		<%- end %>
 	</div>
 	<div id="wrapper">
@@ -38,7 +39,6 @@
 				<li><%= link_to 'Violation Records', violation_records_path %></li>
 
 				<li> <h3>Actions</h3> </li>
-				<li><%= link_to 'New User', new_user_path  %></li>
 				<li><%= link_to 'New ENotify', new_enotify_mail_path  %></li>
 			</ul>
 		</div>		
