@@ -24,7 +24,7 @@
   	<td><%=h permit_record.tax_key %></td>
   	<td><%=h permit_record.incident_time.to_formatted_s(:short) %></td>
   	<td><%=h permit_record.description %></td>
- 	<td><%=simple_format permit_record.address.to_s %></td>
+ 	<td><address><%=simple_format permit_record.address.to_s %></address></td>
 	<% user_has_role('admin') do -%>
 	<td>
 	<%= link_to 'Edit', edit_permit_record_path(permit_record) %>

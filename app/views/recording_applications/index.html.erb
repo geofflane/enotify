@@ -24,7 +24,7 @@
   	<td><%=h recording_application.tax_key %></td>
   	<td><%=h recording_application.incident_time.to_formatted_s(:short) %></td>
   	<td><%=h recording_application.description %></td>
- 	<td><%=simple_format recording_application.address.to_s %></td>
+ 	<td><address><%=simple_format recording_application.address.to_s %></address></td>
 	<% user_has_role('admin') do -%>
     <td>
 	<%= link_to 'Edit', edit_recording_application_path(recording_application) %>

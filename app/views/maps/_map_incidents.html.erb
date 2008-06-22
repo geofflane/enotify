@@ -9,7 +9,7 @@ function load() {
 	map.setCenter(center, 14);
 	<%- map_incidents.each do |inc| %>
 	var marker<%=inc.id%> = new GMarker(new GLatLng(<%=h inc.geo_location.to_s %>))
-	marker<%=inc.id%>.bindInfoWindowHtml("<strong><%= inc.description %></strong>")
+	marker<%=inc.id%>.bindInfoWindowHtml('<%= render(:partial => 'incidents/bubble', :object => inc).split(' ').join(' ') %>')
 	map.addOverlay(marker<%=inc.id%>);
 	<%- end %>
 	map.addMapType(G_PHYSICAL_MAP);

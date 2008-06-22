@@ -1,0 +1,9 @@
+<div style="width: 300px">
+    <h3>(<%= link_to bubble.record_number, bubble %>)</h3>
+	<p><%= bubble.description %></p>
+	<% if bubble.resolution %>
+	<p>Resolution: <%= bubble.resolution %></p>
+	<% end %>
+    <p><%= bubble.incident_time.to_formatted_s(:short) %></p>
+    <p><address><%=simple_format bubble.address.to_s %></address></p>
+</div>

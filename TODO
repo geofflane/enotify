@@ -15,5 +15,5 @@
 
 - Will it be possible to feed geocoded XML to Pipes and used Pipes to mash in geocoded news, craiglist, whatever else?
 
-- Also obvious but the text in the bubbles doesn’t do line breaks or wrap the
-  text at sensible points, so the bubble expands beyond the width of the map.
+- Comments on Incidents
+- Tagging on Incidents

@@ -8,6 +8,6 @@
 	<p>Tax Key: <%= incident.tax_key %></p>
 	<% end %>
     <p><%= incident.incident_time.to_formatted_s(:short) %></p>
-    <p><%=simple_format incident.address.to_s %></p>
+    <p><address><%=simple_format incident.address.to_s %></address></p>
     <p><%= incident.geo_location.to_s %></p>
 </div>

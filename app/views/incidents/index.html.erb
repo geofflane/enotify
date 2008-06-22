@@ -26,11 +26,13 @@
     <td><%=h incident.incident_time.to_formatted_s(:short) %></td>
     <td><%=h incident.description %></td>
 	<td><%=h incident.resolution %></td>
-    <td><%=simple_format incident.address.to_s %></td>
+    <td><address><%=simple_format incident.address.to_s %></address></td>
     <td><%=h incident.geo_location.to_s %></td>
 	<% user_has_role('admin') do -%>
-	<td><%= link_to 'Edit', edit_polymorphic_path(incident) %>
-    <%= link_to 'Destroy', incident, :confirm => 'Are you sure?', :method => :delete %></td>
+	<td>
+	<%= link_to 'Edit', edit_polymorphic_path(incident) %>
+    <%= link_to 'Destroy', incident, :confirm => 'Are you sure?', :method => :delete %>
+	</td>
 	<% end -%>
   </tr>
 <% end %>

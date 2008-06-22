@@ -25,7 +25,7 @@
   	<td><%=h crime.incident_time.to_formatted_s(:short) %></td>
   	<td><%=h crime.description %></td>
   	<td><%=h crime.resolution %></td>
- 	<td><%=simple_format crime.address.to_s %></td>
+ 	<td><address><%=simple_format crime.address.to_s %></address></td>
 	<% user_has_role('admin') do -%>
   	<td>
 	<%= link_to 'Edit', edit_crime_path(crime) %>
