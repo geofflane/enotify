@@ -1,7 +1,7 @@
 <div style="width: 300px">
     <h3><%= link_to bubble.record_number, bubble %></h3>
 	<% if bubble.description -%>
-	<p><%=h bubble.description %></p>
+	<p><%=h bubble.description.gsub(/[']/, '\\\\\'') %></p>
 	<% end -%>
 	<% if bubble.resolution -%>
 	<p>Resolution: <%= bubble.resolution %></p>
