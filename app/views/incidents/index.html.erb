@@ -23,7 +23,7 @@
 <% for incident in @incidents %>
   <tr>
     <td><%= link_to incident.record_number, polymorphic_url(incident) %></td>
-    <td><%=h incident.incident_time.to_formatted_s(:short) %></td>
+    <td><%=h incident.local_time.to_formatted_s(:simple) %></td>
     <td><%=h incident.description %></td>
 	<td><%=h incident.resolution %></td>
     <td><address><%=simple_format incident.address.to_s %></address></td>

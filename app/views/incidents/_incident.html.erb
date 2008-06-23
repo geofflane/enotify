@@ -1,13 +1,15 @@
 <div>
-    <h3>(<%= link_to incident.record_number, incident %>)</h3>
-	<p><%= incident.description %></p>
-	<% if incident.resolution %>
-	<p>Resolution: <%= incident.resolution %></p>
-	<% end %>
-	<% if incident.tax_key %>
+    <h3><%= link_to incident.record_number, incident %></h3>
+	<% if incident.description -%>
+	<p><%=h incident.description %></p>
+	<% end -%>
+	<% if incident.resolution -%>
+	<p>Resolution: <%=h incident.resolution %></p>
+	<% end -%>
+	<% if incident.tax_key -%>
 	<p>Tax Key: <%= incident.tax_key %></p>
-	<% end %>
-    <p><%= incident.incident_time.to_formatted_s(:short) %></p>
+	<% end -%>
+    <p><%= incident.local_time.to_formatted_s(:simple) %></p>
     <p><address><%=simple_format incident.address.to_s %></address></p>
     <p><%= incident.geo_location.to_s %></p>
 </div>

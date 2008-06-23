@@ -18,6 +18,14 @@ class Incident < ActiveRecord::Base
     address.to_s
   end
   
+  def tax_key_clean
+    tax_key.gsub(/[#-]/, '') if tax_key
+  end
+  
+  def local_time
+    incident_time.localtime
+  end
+  
   cattr_reader :per_page
   @@per_page = 25
 

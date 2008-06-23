@@ -20,7 +20,7 @@
 </p>
 <p>
   <b>Tax Key:</b>
-  <%=h @permit_record.tax_key %>
+  <%= "<a href=\"http://isdweb1.ci.mil.wi.us/cgi-bin/bicola?colaid=biadmin&formid=bisearch&Taxkey=#{@permit_record.tax_key_clean}&btnDetail=Submit\">#{@permit_record.tax_key}</a>" %> (Milwaukee NSS)
 </p>
 <p>
   <b>Address:</b>

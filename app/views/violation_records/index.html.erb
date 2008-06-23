@@ -22,7 +22,7 @@
   <tr>
   	<td><%=link_to violation_record.record_number, violation_record %></td>
   	<td><%=h violation_record.tax_key %></td>
-  	<td><%=h violation_record.incident_time.to_formatted_s(:short) %></td>
+  	<td><%=h violation_record.local_time.to_formatted_s(:simple) %></td>
   	<td><%=h violation_record.description %></td>
  	<td><address><%=simple_format violation_record.address.to_s %></address></td>
 	<% user_has_role('admin') do -%>

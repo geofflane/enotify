@@ -14,7 +14,6 @@
 	<th>Record Number</th>
 	<th>Tax Key</th>
 	<th>Time</th>
-	<th>Description</th>
 	<th>Address</th>
   </tr>
 
@@ -22,8 +21,7 @@
   <tr>
     <td><%= link_to recording_application.record_number, recording_application %></td>
   	<td><%=h recording_application.tax_key %></td>
-  	<td><%=h recording_application.incident_time.to_formatted_s(:short) %></td>
-  	<td><%=h recording_application.description %></td>
+  	<td><%=h recording_application.local_time.to_formatted_s(:simple) %></td>
  	<td><address><%=simple_format recording_application.address.to_s %></address></td>
 	<% user_has_role('admin') do -%>
     <td>

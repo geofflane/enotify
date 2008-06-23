@@ -12,7 +12,7 @@
 </p>
 <p>
   <b>Time:</b>
-  <%=h @service_request.incident_time.to_formatted_s(:short) %>
+  <%=h @service_request.local_time.to_formatted_s(:simple) %>
 </p>
 <p>
   <b>Description:</b>
@@ -20,7 +20,7 @@
 </p>
 <p>
   <b>Tax Key:</b>
-  <%=h @service_request.tax_key %>
+  <%= "<a href=\"http://isdweb1.ci.mil.wi.us/cgi-bin/bicola?colaid=biadmin&formid=bisearch&Taxkey=#{@service_request.tax_key_clean}&btnDetail=Submit\">#{@service_request.tax_key}</a>" %> (Milwaukee NSS)
 </p>
 <p>
   <b>Address:</b>

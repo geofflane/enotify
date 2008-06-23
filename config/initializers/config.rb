@@ -25,3 +25,5 @@ ActionMailer::Base.smtp_settings = {
   :password => "nor456",
   :authentication => :login
 }
+
+Time::DATE_FORMATS[:simple] = "%A %b %d, %Y %H:%M"
