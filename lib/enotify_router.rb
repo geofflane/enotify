@@ -1,4 +1,5 @@
 require 'hpricot'
+require 'hpricot/xchar'
 Hpricot::XChar::PREDEFINED_U.merge!({"&nbsp;" => 32})
 
 class EnotifyRouter
