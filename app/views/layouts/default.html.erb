@@ -42,6 +42,7 @@
 				<% user_has_role('admin') do -%>
 				<li> <h3>Actions</h3> </li>
 				<li><%= link_to 'New ENotify', new_enotify_mail_path  %></li>
+				<li><%= link_to 'Users', users_path  %></li>
 				<% end -%>
 			</ul>
 		</div>		

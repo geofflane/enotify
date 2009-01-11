@@ -5,6 +5,12 @@ class UsersController < ApplicationController
   permit "admin", :except => [:new, :create, :activate]
   before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge]
 
+  # GET /users
+  def index
+    # @users = User.find(:all, :limit => 25, :order => "created_at DESC")
+    @users = User.paginate(:page => params[:page], :order => 'created_at DESC')
+  end
+
   # render new.rhtml
   def new
   end
