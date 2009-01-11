@@ -1,94 +1,12 @@
 html,body {
 	margin:0;
 	padding:0; 
-	text-align: center; 
+	text-align: center;
 }
 
 body {
-	font: 11px Verdana,sans-serif; 
+	font: 1em Verdana,sans-serif; 
 	line-height: 1.8em; 
-}
-
-#header { 
-	background-color: #88AA77;
-	height: 30px;
-	color: white;
-	font-size: 20px;
-	font-family:  Helvetica, Georgia;
-	font-weight: bold;
-	padding: 5px;
-}
-
-/*-------------- Content ----------------------*/
-#wrapper { 
-	width: 850px;
-	margin: 10px auto; 
-	text-align: left;
-	padding: 5px;
-	border-left: 1px solid #96B566; 
-	border-right: 1px solid #96B566; 
-}
-
-#content { 
-	padding-right: 10px;
-	float: left;
-	width: 620px; 
-	font-family:  Helvetica, Georgia;
-}
-
-#content h3 {
-	border-bottom: 1px solid #BCE27F;
-	font-size: 14px;
-	font-family:  Helvetica, Georgia;
-}
-
-#content a {
-	text-decoration: none;
-	color: #88AA77;
-	border-bottom: 1px dashed #88AA77;
-}
-
-
-#right {
-	float:right;
-	width: 200px; 
-	padding: 2px;
-}
-
-#right .search {
-    float:right;
-}
-
-#right .search * input[type="text"] {
-    width: 110px;
-}
-
-#right h3 {
-	border-bottom: 1px solid #BCE27F;
-	font-size: 14px;
-	font-family:  Helvetica, Georgia;
-	color: #88AA77;
-}
-#right li {
-	list-style-type: none;
-}
-
-#right li a {
-	text-decoration: none;
-	color: black;
-	font-size: 15px;
-	font-weight: bold;
-	font-family:  Helvetica, Georgia;
-	color: #88AA11;
-}
-
-#right li a:hover {
-	border-bottom: 1px dashed #88AA77;
-	color: #FFF;
-}
-
-#right li a.on {
-	border-bottom: 1px dashed #88AA77;
 }
 
 input {
@@ -96,25 +14,136 @@ input {
 	border-width: 1px;
 	font-family: Verdana;
 	font-size: 10px;
-	border-color: #88AA77;
+	border-color: #D69B48;
 	background-color: #FFFFFF;
 }
 
-#footer { 
-	clear: both;
-	text-align: center;
-	padding-top: 20px; 
-	color: #BCE27F;
+/*-------------- Header ----------------------*/
+#header { 
+	height: 90px;
+	text-align: left;
+	margin: 20px 0 0 0;
+	background-color: #eee;
+	border-top: thin solid #D69B48;
+	border-bottom: thin solid #D69B48;
+}
+#header a {
+    font-family:  Helvetica, Georgia;
+	color: #000;
+	text-decoration: none;
+}
+#header a:hover {
+    text-decoration: underline;
+}
+#header #img {
+    float: left;
+    margin: 5px 0 0 150px;
+    height: 80px;
+    width: 100px;
+    background: url(../images/mkelogo.png) no-repeat;
+}
+h1 {
+    float: left;
+    padding-top: 14px;
+}
+h1 a {
+    font-size: 24px;
+	font-weight: bold;
+}
+#headernav {
+    float: right;
+    padding: 10px 24px 0 0;
+    color: #000;
+    font-size: 1em;
 }
 
-#footer a {
-	color: #BCE27F;
+/*-------------- Content ----------------------*/
+#wrapper { 
+	width: 850px;
+	margin-top: 10px;
+	margin-left: 130px; 
+	text-align: left;
+	border-left: thin solid #D69B48; 
+}
+
+#content { 
+	padding: 0 10px 0 10px;
+	float: left;
+	width: 620px; 
+	font-family:  Helvetica, Georgia;
+}
+
+#content h3 {
+	border-bottom: thin solid #BCE27F;
+	font-size: 14px;
+	font-family:  Helvetica, Georgia;
+}
+
+#content a {
+	text-decoration: none;
+	color: #938564;
+	border-bottom: thin dashed #88AA77;
+}
+
+/*-------------- Navigation ----------------------*/
+#navigation {
+	float:right;
+	width: 200px; 
+	padding: 2px;
+	border-left: thin solid #D69B48;
+}
+
+#navigation .search {
+    float:right;
+}
+
+#navigation .search * input[type="text"] {
+    width: 110px;
+}
+
+#navigation h3 {
+	border-bottom: thin solid #B87536;
+	font-size: 14px;
+	font-family:  Helvetica, Georgia;
+	color: #7C4200;
+}
+#navigation li {
+	list-style-type: none;
+}
+
+#navigation li a {
+	text-decoration: none;
+	color: black;
+	font-size: 15px;
+	font-weight: bold;
+	font-family:  Helvetica, Georgia;
+	color: #938564;
+}
+
+#navigation li a:hover {
+	border-bottom: thin dashed #666;
+	color: #666;
+}
+
+#navigation li a.on {
+	border-bottom: 1px dashed #88AA77;
+}
+
+/*-------------- Footer ----------------------*/
+#footer { 
+	clear: both;
+	text-align: left;
+	padding: 20px 0 0 130px;
+}
+
+#footer p, #footer a {
+    margin: 0;
+    font-size: .7em;
+    color: #666;
 	text-decoration: none;
 }
 
-/*
- popup.js
-*/
+/*-------------- popup.js ----------------------*/
 div.popup {
   max-width: 800px;
   border: 1px solid red;
