@@ -9,7 +9,10 @@
 	<%= stylesheet_link_tag 'style' %>
 </head>
 <body>
-	<div id="header">ENotify Deconstructed</div>
+	<div id="header">
+		<div id="img">&nbsp;</div>
+		<h1><%= link_to 'Milwaukee ENotify Deconstructed', :controller=>'welcome' %></h1>
+	</div>
 
 	<div id="wrapper">
 		<div id="content">
@@ -17,12 +20,12 @@
 
 			<%= yield  %>
 		</div>
-
-		<div id="footer">
-			&copy;Copyright 2008 Geoff Lane<br/>
-			Validate <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a>
-			<a href="http://validator.w3.org/check?uri=referer">XHTML 1.1</a>
-		</div>
+	</div>
+	
+	<div id="footer">
+		<p>&copy;Copyright 2008 - 2009 Geoff Lane &mdash;
+		Validate <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a>
+		<a href="http://validator.w3.org/check?uri=referer">XHTML 1.1</a></p>
 	</div>
 </body>
 </html>
