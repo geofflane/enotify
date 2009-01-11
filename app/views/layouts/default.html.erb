@@ -16,7 +16,7 @@
 		<div id="headernav">
 			<%- if logged_in? %>
 				<%= current_user.login %> 
-				(<%= link_to('Logout', session_path, :method => :delete ) %>)
+				[<%= link_to('logout', session_path, :method => :delete ) %>]
 			<%- end %>
 		</div>
 	</div>
