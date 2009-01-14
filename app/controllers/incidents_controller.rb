@@ -99,6 +99,12 @@ class IncidentsController < ApplicationController
       format.html # show.html.erb
       format.xml { render :xml => object }
       format.kml { render :text => object.to_kml}
+      format.js do
+        render :update do |page|
+          page.replace_html 'streetview', :partial => 'streetview', :object => object
+          page << "$('streetview').popup.show();"
+        end
+      end
     end
   end
 

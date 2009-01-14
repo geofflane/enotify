@@ -73,8 +73,8 @@ class Incident < ActiveRecord::Base
   def to_ical
     event = Icalendar::Event.new
 
-    event.dtend        incident_time.strftime("%Y%m%dT%H%M%S")
-    event.dtstart      incident_time.strftime("%Y%m%dT%H%M%S")
+    event.dtend        incident_time.to_formatted_s(:ical)
+    event.dtstart      incident_time.to_formatted_s(:ical)
     event.summary      description
     event.categories   [self.class.name.humanize]
     event.location     address.to_s.split("\n").join(' ')

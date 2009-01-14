@@ -12,14 +12,28 @@ module ApplicationHelper
   end
   
   def center_geo_locations(incidents)
-    return unless incidents && incidents.size > 0
-    
-    total_lat = incidents.inject(0) do |sum, i| sum + i.geo_location.latitude end
-    total_long = incidents.inject(0) do |sum, i| sum + i.geo_location.longitude end
-    
-    avg_lat = total_lat / incidents.size
-    avg_long = total_long / incidents.size
-    "#{avg_lat}, #{avg_long}"
+    return unless incidents
+    "#{avg_lat(incidents)}, #{avg_long(incidents)}"
+  end
+  
+  def avg_lat(incidents)
+    return 0 unless incidents
+    total_lat(incidents) / incidents.size
+  end
+  
+  def avg_long(incidents)
+    return 0 unless incidents
+    total_long(incidents) / incidents.size
+  end
+  
+  def total_lat(incidents)
+    return 0 unless incidents
+    incidents.inject(0) do |sum, i| sum + i.geo_location.latitude end
+  end
+  
+  def total_long(incidents)
+    return 0 unless incidents
+    incidents.inject(0) do |sum, i| sum + i.geo_location.longitude end
   end
   
   def user_has_role(role, &block)

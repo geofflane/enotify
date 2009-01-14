@@ -2,14 +2,25 @@ require 'hpricot'
 require 'hpricot/xchar'
 Hpricot::XChar::PREDEFINED_U.merge!({"&nbsp;" => 32})
 
+module TMail
+  class Mail
+    # remove any HTML tags and random sets of blank spaces
+    def clean_body
+      doc = Hpricot.parse(body.gsub("><", ">\n<"), :xhtml_strict => true)
+      doc.inner_text.split(' ').join(' ')
+    end
+  end
+end
+
 class EnotifyRouter
   
   def initialize(city, state)
-    @crime_reports = CityReports.new(CrimeParser.new, GeoLocationLookup.new, city, state)
-    @permit_reports = CityReports.new(PermitRecordParser.new, GeoLocationLookup.new, city, state)
-    @service_reports = CityReports.new(ServiceRequestParser.new, GeoLocationLookup.new, city, state)
-    @recording_reports = CityReports.new(RecordingAppParser.new, GeoLocationLookup.new, city, state)
-    @violation_reports = CityReports.new(ViolationRecordParser.new, GeoLocationLookup.new, city, state)
+    gl = GeoLocationLookup.new
+    @crime_reports = CityReports.new(CrimeParser.new, gl, city, state)
+    @permit_reports = CityReports.new(PermitRecordParser.new, gl, city, state)
+    @service_reports = CityReports.new(ServiceRequestParser.new, gl, city, state)
+    @recording_reports = CityReports.new(RecordingAppParser.new, gl, city, state)
+    @violation_reports = CityReports.new(ViolationRecordParser.new, gl, city, state)
   end
   
   # original_text, clean_text, title, success
@@ -21,23 +32,17 @@ class EnotifyRouter
   
   def create_from_mail(email)
     report_builder = report_builder_for_mail(email)
-
-    # remove any HTML tags and random sets of blank spaces
-    doc = Hpricot.parse(email.body.gsub("><", ">\n<"), :xhtml_strict => true)
-    cleaned_body = doc.inner_text.split(' ').join(' ')
-
-    enotify_mail = EnotifyMail.new(:original_text => email.body, :clean_text => cleaned_body, :title => email.subject)
+    cleaned_body = email.clean_body
 
     begin
       report = report_builder.build_report(cleaned_body)
-      enotify_mail.success = true
+      report.enotify_mail = EnotifyMail.new(:original_text => email.body, :clean_text => cleaned_body, :title => email.subject) if report
     rescue Exception => ex
       Rails.logger.error(cleaned_body)
-      enotify_mail.success = false
-      enotify_mail.parse_error = ex
+      enotify_mail.set_error(ex)
       Rails.logger.error(ex)
     end
-    report.enotify_mail = enotify_mail if report
+    
     report
   end
   

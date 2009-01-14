@@ -27,3 +27,4 @@ ActionMailer::Base.smtp_settings = {
 }
 
 Time::DATE_FORMATS[:simple] = "%A %b %d, %Y %H:%M"
+Time::DATE_FORMATS[:ical] = "%Y%m%dT%H%M%S"

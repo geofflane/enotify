@@ -1,0 +1,32 @@
+<div style="width:400; height:300;">
+	<div class="popup_closebox" onclick="javascript:$('streetview').popup.hide();">Close</div>
+	<div>
+	    <h3><%= link_to streetview.record_number, streetview %></h3>
+		<% if streetview.description -%>
+		<p><%=h streetview.description.gsub(/[']/, '\\\\\'') %></p>
+		<% end -%>
+		<% if streetview.resolution -%>
+		<p>Resolution: <%= streetview.resolution %></p>
+		<% end -%>
+	    <p>Time: <%= streetview.local_time.to_formatted_s(:simple) %></p>
+	    <p><address><%=simple_format streetview.address.to_s %></address></p>
+	</div>
+	
+	<div id="streetview_int" style="width:400;height:200;"></div>
+	
+	<script type="text/javascript">
+	function initialize() {
+      panoramaOptions = { latlng:new GLatLng(<%=h streetview.geo_location.to_s %>) };
+      var myPano = new GStreetviewPanorama(document.getElementById("streetview_int"), panoramaOptions);
+      GEvent.addListener(myPano, "error", handleNoFlash);
+    }
+    
+    function handleNoFlash(errorCode) {
+      if (errorCode == FLASH_UNAVAILABLE) {
+        alert("Error: Flash doesn't appear to be supported by your browser");
+        return;
+      }
+    }
+	initialize();
+	</script>
+</div>
