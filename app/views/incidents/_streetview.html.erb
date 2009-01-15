@@ -1,6 +1,6 @@
-<div style="width:400; height:300;">
+<div>
 	<div class="popup_closebox" onclick="javascript:$('streetview').popup.hide();">Close</div>
-	<div>
+	<div style="width:400px; height:200px;">
 	    <h3><%= link_to streetview.record_number, streetview %></h3>
 		<% if streetview.description -%>
 		<p><%=h streetview.description.gsub(/[']/, '\\\\\'') %></p>
@@ -12,7 +12,7 @@
 	    <p><address><%=simple_format streetview.address.to_s %></address></p>
 	</div>
 	
-	<div id="streetview_int" style="width:400;height:200;"></div>
+	<div id="streetview_int" style="width:400px;height:200px;"></div>
 	
 	<script type="text/javascript">
 	function initialize() {

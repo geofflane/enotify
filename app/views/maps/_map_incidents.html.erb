@@ -7,14 +7,18 @@ function load() {
     var map = new GMap2(document.getElementById("map"));
 	var center = new GLatLng(<%= center_geo_locations(map_incidents) %>);
 	map.setCenter(center, 14);
-	<%- map_incidents.each do |inc| %>
-	var marker<%=inc.id%> = new GMarker(new GLatLng(<%=h inc.geo_location.to_s %>))
-	/*marker<%=inc.id%>.bindInfoWindowHtml('<%= render(:partial => 'incidents/bubble', :object => inc).split(' ').join(' ') %>')*/
-	GEvent.addListener(marker<%=inc.id%>, "click", function() { 
-	          new Ajax.Request('/incidents/<%=inc.id%>', {asynchronous:true, evalScripts:true, method:'get'}); return false;
-	        });
-	map.addOverlay(marker<%=inc.id%>);
-	<%- end %>
+	
+	var incidents = eval('<%= map_incidents.to_json(:include => :geo_location) %>');
+	for (var i = 0; i < incidents.length; i ++) {
+		for (var temp in incidents[i]) {
+			var inc = incidents[i][temp];
+			var marker = new GMarker(new GLatLng(inc.geo_location.latitude, inc.geo_location.longitude));
+			GEvent.addListener(marker, "click", function() { 
+			          new Ajax.Request('/incidents/' + inc.id, {asynchronous:true, evalScripts:true, method:'get'}); return false;
+			        });
+			map.addOverlay(marker);
+		}
+	}
 	map.addMapType(G_PHYSICAL_MAP);
 	map.addControl(new GLargeMapControl());
     map.addControl(new GMapTypeControl());

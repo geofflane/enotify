@@ -159,3 +159,6 @@ span.popup_link, a.popup_link {
     height: 25px;
     width: 25px;
 }
+.popup_closebox:hover {
+    cursor: pointer;
+}
