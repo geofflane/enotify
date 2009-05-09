@@ -1,3 +1,5 @@
+require 'test_helper'
+
 class CrimeParserTest < ActiveSupport::TestCase
 
   def test_crime_parsed_into_good_values

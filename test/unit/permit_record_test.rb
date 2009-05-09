@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PermitRecordTest < ActiveSupport::TestCase
+class PermitRecordTest < Test::Unit::TestCase
   # Replace this with your real tests.
   def test_truth
     assert true

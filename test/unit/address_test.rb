@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AddressTest < ActiveSupport::TestCase
+class AddressTest < Test::Unit::TestCase
 
   def test_setting_full_zip_sets_zip
     a = Address.new(:full_zip => '53212-2345')
