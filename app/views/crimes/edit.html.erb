@@ -4,20 +4,20 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :record_number %><br />
+    <%= f.label :record_number %>
     <%= f.text_field :record_number %>
   </p>
   <p>
-    <%= f.label :incident_time %><br />
+    <%= f.label :incident_time %>
     <%= f.datetime_select :incident_time %>
   </p>
   <p>
-    <%= f.label :description %><br />
+    <%= f.label :description %>
     <%= f.text_field :description %>
   </p>
   <p>
-    <%= f.label :resolution %><br />
-    <%= f.text_field :resolution %>
+    <%= f.label :resolution %>
+    <%= f.text_area :resolution %>
   </p>
   <p>
     <%= f.submit "Update" %>

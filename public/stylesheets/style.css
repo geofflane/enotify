@@ -1,6 +1,5 @@
+
 html,body {
-	margin:0;
-	padding:0; 
 	text-align: center;
 }
 body {
@@ -22,8 +21,7 @@ input {
 	text-align: left;
 	margin: 20px 0 0 0;
 	background-color: #eee;
-	border-top: thin solid #D69B48;
-	border-bottom: thin solid #D69B48;
+	border-top: 5px solid #D69B48;
 }
 #header a {
     font-family:  Helvetica, Georgia;
@@ -35,18 +33,21 @@ input {
 }
 #header #img {
     float: left;
-    margin: 5px 0 0 150px;
+    margin: 5px 0 0 130px;
     height: 80px;
     width: 100px;
     background: url(../images/mkelogo.png) no-repeat;
 }
 h1 {
     float: left;
-    padding-top: 14px;
+    padding-top: 30px;
 }
 h1 a {
     font-size: 24px;
 	font-weight: bold;
+}
+h2 {
+    padding-top: 20px;
 }
 #headernav {
     float: right;
@@ -58,15 +59,14 @@ h1 a {
 /*-------------- Content ----------------------*/
 #wrapper { 
 	width: 850px;
-	margin-top: 10px;
+	margin-top: 20px;
 	margin-left: 130px; 
 	text-align: left;
-	border-left: thin solid #D69B48; 
 }
 #content { 
-	padding: 0 10px 0 10px;
+	padding: 0 10px 20px 0;
 	float: left;
-	width: 620px; 
+	width: 850px; 
 	font-family:  Helvetica, Georgia;
 }
 #content h3 {
@@ -79,46 +79,38 @@ h1 a {
 }
 
 /*-------------- Navigation ----------------------*/
-#navigation {
-	float:right;
-	width: 200px; 
-	padding: 2px;
-	border-left: thin solid #D69B48;
+#navigation ul {
+    margin-top: 0px;
+    padding-left: 0;
+    margin-left: 0;
+    background-color: #D69B48;
+    color: #fff;
+    float: left;
+    width: 100%;
 }
-#navigation .search {
-    float:right;
+
+#navigation ul li { display: inline; }
+
+#navigation ul li a {
+    padding: 0.2em 1em;
+    background-color: #D69B48;
+    color: #fff;
+    text-decoration: none;
+    float: left;
+    border-right: 1px solid #fff;
 }
-#navigation .search * input[type="text"] {
-    width: 120px;
-}
-#navigation h3 {
-	border-bottom: thin solid #B87536;
-	font-size: 14px;
-	font-family:  Helvetica, Georgia;
-	color: #7C4200;
-}
-#navigation li {
-	list-style-type: none;
-}
-#navigation li a {
-	color: black;
-	font-size: 15px;
-	font-weight: bold;
-	font-family:  Helvetica, Georgia;
-	color: #938564;
-}
-#navigation li a:hover {
-	color: #666;
-}
-#navigation li a.on {
-	border-bottom: thin dashed #88AA77;
+
+#navigation ul li a:hover {
+    background-color: #D69B48;
+    color: #fff;
 }
 
 /*-------------- Footer ----------------------*/
 #footer { 
 	clear: both;
 	text-align: left;
-	padding: 20px 0 0 130px;
+	margin: 20px 20px 0 130px;
+	border-top: 1px solid #eee;
 }
 
 #footer p, #footer a {
@@ -161,4 +153,30 @@ span.popup_link, a.popup_link {
 }
 .popup_closebox:hover {
     cursor: pointer;
+}
+
+/*-------------- forms ----------------------*/
+fieldset {
+    border-top: 1px solid #666666;
+    padding: 0 5px 5px 5px;
+}
+fieldset legend {
+    font-weight: bold;
+    font-size: 100%;
+    padding: 0 3px 0 9px;
+}
+label {
+    float: left;
+    width: 150px;
+}
+input[type="text"], input[type="password"] { 
+    width: 180px;
+}
+textarea{
+    width: 250px;
+    height: 150px;
+}
+form p {
+    clear: left;
+    padding: 5px 0 8px 0;
 }

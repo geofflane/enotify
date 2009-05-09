@@ -19,6 +19,7 @@
 	<th>Time</th>
 	<th>Description</th>
 	<th>Address</th>
+	<th>&nbsp;</th>
   </tr>
 
 <% for violation_record in @violation_records %>
@@ -27,13 +28,13 @@
   	<td><%=h violation_record.tax_key %></td>
   	<td><%=h violation_record.local_time.to_formatted_s(:simple) %></td>
   	<td><%=h violation_record.description %></td>
- 	<td><address><%=simple_format violation_record.address.to_s %></address></td>
-	<% user_has_role('admin') do -%>
-	<td>
-	<%= link_to 'Edit', edit_violation_record_path(violation_record) %>
-	<%= link_to 'Destroy', violation_record, :confirm => 'Are you sure?', :method => :delete %>
-	</td>
-	<% end -%>
+ 	  <td><address><%=simple_format violation_record.address.to_s %></address></td>
+  	<% user_has_role('admin') do -%>
+  	<td>
+  	<%= link_to 'Edit', edit_violation_record_path(violation_record) %>
+  	<%= link_to 'Destroy', violation_record, :confirm => 'Are you sure?', :method => :delete %>
+  	</td>
+  	<% end -%>
   </tr>
 <% end %>
 </table>
