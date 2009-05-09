@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
-  before_filter :login_required
   layout 'default'
+  before_filter :login_required
   
   def index
     @incidents = Incident.recent.find(:all, :limit => 25, :order => "created_at DESC")

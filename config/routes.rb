@@ -38,6 +38,11 @@ ActionController::Routing::Routes.draw do |map|
   map.by_record_number ':controller/by_record_number/:record_number', :action => 'by_record'
   map.by_record_number ':controller/by_record_number/:record_number.:format', :action => 'by_record'
   
+  map.by_date ':controller/by_date/:year', :action => 'by_date'
+  map.by_date ':controller/by_date/:year.:format', :action => 'by_date'
+  map.by_date ':controller/by_date/:year/:month', :action => 'by_date'
+  map.by_date ':controller/by_date/:year/:month.:format', :action => 'by_date'
+    
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   

@@ -1,4 +1,7 @@
+#require 'incidents_helper'
+
 class IncidentsController < ApplicationController
+  include IncidentsHelper
   before_filter :login_required
   layout 'default'
 
@@ -10,7 +13,7 @@ class IncidentsController < ApplicationController
     if (params[:month] && params[:year])
       objects = instance_variable_set("@#{controller_name}", current_model.in_month(params[:month], params[:year]).paginate(:page => params[:page], :order => 'incident_time DESC'))
     else
-      objects = instance_variable_set("@#{controller_name}", current_model.paginate(:page => params[:page], :order => 'incident_time DESC'))
+      objects = instance_variable_set("@#{controller_name}", current_model.paginate(:page => params[:page], :order => 'incident_time DESC', :include => [:address, :geo_location]))
     end
     
     respond_to do |format|
@@ -82,6 +85,22 @@ class IncidentsController < ApplicationController
   def by_record
     objects = instance_variable_set("@#{controller_name}", current_model.by_record_number(params[:record_number]).paginate(:page => params[:page], :order => 'incident_time DESC'))
 
+    respond_to do |format|
+      format.html { render :action => "index" }
+      format.atom { render :action => "index" }
+      format.xml  { render :xml => objects }
+      format.kml { render :text => build_kml(objects) }
+    end
+  end
+  
+  # GET /incidents/by_date/2008
+  # GET /incidents/by_date/2008.xml
+  def by_date
+    if (params[:month] && params[:year])
+      objects = instance_variable_set("@#{controller_name}", current_model.in_month(params[:month], params[:year]).paginate(:page => params[:page], :order => 'incident_time DESC'))
+    elsif (params[:year])
+      objects = instance_variable_set("@#{controller_name}", current_model.in_year(params[:year]).paginate(:page => params[:page], :order => 'incident_time DESC'))
+    end
     respond_to do |format|
       format.html { render :action => "index" }
       format.atom { render :action => "index" }
@@ -169,11 +188,7 @@ class IncidentsController < ApplicationController
     end
   end
 
-  private
-  def current_model
-      Object.const_get controller_name.classify
-  end
- 
+  private 
   def params_hash
     params[controller_name.singularize.to_sym]
   end

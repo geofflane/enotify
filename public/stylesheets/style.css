@@ -14,6 +14,7 @@ input {
 	border-color: #D69B48;
 	background-color: #FFFFFF;
 }
+br { clear: both; }
 
 /*-------------- Header ----------------------*/
 #header { 
@@ -80,17 +81,12 @@ h2 {
 
 /*-------------- Navigation ----------------------*/
 #navigation ul {
-    margin-top: 0px;
-    padding-left: 0;
-    margin-left: 0;
     background-color: #D69B48;
     color: #fff;
     float: left;
     width: 100%;
 }
-
 #navigation ul li { display: inline; }
-
 #navigation ul li a {
     padding: 0.2em 1em;
     background-color: #D69B48;
@@ -99,10 +95,27 @@ h2 {
     float: left;
     border-right: 1px solid #fff;
 }
-
 #navigation ul li a:hover {
-    background-color: #D69B48;
-    color: #fff;
+    background-color: #C67B48;
+    color: #eee;
+}
+
+/*-------------- filter ----------------------*/
+#filters {
+    border: 2px solid #D69B48;
+}
+ul.filter {
+    display: block;
+    color: #000;
+    float: left;
+}
+ul.filter li { display: inline; }
+ul.filter li a {
+    padding: 0.2em 1em;
+    color: #000;
+    text-decoration: none;
+    float: left;
+    border-right: 1px solid #eee;
 }
 
 /*-------------- Footer ----------------------*/
@@ -112,7 +125,6 @@ h2 {
 	margin: 20px 20px 0 130px;
 	border-top: 1px solid #eee;
 }
-
 #footer p, #footer a {
     margin: 0;
     font-size: .7em;

@@ -9,6 +9,14 @@ class Incident < ActiveRecord::Base
   
   acts_as_ferret :fields => [:record_number, :description, :tax_key, :enotify_mail_clean_text, :address_text]
 
+  def self.find_all_years
+    self.connection.select_values("SELECT DISTINCT(year(incident_time)) FROM #{self.quoted_table_name} ORDER BY year(incident_time)")
+  end
+  
+  def self.find_all_months(year)
+    self.connection.select_values("SELECT DISTINCT(month(incident_time)) FROM #{self.quoted_table_name} WHERE year(incident_time)='#{year}' ORDER BY month(incident_time)")
+  end
+
   # really for AAF
   def enotify_mail_clean_text
     enotify_mail.clean_text
@@ -29,20 +37,21 @@ class Incident < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 25
 
-  named_scope :same_block, lambda { |address| { :joins => :address, :conditions => ["addresses.street_number between ? and ? AND addresses.street_name=? AND addresses.zip=?", address.block_start, address.block_end, address.street_name, address.zip] } }
+  named_scope :same_block, lambda { |address| { :joins => :address, :conditions => ["addresses.street_number between ? and ? AND addresses.street_name=? AND addresses.zip=?", address.block_start, address.block_end, address.street_name, address.zip], :include => [:address, :geo_location] } }
   # :joins => :address, :conditions => ["addresses.street_number between ? and ? AND addresses.street_name=? AND addresses.zip=?", address.block_start, address.block_end, address.street_name, address.zip]
-  named_scope :by_record_number,  lambda { |record_number| { :conditions => ["record_number=?", record_number] } }
+  named_scope :by_record_number,  lambda { |record_number| { :conditions => ["record_number=?", record_number], :include => [:address, :geo_location] } }
 
   # Location based limits
-  named_scope :by_address_id,  lambda { |address_id| { :conditions => ["address_id=?", address_id] } }
-  named_scope :in_zip,  lambda { |zip| { :joins => :address, :conditions => ["addresses.zip=?", zip] } }
-  named_scope :on_street, lambda { |street, zip| { :joins => :address, :conditions => ["addresses.street_name=? AND addresses.zip=?", street, zip] } }
+  named_scope :by_address_id,  lambda { |address_id| { :conditions => ["address_id=?", address_id], :include => [:address, :geo_location] } }
+  named_scope :in_zip,  lambda { |zip| { :joins => :address, :conditions => ["addresses.zip=?", zip], :include => [:address, :geo_location] } }
+  named_scope :on_street, lambda { |street, zip| { :joins => :address, :conditions => ["addresses.street_name=? AND addresses.zip=?", street, zip], :include => [:address, :geo_location] } }
   named_scope :between_addresses, lambda { |start_number, end_number, street, zip| 
-    { :joins => :address, :conditions => ["addresses.street_number between ? and ? AND addresses.street_name=? AND addresses.zip=?", start_number, end_number, street, zip] } }
+    { :joins => :address, :conditions => ["addresses.street_number between ? and ? AND addresses.street_name=? AND addresses.zip=?", start_number, end_number, street, zip], :include => [:address, :geo_location] } }
   
   # Time based limits
-  named_scope :recent, :conditions => ["incident_time > ?", 4.weeks.ago]
-  named_scope :in_month, lambda { |month, year| { :conditions => ["incident_time between ? and ?", *Date.parse("#{month}/1/#{year}").beginning_and_end_of_month] } }
+  named_scope :recent, :conditions => ["incident_time > ?", 4.weeks.ago], :include => [:address, :geo_location]
+  named_scope :in_year, lambda { |year| { :conditions => ["incident_time between ? and ?", Date.parse("1/1/#{year}"), Date.parse("12/31/#{year}")], :include => [:address, :geo_location] } }
+  named_scope :in_month, lambda { |month, year| { :conditions => ["incident_time between ? and ?", *Date.parse("#{month}/1/#{year}").beginning_and_end_of_month], :include => [:address, :geo_location] } }
 
   def same_block
     self.class.same_block(address)

@@ -5,6 +5,10 @@
 <%= link_to 'KML Data', url_for({:format => :kml}.merge(params)) %>
 <br/>
 
+<% cache(:key => current_model_name + '_filter') do %>
+<%= render :partial => "incidents/filter" %>
+<% end %>
+
 <%= render :partial => "maps/map_incidents", :object => @violation_records %>
 
 <div name="streetview" id="streetview" class="popup"></div>
