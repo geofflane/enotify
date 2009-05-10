@@ -15,6 +15,7 @@ input {
 	background-color: #FFFFFF;
 }
 br { clear: both; }
+table { width: 100%; }
 
 /*-------------- Header ----------------------*/
 #header { 
@@ -191,4 +192,23 @@ textarea{
 form p {
     clear: left;
     padding: 5px 0 8px 0;
+}
+
+div#incident, div#map {
+    padding-top: 20px;
+    width: 400px;
+    float: left;
+}
+div#map:after { clear: both;}
+
+#incident div.label {
+    font-weight: bold;
+    float: left;
+    width: 140px;
+    padding-bottom: 5px;
+}
+#incident div.value {
+    float: left;
+    width: 260px;
+    padding-bottom: 5px;
 }

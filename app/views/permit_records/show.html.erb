@@ -1,47 +1,51 @@
 <%= render :partial => "maps/google_script", :object => @permit_record %>
 
-<p>
-<%= link_to 'Same Record', :action=>:by_record, :record_number=>@permit_record.record_number %> |
-<%= link_to 'Same Address', :controller=>:incidents, :action=>:by_address, :address_id=>@permit_record.address %> |
-<%= link_to 'Same Block', :controller=>:incidents, :action=>:same_block, :address_id=>@permit_record.address %>
-</p>
-
-<p>
-  <b>Report number:</b>
-  <%=h @permit_record.record_number %>
-</p>
-<p>
-  <b>Time:</b>
-  <%=h @permit_record.incident_time %>
-</p>
-<p>
-  <b>Description:</b>
-  <%=h @permit_record.description %>
-</p>
-<p>
-  <b>Tax Key:</b>
-  <%= "<a href=\"http://isdweb1.ci.mil.wi.us/cgi-bin/bicola?colaid=biadmin&formid=bisearch&Taxkey=#{@permit_record.tax_key_clean}&btnDetail=Submit\">#{@permit_record.tax_key}</a>" %> (Milwaukee NSS)
-</p>
-<p>
-  <b>Address:</b>
-  <address><%=simple_format @permit_record.address.to_s %></address>
-</p>
-<p>
-  <b>Geo Location:</b>
-  <%=h @permit_record.geo_location.to_s %>
-</p>
-
-<div id="enotify_popup" class="popup">
+<div id="incident">
+    <p>
+      <div class="label">Report number:</div>
+      <div class="value"><%=h @permit_record.record_number %></div>
+    </p>
+    <p>
+      <div class="label">Time:</div>
+      <div class="value"><%=h @permit_record.incident_time %></div>
+    </p>
+    <p>
+      <div class="label">Description:</div>
+      <div class="value"><%=h @permit_record.description %></div>
+    </p>
+    <p>
+      <div class="label">Tax Key:</div>
+      <div class="value">
+      <%= "<a href=\"http://isdweb1.ci.mil.wi.us/cgi-bin/bicola?colaid=biadmin&formid=bisearch&Taxkey=#{@permit_record.tax_key_clean}&btnDetail=Submit\">#{@permit_record.tax_key}</a>" %> (Milwaukee NSS)
+      </div>
+    </p>
+    <p>
+      <div class="label">Address:</div>
+      <div class="value"><address><%=simple_format @permit_record.address.to_s %></address></div>
+    </p>
+    <p>
+      <div class="label">Geo Location:</div>
+      <div class="value"><%=h @permit_record.geo_location.to_s %></div>
+    </p>
+    <p>
+    <%= link_to 'Same Record', :action=>:by_record, :record_number=>@permit_record.record_number %> |
+    <%= link_to 'Same Address', :controller=>:incidents, :action=>:by_address, :address_id=>@permit_record.address %> |
+    <%= link_to 'Same Block', :controller=>:incidents, :action=>:same_block, :address_id=>@permit_record.address %>
+    </p>
 </div>
+<div id="map" style="width: 400px; height: 400px"></div>
+
+<div id="enotify_popup" class="popup"></div>
 <%= javascript_tag "new Popup('enotify_popup', null, {modal:true})" %>
-<div id="map" style="width: 500px; height: 300px"></div>
 
-<%= link_to_remote "Original ENotify Email", :method => :get, :url => enotify_mail_path(@permit_record.enotify_mail_id) %>
-<br/>
-<%= link_to 'KML Data (Google Maps)', url_for({:format => :kml}) %>
-<br/>
+<div id="incident-footer">
+    <%= link_to_remote "Original ENotify Email", :method => :get, :url => enotify_mail_path(@permit_record.enotify_mail_id) %>
+    <br/>
+    <%= link_to 'KML Data (Google Maps)', url_for({:format => :kml}) %>
+    <br/>
 
-<% user_has_role('admin') do -%>
-<%= link_to 'Edit', edit_permit_record_path(@permit_record) %> |
-<% end -%>
-<%= link_to 'Back', permit_records_path %>
+    <% user_has_role('admin') do -%>
+    <%= link_to 'Edit', edit_permit_record_path(@permit_record) %> |
+    <% end -%>
+    <%= link_to 'Back', permit_records_path %>
+</div>
