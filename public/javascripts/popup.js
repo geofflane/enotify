@@ -63,7 +63,7 @@ Popup.prototype = {
       this.popup.hide();
     }
     if (options.closebox) {
-      this.closeboxes = document.select(options.closebox, this.popup);
+      this.closeboxes = document.getElementsByClassName(options.closebox, this.popup);
       if (this.popup.hasClassName(options.closebox)) {
         this.closeboxes[this.closeboxes.length] = this.popup;
       }
@@ -72,7 +72,7 @@ Popup.prototype = {
       this.closeboxes = [];
     }
     if (options.draghandle) {
-      var draghandles = document.select(options.draghandle, this.popup);
+      var draghandles = document.getElementsByClassName(options.draghandle, this.popup);
       for (i = 0; i < draghandles.length; i++) {
         new Draggable(this.popup, { handle: draghandles[i] });
       }
