@@ -29,11 +29,13 @@
 </div>
 <div id="map" style="width: 400px; height: 400px"></div>
 
-<div id="enotify_popup" class="popup">
-</div>
-<%= javascript_tag "new Popup('enotify_popup', null, {modal:true})" %>
+<div name="streetview" id="streetview" class="popup"></div>
+<%= javascript_tag "new Popup('streetview', null, {modal:true})" %>
 
 <div id="incident-footer">
+    <div id="enotify_popup" class="popup"></div>
+    <%= javascript_tag "new Popup('enotify_popup', null, {modal:true})" %>
+    
     <%= link_to_remote "Original ENotify Email", :method => :get, :url => enotify_mail_path(@recording_application.enotify_mail_id) %>
     <br/>
     <%= link_to 'KML Data (Google Maps)', url_for({:format => :kml}) %>

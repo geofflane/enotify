@@ -7,7 +7,7 @@ function load() {
 	var latLong = new GLatLng(<%=h google_script.geo_location.to_s %>);
     map.setCenter(latLong, 15);
 	map.addMapType(G_PHYSICAL_MAP);
-	map.addOverlay(new GMarker(latLong));
+	map.addOverlay(createMarker(<%=h google_script.geo_location.latitude %>, <%=h google_script.geo_location.longitude %>, <%=h google_script.id %>));
 	map.addControl(new GLargeMapControl());
     map.addControl(new GMapTypeControl());
   }
