@@ -12,7 +12,8 @@
     <p>
       <div class="label">Tax Key:</div>
       <div class="value">
-          <%= link_to #{@recording_application.tax_key}, "http://isdweb1.ci.mil.wi.us/cgi-bin/bicola?colaid=biadmin&formid=bisearch&Taxkey=#{@recording_application.tax_key_clean}&btnDetail=Submit" %> (Milwaukee NSS)
+          <%= link_to #{@recording_application.tax_key}, "http://isdweb1.ci.mil.wi.us/cgi-bin/bicola?colaid=biadmin&formid=bisearch&Taxkey=#{@recording_application.tax_key_clean}&btnDetail=Submit" %> (Milwaukee NSS)<br/>
+           <%= link_to #{@recording_application.tax_key}, "http://assessments.milwaukee.gov/remast.asp?taxkey==#{@recording_application.tax_key_clean}" %> (Assessor's Office)
       </div>
     </p>
     <p>
