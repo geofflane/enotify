@@ -1,6 +1,5 @@
 <%= render :partial => "maps/google_script",:object => @service_request %>
 
-
 <div id="incident">
     <p>
       <div class="label">Report number:</div>
@@ -17,7 +16,7 @@
     <p>
       <div class="label">Tax Key:</div>
       <div class="value">
-      <%= "<a href=\"http://isdweb1.ci.mil.wi.us/cgi-bin/bicola?colaid=biadmin&formid=bisearch&Taxkey=#{@service_request.tax_key_clean}&btnDetail=Submit\">#{@service_request.tax_key}</a>" %> (Milwaukee NSS)
+           <%= link_to #{@recording_application.tax_key}, "http://isdweb1.ci.mil.wi.us/cgi-bin/bicola?colaid=biadmin&formid=bisearch&Taxkey=#{@recording_application.tax_key_clean}&btnDetail=Submit" %> (Milwaukee NSS)
       </div>
     </p>
     <p>
