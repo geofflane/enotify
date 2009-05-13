@@ -1,9 +1,13 @@
 class WelcomeController < ApplicationController
   layout 'default'
-  before_filter :login_required
   
   def index
     @incidents = Incident.recent.find(:all, :limit => 25, :order => "created_at DESC")
+    respond_to do |format|
+      format.html # index.html.erb
+      format.atom
+      format.xml  { render :xml => @incidents }
+    end
   end
   
   def search

@@ -1,6 +1,6 @@
 class EnotifyMailsController < ApplicationController
-  before_filter :login_required
   layout 'default'
+  permit "admin", :only => [:new, :edit, :create, :update, :destroy]
   
   @@router = EnotifyRouter.new('Milwaukee', 'WI')
    

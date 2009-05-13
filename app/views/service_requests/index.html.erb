@@ -1,8 +1,8 @@
+<%= render :partial => "util/atom_link" %>
+
 <h2>Service Requests</h2>
 
-<%= link_to 'Atom', url_for({:format => :atom}.merge(params) ) %> | 
-<%= link_to 'iCal', url_for({:format => :ics}.merge(params)) %> |
-<%= link_to 'KML Data', url_for({:format => :kml}.merge(params)) %>
+<%= render :partial => 'util/formats' %>
 <br/>
 
 <% cache(:key => current_model_name + '_filter') do %>
@@ -46,4 +46,6 @@
 <%= will_paginate @service_request %>
 <br />
 
+<% user_has_role('admin') do -%>
 <%= link_to 'New Service Request', new_service_request_path %>
+<% end -%>

@@ -1,5 +1,9 @@
+<%= render :partial => "util/atom_link" %>
 
 <h2>Recent Activity</h2>
+<%= render :partial => 'util/formats' %>
+<br/>
+
 <%= render :partial => "maps/map_incidents", :object => @incidents %>
 
 <div name="streetview" id="streetview" class="popup"></div>

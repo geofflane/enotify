@@ -1,8 +1,8 @@
+<%= render :partial => "util/atom_link" %>
+
 <h2>Violation Records</h2>
 
-<%= link_to 'Atom', url_for({:format => :atom}.merge(params) ) %> | 
-<%= link_to 'iCal', url_for({:format => :ics}.merge(params)) %> |
-<%= link_to 'KML Data', url_for({:format => :kml}.merge(params)) %>
+<%= render :partial => 'util/formats' %>
 <br/>
 
 <% cache(:key => current_model_name + '_filter') do %>
@@ -47,4 +47,6 @@
 
 <br />
 
+<% user_has_role('admin') do -%>
 <%= link_to 'New Violation Record', new_violation_record_path %>
+<% end -%>

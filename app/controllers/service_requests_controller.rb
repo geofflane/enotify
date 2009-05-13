@@ -1,5 +1,4 @@
 class ServiceRequestsController < IncidentsController
-  before_filter :login_required
   layout 'default'
-
+  permit "admin", :only => [:new, :edit, :create, :update, :destroy]
 end

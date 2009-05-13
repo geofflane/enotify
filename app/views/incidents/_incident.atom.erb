@@ -7,7 +7,7 @@
 	<p>Resolution: <%=h incident.resolution %></p>
 	<% end %>
 	<% if incident.tax_key %>
-	<p>Tax Key: <%= incident.tak_key %></p>
+	<p>Tax Key: <%= incident.tax_key %></p>
 	<% end %>
     <p><%= incident.local_time.to_formatted_s(:simple) %></p>
     <p><%=simple_format incident.address.to_s %></p>

@@ -1,11 +1,7 @@
-#require 'incidents_helper'
-
 class IncidentsController < ApplicationController
   include IncidentsHelper
-  before_filter :login_required
   layout 'default'
-
-  permit "admin", :except => [:index, :recent, :search, :by_address, :same_block, :by_record, :show]
+  permit "admin", :only => [:new, :edit, :create, :update, :destroy]
   
   # GET /incidents
   # GET /incidents.xml

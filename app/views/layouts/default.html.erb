@@ -5,9 +5,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 	<title>Milwaukee ENotify</title>
-	<%= stylesheet_link_tag 'scaffold' %>
-	<%= stylesheet_link_tag 'reset', 'style' %>
+	<%= stylesheet_link_tag 'scaffold', 'reset', 'style' %>
 	<%= javascript_include_tag :all %>
+	<%= yield(:header) %>
 </head>
 <body onload="load()" onunload="GUnload()">
 	<div id="header">
@@ -52,7 +52,9 @@
 	<div id="footer">
 		<p>&copy;Copyright 2008 - 2009 Geoff Lane &mdash;
 		Validate <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a>
-		<a href="http://validator.w3.org/check?uri=referer">XHTML 1.1</a></p>
+		<a href="http://validator.w3.org/check?uri=referer">XHTML 1.1</a>
+		| <%= link_to 'login', :controller => 'session', :action => 'new' %>
+		</p>
 	</div>
 </body>
 </html>
