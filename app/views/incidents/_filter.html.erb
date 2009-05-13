@@ -1,4 +1,5 @@
 <div id="filters">
+    <%= image_tag("funnel.png", :alt => "Filter") %>
     <ul class="filter">
     <% for year in current_model.find_all_years() %>
         <li><%= link_to year, :controller => controller_name, :action=>:by_date, :year=>year %></li>

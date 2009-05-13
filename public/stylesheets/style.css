@@ -10,12 +10,14 @@ input {
 	border-style: solid;
 	border-width: 1px;
 	font-family: Verdana;
-	font-size: 10px;
+	font-size: 12px;
 	border-color: #D69B48;
 	background-color: #FFFFFF;
 }
 br { clear: both; }
 table { width: 100%; }
+img { vertical-align: text-bottom; }
+input[type='image'] { vertical-align: -25%; }
 
 /*-------------- Header ----------------------*/
 #header { 
@@ -35,7 +37,7 @@ table { width: 100%; }
 }
 #header #img {
     float: left;
-    margin: 5px 0 0 130px;
+    margin: 5px 0 0 83px;
     height: 80px;
     width: 100px;
     background: url(../images/mkelogo.png) no-repeat;
@@ -117,6 +119,10 @@ ul.filter li a {
     text-decoration: none;
     float: left;
     border-right: 1px solid #eee;
+}
+#filters img {
+    padding: 0.2em;
+    float: left;
 }
 
 /*-------------- Footer ----------------------*/

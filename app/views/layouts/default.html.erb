@@ -19,11 +19,11 @@
 				[<%= link_to('logout', session_path, :method => :delete ) %>]
 			<%- end %>
 			<div class="search">
-  		<% form_tag({:controller=>:welcome, :action=>:search}) do -%>
-  			<%= text_field_tag 'term' %>
-  			<%= submit_tag 'Search'%>
-  		<% end -%>
-  		</div>
+          		<% form_tag({:controller=>:welcome, :action=>:search}) do -%>
+          			<%= text_field_tag 'term' %>
+          			<%= image_submit_tag("magnifier.png") %>
+          		<% end -%>
+      		</div>
 		</div>
 	</div>
 	<div id="navigation">

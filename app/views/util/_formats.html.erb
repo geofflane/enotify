@@ -1,7 +1,7 @@
 <%= link_to 'Atom', url_for({:format => :atom}.merge(params) ) %> | 
 <%= link_to 'iCal', url_for({:format => :ics}.merge(params)) %> |
 <%= link_to 'KML Data', url_for({:format => :kml}.merge(params)) %> 
-<%= image_tag("help.png", :alt => "Help", :onclick => "$('data_help').popup.show();")%>
+<%= image_tag("question-balloon.png", :alt => "Help", :onclick => "$('data_help').popup.show();")%>
 <div id="data_help" class="popup">
     <p><a class="popup_closebox" href="javascript:$('data_help').popup.hide();">Close</a></p>
     <br/>
