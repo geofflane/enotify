@@ -25,3 +25,5 @@ Uses Yahoo Geolocator service to convert Addresses into geocodes.
 
 = Cron Job for reading emails from an IMAP account
 0 6,12,18  *  *  *  /var/www/enotify/current/script/runner -e production EnotifyHandler.check_mail
+or 
+curl http://<host>/get_latest_emails/

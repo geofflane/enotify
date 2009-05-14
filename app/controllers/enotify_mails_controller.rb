@@ -16,7 +16,7 @@
 
 class EnotifyMailsController < ApplicationController
   layout 'default'
-  permit "admin", :only => [:new, :edit, :create, :update, :destroy]
+  permit "admin", :only => [:new, :create, :destroy]
   
   @@router = EnotifyRouter.new('Milwaukee', 'WI')
    
@@ -87,5 +87,10 @@ class EnotifyMailsController < ApplicationController
       format.html { redirect_to(enotify_mails_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def get_latest
+    @results = EnotifyHandler.check_mail
+    render :layout => false
   end
 end
