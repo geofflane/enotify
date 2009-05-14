@@ -9,7 +9,7 @@
 	<%= javascript_include_tag :all %>
 	<%= yield(:header) %>
 </head>
-<body onload="load()" onunload="GUnload()">
+<body onunload="GUnload()">
 	<div id="header">
 		<div id="img">&nbsp;</div>
 		<h1><%= link_to 'Milwaukee ENotify Deconstructed', :controller=>'welcome' %></h1>

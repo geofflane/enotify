@@ -11,9 +11,6 @@
 
 <%= render :partial => "maps/map_incidents", :object => @service_requests %>
 
-<div name="streetview" id="streetview" class="popup"></div>
-<%= javascript_tag "new Popup('streetview', null, {modal:true})" %>
-
 <%= will_paginate @service_requests %>
 <br/>
 <table>

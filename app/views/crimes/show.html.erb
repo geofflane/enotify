@@ -1,5 +1,3 @@
-<%= render :partial => "maps/google_script", :object => @crime %>
-
 <div id="incident">
     <p>
       <div class="label">Report number:</div>
@@ -31,10 +29,8 @@
     <%= link_to 'Same Block', :controller=>:incidents, :action=>:same_block, :address_id=>@crime.address %> 
     </p>
 </div>
-<div id="map" style="width: 400px; height: 400px"></div>
 
-<div name="streetview" id="streetview" class="popup"></div>
-<%= javascript_tag "new Popup('streetview', null, {modal:true})" %>
+<%= render :partial => "maps/google_script", :object => @crime %>
 
 <div id="incident-footer">
     <div id="enotify_popup" class="popup"></div>

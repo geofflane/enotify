@@ -1,8 +1,7 @@
 <%- if map_incidents && map_incidents.size > 0 %>
 <script src="http://maps.google.com/maps?file=api&v=2.x&key=<%= google_api_key() %>" type="text/javascript"></script>
 <script type="text/javascript">
-//<![CDATA[
-function load() {
+document.observe("dom:loaded", function() {
   if (GBrowserIsCompatible()) {
     var map = new GMap2(document.getElementById("map"));
 	var center = new GLatLng(<%= center_geo_locations(map_incidents) %>);
@@ -19,8 +18,10 @@ function load() {
 	map.addControl(new GLargeMapControl());
     map.addControl(new GMapTypeControl());
   }
-}
-//]]>
+  
+  new Popup('streetview', null, {modal:true});
+});
 </script>
 <div id="map" style="width: 850px; height: 300px"></div>
+<div name="streetview" id="streetview" class="popup"></div>
 <%- end %>
