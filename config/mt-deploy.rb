@@ -37,5 +37,8 @@ set :deploy_to,    "/home/#{site}/containers/rails/#{application}"
 #  put File.read("deploy/database.yml.mt"), "#{release_path}/config/database.yml", :mode => 0444
 #end
 
-# update .htaccess rules after new version is deployed
-after "deploy:symlink".to_sym, "mt:generate_htaccess".to_sym
+task :restart, :roles => :app do
+  run "mtr restart #{application} -u #{user} -p #{password}"
+  run "mtr generate_htaccess #{application} -u #{user} -p #{password}"
+  migrate
+end
