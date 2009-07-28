@@ -7,7 +7,7 @@ document.observe("dom:loaded", function() {
 	var latLong = new GLatLng(<%=h google_script.geo_location.to_s %>);
     map.setCenter(latLong, 15);
 	map.addMapType(G_PHYSICAL_MAP);
-	map.addOverlay(createMarker(<%=h google_script.geo_location.latitude %>, <%=h google_script.geo_location.longitude %>, <%=h google_script.id %>));
+	map.addOverlay(createMarker("<%= url_for :controller => :incidents, :action => :show, :id => google_script.id %>", <%=h google_script.geo_location.latitude %>, <%=h google_script.geo_location.longitude %>));
 	map.addControl(new GLargeMapControl());
     map.addControl(new GMapTypeControl());
   }
