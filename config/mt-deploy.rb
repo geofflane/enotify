@@ -8,6 +8,8 @@ set :domain,       "nwscdc.org"
 set :user,         "serveradmin@nwscdc.org"
 set :password,     "SYnqfEPu"
 
+set :use_sudo,    false
+
 # If you aren't using Subversion to manage your source code, specify
 # your SCM below:
 default_run_options[:pty] = true
