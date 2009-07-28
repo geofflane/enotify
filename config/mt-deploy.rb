@@ -1,16 +1,11 @@
-load "deploy"
+require "mt-capistrano"
 
-set :application, "map"
-set :site, "61600"
-set :webpath, "nwscdc.org/html/community/map"
-set :domain, "nwscdc.com"
-set :user, "serveradmin%nwscdc.com"
-set :password, "SYnqfEPu"
-
-# If you aren't deploying to /u/apps/#{application} on the target
-# servers (which is the default), you can specify the actual location
-# via the :deploy_to variable:
-set :deploy_to, "/home/61600/containers/map"
+set :site,         "61600"
+set :application,  "map"
+set :webpath,      "nwscdc.org/html/community/map"
+set :domain,       "nwscdc.org"
+set :user,         "serveradmin@nwscdc.org"
+set :password,     "SYnqfEPu"
 
 # If you aren't using Subversion to manage your source code, specify
 # your SCM below:
@@ -22,28 +17,22 @@ set :deploy_via, :remote_cache
 
 set :ssh_options, { :forward_agent => true, :password => true }
 
-role :app, "#{domain}"
+# which environment to work in
+set :rails_env,    "production"
+
+# necessary for functioning on the (gs)
+default_run_options[:pty] = true
+
+# these shouldn't be changed
 role :web, "#{domain}"
+role :app, "#{domain}"
 role :db,  "#{domain}", :primary => true
+set :deploy_to,    "/home/#{site}/containers/rails/#{application}"
 
-before "deploy:start" do 
-  run "#{current_path}/script/ferret_server -e production start"
-end 
+# uncomment if desired
+#after "deploy:update_code".to_sym do
+#  put File.read("deploy/database.yml.mt"), "#{release_path}/config/database.yml", :mode => 0444
+#end
 
-after "deploy:stop" do 
-  run "#{current_path}/script/ferret_server -e production stop"
-end
-
-after 'deploy:restart' do
-  run "cd #{current_path} && ./script/ferret_server -e production stop"
-  run "cd #{current_path} && ./script/ferret_server -e production start"
-end
-
-namespace :deploy do
-  desc "Restarting rails app on mediatemple using mtr"
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "mtr restart #{application} -u #{user} -p #{password}"
-    run "mtr generate_htaccess #{application} -u #{user} -p #{password}"
-    migrate
-  end
-end
+# update .htaccess rules after new version is deployed
+after "deploy:symlink".to_sym, "mt:generate_htaccess".to_sym
