@@ -20,9 +20,10 @@ class CrimeParser
   RESOLUTION_REGEX=/was recorded as (.+)\. If you/
   
   def parse(text, city, state) 
-    crime = Crime.new
-        
-    crime.record_number, crime.description, street, date, t = CRIME_REGEX.match(text).captures
+    record_number, description, street, date, t = CRIME_REGEX.match(text).captures
+    crime = Crime.find_or_create_by_record_number(record_number)
+    crime.description = description
+    
     crime.address = Address.find_or_create_by_street_and_city_and_state(street, city, state)
     
     crime.resolution = RESOLUTION_REGEX.match(text).captures[0]

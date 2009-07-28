@@ -20,9 +20,10 @@ class ServiceRequestParser
   COMPLAINT_REGEX = /Complaint description: (.+) Please click link below/
   
   def parse(text, city, state) 
-    service_request = ServiceRequest.new
+    street, tax_key, record_number = SERVICE_REGEX.match(text).captures
+    service_request = ServiceRequest.find_or_create_by_record_number(record_number)
+    service_request.tax_key = tax_key
     
-    street, service_request.tax_key, service_request.record_number = SERVICE_REGEX.match(text).captures
     service_request.address = Address.find_or_create_by_street_and_city_and_state(street, city, state)
     
     service_request.description = COMPLAINT_REGEX.match(text).captures[0]

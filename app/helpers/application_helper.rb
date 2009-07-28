@@ -45,12 +45,24 @@ module ApplicationHelper
   
   def total_lat(incidents)
     return 0 unless incidents
-    incidents.inject(0) do |sum, i| sum + i.geo_location.latitude end
+    incidents.inject(0) do |sum, i| 
+      if i.geo_location
+        sum + i.geo_location.latitude 
+      else
+        sum
+      end
+    end
   end
   
   def total_long(incidents)
     return 0 unless incidents
-    incidents.inject(0) do |sum, i| sum + i.geo_location.longitude end
+    incidents.inject(0) do |sum, i| 
+      if i.geo_location
+        sum + i.geo_location.longitude
+      else
+        sum
+      end
+    end
   end
   
   def user_has_role(role, &block)

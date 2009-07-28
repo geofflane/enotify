@@ -17,7 +17,7 @@ test:
 
 production:
   adapter: mysql
-  database: enotify_production
-  username: enotify
-  password: abc123
-  socket: /var/run/mysqld/mysqld.sock
+  database: db61600_enotify
+  username: db61600_enotify
+  password: SYnqfEPu
+  host: internal-db.s61600.gridserver.com

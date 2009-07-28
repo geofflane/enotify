@@ -21,10 +21,12 @@ class ViolationRecordParser
 
 
   def parse(text, city, state) 
-    violation_record = ViolationRecord.new
-
+    record_number, description = SERIAL_REGEX.match(text).captures    
+    violation_record = ViolationRecord.find_or_create_by_record_number(record_number)
+    violation_record.description = description
+    
     street, violation_record.tax_key = VIOLATION_REGEX.match(text).captures
-    violation_record.record_number, violation_record.description = SERIAL_REGEX.match(text).captures
+
     violation_record.address = Address.find_or_create_by_street_and_city_and_state(street, city, state)
 
     violation_record.incident_time = Time.new

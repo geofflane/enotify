@@ -20,9 +20,10 @@ class PermitRecordParser
   TYPE_REGEX = /Permit type: (.+) Please click link below/
   
   def parse(text, city, state) 
-    permit_record = PermitRecord.new
+    street, tax_key, record_number = PERMIT_REGEX.match(text).captures
     
-    street, permit_record.tax_key, permit_record.record_number = PERMIT_REGEX.match(text).captures
+    permit_record = PermitRecord.find_or_create_by_record_number(record_number)
+    permit_record.tax_key = tax_key
     permit_record.address = Address.find_or_create_by_street_and_city_and_state(street, city, state)
     
     permit_record.description = TYPE_REGEX.match(text).captures[0]

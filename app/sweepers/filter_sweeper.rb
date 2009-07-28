@@ -20,7 +20,7 @@ class FilterSweeper < ActionController::Caching::Sweeper
 
   # If our sweeper detects that a Incident was created call this
   def after_create(incident)
-    expire_cache_fragment()
+    expire_cache_fragment(incident)
   end
   
   # If our sweeper detects that a Incident was deleted call this
@@ -30,6 +30,7 @@ class FilterSweeper < ActionController::Caching::Sweeper
           
   private
   def expire_cache_fragment(incident)
-    expire_fragment(incident.class_name +'_filter')
+    cache_name = "#{incident.class.name}_filter"
+    expire_fragment(cache_name)
   end
 end
