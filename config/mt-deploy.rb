@@ -1,4 +1,5 @@
 require "mt-capistrano"
+load "deploy"
 
 set :site,         "61600"
 set :application,  "map"
