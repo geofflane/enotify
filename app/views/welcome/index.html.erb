@@ -1,7 +1,22 @@
 <%= render :partial => "util/atom_link" %>
 
 <h2>Recent Activity</h2>
-<%= render :partial => 'util/formats' %>
+<%= link_to 'Atom', url_for(:controller => :incidents, :format => :atom) %> | 
+<%= link_to 'iCal', url_for(:controller => :incidents, :format => :ics) %> |
+<%= link_to 'KML Data', url_for(:controller => :incidents, :format => :kml) %> 
+<%= image_tag("question-balloon.png", :alt => "Help", :onclick => "$('data_help').popup.show();")%>
+<div id="data_help" class="popup" style="display:none;">
+    <p><a class="popup_closebox" href="javascript:$('data_help').popup.hide();">Close</a></p>
+    <br/>
+    <p>
+    <ul>
+        <li>Atom - A syndication format that you can use with an RSS reader.</li>
+        <li>iCal - Calendar data that you can import into programs like Outlook or Apple iCal.</li>
+        <li>KML - Mapping data you can import into Google Earth.</li>
+    </ul>
+    </p>
+</div>
+<%= javascript_tag "new Popup('data_help', null, {modal:true})" %>
 <br/>
 
 <%= render :partial => "maps/map_incidents", :object => @incidents %>

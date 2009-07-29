@@ -11,7 +11,7 @@ document.observe("dom:loaded", function() {
 	for (var i = 0; i < incidents.length; i ++) {
 		for (var temp in incidents[i]) {
 			var inc = incidents[i][temp];		// This is because it comes out as {"crime:" {values}}
-			map.addOverlay(createMarker("<%= url_for :controller => :incidents, :action => :show, :id => inc.id %>", inc.geo_location.latitude, inc.geo_location.longitude));
+			map.addOverlay(createMarker("<%= url_for :controller => :incidents, :action => :show %>/" + inc.id, inc.geo_location.latitude, inc.geo_location.longitude));
 		}
 	}
 	map.addMapType(G_PHYSICAL_MAP);
