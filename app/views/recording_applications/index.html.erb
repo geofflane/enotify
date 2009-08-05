@@ -26,7 +26,7 @@
   <tr>
     <td><%= link_to recording_application.record_number, recording_application %></td>
   	<td><%=h recording_application.tax_key %></td>
-  	<td><%=h recording_application.local_time.to_formatted_s(:simple) %></td>
+  	<td><%=h recording_application.local_time.to_formatted_s(:simple) if recording_application.local_time %></td>
  	<td><address><%=simple_format recording_application.address.to_s %></address></td>
 	<% user_has_role('admin') do -%>
     <td>

@@ -17,6 +17,9 @@ document.observe("dom:loaded", function() {
 	map.addMapType(G_PHYSICAL_MAP);
 	map.addControl(new GLargeMapControl());
     map.addControl(new GMapTypeControl());
+
+	var geoXml = new GGeoXml("<%= url_for root_url + 'extra/NSP2.kml' %>");
+	map.addOverlay(geoXml);
   }
   
   new Popup('streetview', null, {modal:true});

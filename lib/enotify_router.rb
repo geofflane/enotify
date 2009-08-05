@@ -55,8 +55,6 @@ class EnotifyRouter
       report = report_builder.build_report(cleaned_body)
       report.enotify_mail = EnotifyMail.new(:original_text => email.body, :clean_text => cleaned_body, :title => email.subject) if report
     rescue Exception => ex
-      Rails.logger.error(cleaned_body)
-      enotify_mail.set_error(ex)
       Rails.logger.error(ex)
     end
     

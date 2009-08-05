@@ -47,7 +47,7 @@ class Incident < ActiveRecord::Base
   end
   
   def local_time
-    incident_time.localtime
+    return incident_time.localtime if incident_time
   end
   
   cattr_reader :per_page

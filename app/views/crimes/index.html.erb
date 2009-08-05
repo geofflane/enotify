@@ -27,7 +27,7 @@
 <% for crime in @crimes %>
   <tr>
   	<td><%=link_to crime.record_number, crime %></td>
-  	<td><%=h crime.local_time.to_formatted_s(:simple) %></td>
+  	<td><%=h crime.local_time.to_formatted_s(:simple) if crime.local_time %></td>
   	<td><%=h crime.description %></td>
   	<td><%=h crime.resolution %></td>
  	<td><address><%=simple_format crime.address.to_s %></address></td>

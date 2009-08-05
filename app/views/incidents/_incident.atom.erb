@@ -1,5 +1,5 @@
 <div>
-    <h3><%= link_to incident.record_number, incident %></h3>
+    <h3><a href="<%= polymorphic_url incident, :only_path => false %>"><%= incident.record_number %></a></h3>
 	<% if incident.description -%>
 	<p><%=h incident.description %></p>
 	<% end -%>

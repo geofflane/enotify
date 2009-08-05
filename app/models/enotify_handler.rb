@@ -39,8 +39,8 @@ class EnotifyHandler < ActionMailer::Base
 
         EnotifyHandler.receive(msg)
 
-        # Mark message as deleted and it will be removed from storage when user session closd
-        imap.copy(message_id, 'INBOX.Deleted Messages')
+        # Mark message as deleted and it will be removed from storage when user session closed
+        # imap.copy(message_id, 'Trash')
         imap.store(message_id, "+FLAGS", [:Deleted])
       rescue Exception => ex
         RAILS_DEFAULT_LOGGER.error(ex)

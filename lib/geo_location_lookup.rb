@@ -26,11 +26,11 @@ class GeoLocationLookup
     location = {:address => report.address.street, :city => report.address.city, :state => report.address.state }
     geocode = @geocoder.geocode(location)
 
-    if (geocode)
-      geocode.each do |g|
-        Rails.logger.error("GGGG: #{g.latitude}, #{g.longitude}, #{g.post_code}")
-      end
-    end
+    # if (geocode)
+    #  geocode.each do |g|
+    #    Rails.logger.error("GGGG: #{g.latitude}, #{g.longitude}, #{g.post_code}")
+    #  end
+    # end
         
     geo_location = GeoLocation.find_or_create_by_latitude_and_longitude(geocode[0].latitude, geocode[0].longitude)
     

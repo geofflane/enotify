@@ -54,7 +54,7 @@ class IncidentsController < ApplicationController
   # GET /incidents/search/theft
   # GET /incidents/search/theft.xml
   def search
-    terms = params[:terms].collect{|t| "*#{t}*"}.join(" OR ")
+    terms = params[:terms].split('+').collect{|t| "*#{t}*"}.join(" OR ")
     objects = instance_variable_set("@#{controller_name}", current_model.find_by_contents(terms).paginate(:page => params[:page], :order => 'incident_time DESC'))
 
     respond_to do |format|

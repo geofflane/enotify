@@ -10,6 +10,9 @@ document.observe("dom:loaded", function() {
 	map.addOverlay(createMarker("<%= url_for :controller => :incidents, :action => :show, :id => google_script.id %>", <%=h google_script.geo_location.latitude %>, <%=h google_script.geo_location.longitude %>));
 	map.addControl(new GLargeMapControl());
     map.addControl(new GMapTypeControl());
+
+	var geoXml = new GGeoXml("<%= url_for root_url + 'extra/NSP2.kml' %>");
+	map.addOverlay(geoXml);
   }
   new Popup('streetview', null, {modal:true});
 });
