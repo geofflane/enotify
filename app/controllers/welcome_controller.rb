@@ -28,7 +28,7 @@ class WelcomeController < ApplicationController
   end
   
   def search
-    url = url_for(:controller=>:incidents, :action=>:search) + "/" + CGI::escape(params[:term])
+    url = url_for(:controller=>:incidents, :action=>:search) + "/" + URI::encode(params[:term])
     redirect_to url
   end
 end

@@ -9,16 +9,13 @@ set :deploy_to, "/var/www/enotify"
 # your SCM below:
 default_run_options[:pty] = true
 set :scm, :git
-set :repository, "geoff@zorched.net:enotify.git"
+set :repository, "git@github.com:geofflane/enotify.git"
 set :branch, "master"
 set :deploy_via, :remote_cache
 
-set :user, 'geoff'
-set :ssh_options, { :forward_agent => true }
-
-role :app, "zorched.net"
-role :web, "zorched.net"
-role :db,  "zorched.net", :primary => true
+role :app, "fixme.net"
+role :web, "fixme.net"
+role :db,  "fixme.net", :primary => true
 
 before "deploy:start" do 
   run "#{current_path}/script/ferret_server -e production start"
